@@ -47,7 +47,6 @@
 <link rel="apple-touch-icon" sizes="144x144" href="<?php echo get_template_directory_uri();?>assets/ico/apple-touch-icon-144x144.png">
 
 <link media="all" type="text/css" href="<?php echo get_template_directory_uri();?>/css/custom.css" rel="stylesheet"/>
-
 </head>
 
 <body <?php body_class(); ?>>

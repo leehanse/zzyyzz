@@ -166,6 +166,8 @@ function myoto_scripts_styles() {
         wp_enqueue_script('myoto-application', get_template_directory_uri() .'/js/application.js', array('jquery'), '1.0', true);
         wp_enqueue_script('myoto-flexslider', get_template_directory_uri() .'/js/jquery.flexslider.js', array('jquery'), '2.0', true);
         
+        wp_enqueue_script('myoto-custom', get_template_directory_uri() .'/js/custom.js', array('jquery'), '1.0', true);
+        
         if(is_home()){
             wp_enqueue_script('myoto-page-index', get_template_directory_uri() .'/js/pages/index.js', array('jquery'), '1.0', true);
         }
