@@ -1,0 +1,294 @@
+##
+# @version $Id: htaccess.txt 10492 2008-07-02 06:38:28Z ircmaxell $
+# @package Joomla
+# @copyright Copyright (C) 2005 - 2008 Open Source Matters. All rights reserved.
+# @license http://www.gnu.org/copyleft/gpl.html GNU/GPL
+# Joomla! is Free Software
+##
+
+## If you are updating the redirects for imbibemagazine.com, please
+## edit only in the section that starts "Custom Imbibe Redirects"
+
+#####################################################
+#  READ THIS COMPLETELY IF YOU CHOOSE TO USE THIS FILE
+#
+# The line just below this section: 'Options +FollowSymLinks' may cause problems
+# with some server configurations.  It is required for use of mod_rewrite, but may already
+# be set by your server administrator in a way that dissallows changing it in
+# your .htaccess file.  If using it causes your server to error out, comment it out (add # to
+# beginning of line), reload your site in your browser and test your sef url's.  If they work,
+# it has been set by your server administrator and you do not need it set here.
+#
+#####################################################
+
+##  Can be commented out if causes errors, see notes above.
+Options +FollowSymLinks
+
+#
+#  mod_rewrite in use
+
+RewriteEngine On
+
+## Custom Imbibe Redirects ##
+  ## subscription promotions ##
+  RewriteRule ^subscribe$ https://www.imbibemagazine.com/subscribe.php
+  RewriteRule ^renewal$ renewal.php
+  RewriteRule ^invoice$ invoice.php
+  RewriteRule ^trade$ subscribe.php?promo=trade&SourceCode=trade
+  RewriteRule ^sample$ subscribe.php?SourceCode=sample
+  RewriteRule ^flavor$ subscribe.php?promo=flavor&SourceCode=mflav09
+
+## old site pages ##
+redirect 301 /08-2007-cover-recipe.asp    http://www.imbibemagazine.com/Blackberry-GIn-Smash
+redirect 301 /2007_holidaycard.html    http://www.imbibemagazine.com/email/2007-holidaycard.html
+redirect 301 /2007-holidaycard_ad_ss.html    http://www.imbibemagazine.com/email/2007-holidaycard.html
+redirect 301 /2007-holidaycard_inv_ss.html    http://www.imbibemagazine.com/email/2007-holidaycard.html
+redirect 301 /2007-holidaycard_SS.html    http://www.imbibemagazine.com/email/2007-holidaycard.html
+redirect 301 /2007-holidaycard.html    http://www.imbibemagazine.com/email/2007-holidaycard.html
+redirect 301 /2008gg/over100.html    http://www.imbibemagazine.com/Holiday-Gift-Guide-Gifts-Over-$100
+redirect 301 /2008gg/stocking-stuff.html    http://www.imbibemagazine.com/Holiday-Gift-Guide-Stocking-Stuffers
+redirect 301 /2008gg/under100.html    http://www.imbibemagazine.com/Holiday-Gift-Guide-Gifts-Under-$100
+redirect 301 /2008gg/under25.html    http://www.imbibemagazine.com/Holiday-Gift-Guide-Under-$25
+redirect 301 /2008gg/under50.html    http://www.imbibemagazine.com/Holiday-Gift-Guide-Gifts-Under-$50
+redirect 301 /about.asp    http://www.imbibemagazine.com/About
+
+redirect 301 /absinthe/index.html    http://www.imbibemagazine.com/Absinthe-Is-Back
+redirect 301 /absinthetasting.html    http://www.imbibemagazine.com/Absinthe-Taste-Test
+redirect 301 /absinthe    http://www.imbibemagazine.com/Absinthe-Is-Back
+
+redirect 301 /advertising.asp    http://www.imbibemagazine.com/Advertise
+redirect 301 /backissue.pdf    http://www.imbibemagazine.com/images/stories/pdfs/order_forms/backissue.pdf
+
+redirect 301 /backissues.html    http://www.imbibemagazine.com/Back-Issues-Index
+redirect 301 /backissues/100beers.html    http://www.imbibemagazine.com/100-Best-Places-to-Drink-Beer-in-America
+redirect 301 /backissues/absinthe.html    http://www.imbibemagazine.com/Absinthe-Is-Back
+redirect 301 /backissues/alberta.html    http://www.imbibemagazine.com/In-this-Issue-Nov/Dec-2006
+redirect 301 /backissues/amsterdam.html    http://www.imbibemagazine.com/Rousing-the-Spirits-of-Amsterdam
+redirect 301 /backissues/applejack.html    http://www.imbibemagazine.com/Elements-Applejack
+redirect 301 /backissues/aquavit.html    http://www.imbibemagazine.com/Elements-Aquavit
+redirect 301 /backissues/backissues.html    http://www.imbibemagazine.com/Back-Issues-Index
+redirect 301 /backissues/branson.html    http://www.imbibemagazine.com/Pop-Culture-Branson-B-s-Champagne
+redirect 301 /backissues/cachaca.html    http://www.imbibemagazine.com/Elements-Cachaca
+redirect 301 /backissues/chuck.html    http://www.imbibemagazine.com/In-this-Issue-Jan/Feb-2007
+redirect 301 /backissues/collectors.html    http://www.imbibemagazine.com/For-a-Rainy-Day-Wine-Collectors
+redirect 301 /backissues/croatia.html    http://www.imbibemagazine.com/Slow-Burn-Croatia
+redirect 301 /backissues/default.asp    http://www.imbibemagazine.com/Back-Issues-Index
+redirect 301 /backissues/dessertwine.html    http://www.imbibemagazine.com/The-Sweet-Life-Dessert-Wines
+redirect 301 /backissues/elba.html    http://www.imbibemagazine.com/Characters-Elba-Copado
+redirect 301 /backissues/ghost.html    http://www.imbibemagazine.com/Ghost-Man-Walter-Backerman
+redirect 301 /backissues/heatwave.html    http://www.imbibemagazine.com/Heat-Wave-Home-Coffee-Roasting
+redirect 301 /backissues/hefe.html    http://www.imbibemagazine.com/Hazed-and-Confused-Hefeweizen
+redirect 301 /backissues/holidaycoffee.html    http://www.imbibemagazine.com/Joe-to-the-World
+redirect 301 /backissues/hops-shortage.html    http://www.imbibemagazine.com/Trouble-Brewing-Hops-Shortage
+redirect 301 /backissues/ice.html    http://www.imbibemagazine.com/Rocking-Out-The-Hottest-Iced-Cocktails
+redirect 301 /backissues/IM16_Cognac.pdf    http://www.imbibemagazine.com/In-this-Issue-Nov/Dec-2008
+redirect 301 /backissues/Imbibe_Absinthe.pdf    http://www.imbibemagazine.com/Absinthe-Is-Back
+redirect 301 /backissues/Imbibe-Gastrique.pdf    http://www.imbibemagazine.com/In-this-Issue-Jan/Feb-2008
+redirect 301 /backissues/infuse.html    http://www.imbibemagazine.com/No-Bartender-Required
+redirect 301 /backissues/istanbul.html    http://www.imbibemagazine.com/Turkish-Delight-Destination-Istanbul
+redirect 301 /backissues/lagers.html    http://www.imbibemagazine.com/Old-Style-American-Lagers
+redirect 301 /backissues/lambic.html    http://www.imbibemagazine.com/In-this-Issue-Nov/Dec-2006
+redirect 301 /backissues/laurawilliamson.html    http://www.imbibemagazine.com/Characters-Laura-Williamson
+redirect 301 /backissues/lonerangers.html    http://www.imbibemagazine.com/Coffee-s-Lone-Rangers
+redirect 301 /backissues/maplesyrup.html    http://www.imbibemagazine.com/Elements-Maple-Syrup
+redirect 301 /backissues/mikeveach.html    http://www.imbibemagazine.com/Bourbon-s-Keeper-Mike-Veach
+redirect 301 /backissues/milan.html    http://www.imbibemagazine.com/Bitter-is-Bella-Destination-Milan
+redirect 301 /backissues/miraclefruit.html    http://www.imbibemagazine.com/Miracle-Fruit
+redirect 301 /backissues/natwine.html    http://www.imbibemagazine.com/Organic-Wine-Comes-Alive
+redirect 301 /backissues/newoldbeer.html    http://www.imbibemagazine.com/In-this-Issue-Nov/Dec-2007
+redirect 301 /backissues/pisco.html    http://www.imbibemagazine.com/On-the-Pisco-Trail-Destination-Peru
+redirect 301 /backissues/quinquinas.html    http://www.imbibemagazine.com/Elements-Quinquinas
+redirect 301 /backissues/rosewater.html    http://www.imbibemagazine.com/Elements-Rosewater
+redirect 301 /backissues/rye.html    http://www.imbibemagazine.com/The-Comeback-Kid-Rye-Whiskey
+redirect 301 /backissues/sherry.html    http://www.imbibemagazine.com/The-Truth-About-Sherry
+redirect 301 /backissues/sloegin.html    http://www.imbibemagazine.com/Elements-Sloe-Gin
+redirect 301 /backissues/sloegine.html    http://www.imbibemagazine.com/Elements-Sloe-Gin
+redirect 301 /backissues/smallville.html    http://www.imbibemagazine.com/Smallville-Session-Beers
+redirect 301 /backissues/syrah.html    http://www.imbibemagazine.com/Syrah-in-the-City
+redirect 301 /backissues/tea.html    http://www.imbibemagazine.com/Tea-Anatomy-of-a-Leaf
+redirect 301 /backissues/tequila.html    http://www.imbibemagazine.com/almost-famous
+redirect 301 /backissues/trouble-brewing.html    http://www.imbibemagazine.com/Trouble-Brewing-Hops-Shortage
+redirect 301 /backissues/warsaw.html    http://www.imbibemagazine.com/Eastside-Story-Drinking-in-the-Polish-Capital
+redirect 301 /backissues/winefront.html    http://www.imbibemagazine.com/In-this-Issue-Jan/Feb-2007
+redirect 301 /backissues/winerate.html    http://www.imbibemagazine.com/Wine-by-the-Numbers-Wine-Ratings
+
+#Ta-da!  Here's the directory
+redirect 301 /backissues    http://www.imbibemagazine.com/Back-Issues-Index
+redirect 301 /beerclub    https://www.imbibemagazine.com/subscribe.php?promo=beerclub&SourceCode=beerc0410
+redirect 301 /bgsmash.asp    http://www.imbibemagazine.com/Blackberry-GIn-Smash
+redirect 301 /blog    http://imbibemagazine.blogspot.com
+redirect 301 /brewerextra.html    http://www.imbibemagazine.com/Craft-Brewers-From-Basement-to-Brewery
+redirect 301 /cedl    https://www.imbibemagazine.com/subscribe.php?SourceCode=cedl&promo=cedl
+redirect 301 /celebrate    https://www.imbibemagazine.com/subscribe.php?SourceCode=tl1108
+redirect 301 /cia    https://www.imbibemagazine.com/subscribe.php?promo=trade&SourceCode=cia
+redirect 301 /coffeeproject    https://www.imbibemagazine.com/subscribe.php?SourceCode=cofproj
+redirect 301 /contact_form.asp    http://www.imbibemagazine.com/Contact
+redirect 301 /coolvines    https://www.imbibemagazine.com/subscribe.php?promo=coolvines&SourceCode=coolvines
+redirect 301 /default.asp    http://www.imbibemagazine.com/
+redirect 301 /default.htm    http://www.imbibemagazine.com/
+redirect 301 /drinkup    https://www.imbibemagazine.com/subscribe.php?promo=drinkup&SourceCode=dupny
+redirect 301 /drinkup2    https://www.imbibemagazine.com/subscribe.php?promo=drinkup2&SourceCode=dupny2
+redirect 301 /drink    https://www.imbibemagazine.com/subscribe.php?promo=drinkup&SourceCode=dupny3
+redirect 301 /enews    http://app.streamsend.com/public/wSMT/HKQ/subscribe
+redirect 301 /experience https://imbibemagazine.com/subscribe.php?SourceCode=gastro
+redirect 301 /facebook    https://www.imbibemagazine.com/subscribe.php?promo=facebook&SourceCode=faceb
+redirect 301 /FAQ.html    http://www.imbibemagazine.com/FAQs
+redirect 301 /feat_1.html    http://www.imbibemagazine.com/Elements-Cherry-Heering
+redirect 301 /feat_2.html    http://www.imbibemagazine.com/Vision-Quest-Homebrewers-Living-the-Dream
+redirect 301 /feat_3.html    http://www.imbibemagazine.com/Zen-and-the-Art-of-Sake
+redirect 301 /feat_preview.html    http://www.imbibemagazine.com/100-Best-Places-to-Drink-Beer-in-America
+redirect 301 /feat_toc.html    http://www.imbibemagazine.com/In-this-Issue-January/February-2009
+redirect 301 /featuredrecipes.html    http://www.imbibemagazine.com/In-this-Issue-January/February-2009
+redirect 301 /featuredvideos.html    http://www.imbibemagazine.com/Videos
+
+redirect 301 /flavor https://www.imbibemagazine.com/subscribe.php?promo=flavor&SourceCode=mflav10
+redirect 301 /flavor2 https://www.imbibemagazine.com/subscribe.php?promo=flavor2&SourceCode=mflav2
+
+redirect 301 /gift.asp    https://www.imbibemagazine.com/subscribe.php?promo=gift2
+redirect 301 /gift08.asp    https://www.imbibemagazine.com/gift.php?SourceCode=gift08
+redirect 301 /gift18.asp    https://www.imbibemagazine.com/gift.php?SourceCode=gift18
+redirect 301 /gift4x.asp    https://www.imbibemagazine.com/gift.php
+redirect 301 /gift6x.asp    https://www.imbibemagazine.com/gift.php
+
+redirect 301 /gift    https://www.imbibemagazine.com/gift.php?SourceCode=h08mgs
+
+redirect 301 /giftcard    http://www.imbibemagazine.com/ecard-greeting.html
+
+redirect 301 /give    https://www.imbibemagazine.com/gift.php?SourceCode=hol08pr
+
+redirect 301 /holiday2006    https://www.imbibemagazine.com/gift.php?SourceCode=hol06iss
+redirect 301 /holiday2007    https://www.imbibemagazine.com/gift.php?SourceCode=hol07iss
+redirect 301 /holiday2008    https://www.imbibemagazine.com/gift.php?SourceCode=hol08iss
+redirect 301 /holiday2009    https://www.imbibemagazine.com/gift.php?SourceCode=hol09iss
+redirect 301 /holidays    https://www.imbibemagazine.com/gift.php?SourceCode=print
+
+redirect 301 /holiday    https://www.imbibemagazine.com/gift.php?SourceCode=hol08gr
+
+redirect 301 /hops    http://www.imbibemagazine.com/Trouble-Brewing-Hops-Shortage
+redirect 301 /hpost    https://www.imbibemagazine.com/subscribe.php?promo=hpost&SourceCode=hpost
+redirect 301 /Imbibe_GingerPeachLimeade.pdf    http://www.imbibemagazine.com/images/stories/pdfs/recipes/imbibe_gingerpeachlimeade.pdf
+redirect 301 /ja09    http://www.imbibemagazine.com/In-this-Issue-July/Aug-2009
+redirect 301 /jf10    http://www.imbibemagazine.com/In-This-Issue-Jan/Feb-2010
+redirect 301 /join    https://www.imbibemagazine.com/subscribe.php?SourceCode=2010bi
+redirect 301 /kegworks    https://www.imbibemagazine.com/subscribe.php?SourceCode=kegwks
+redirect 301 /krewe    https://www.imbibemagazine.com/subscribe.php?promo=tales&SourceCode=krewe
+redirect 301 /ma09    http://www.imbibemagazine.com/In-this-Issue-March/April-2009
+redirect 301 /ma10    http://www.imbibemagazine.com/In-this-Issue-March/April-2010
+redirect 301 /marketplace.asp    http://www.imbibemagazine.com/Marketplace
+redirect 301 /martinmillers-poll.asp    http://www.imbibemagazine.com/
+redirect 301 /mj09    http://www.imbibemagazine.com/In-this-Issue-May/June-2009
+redirect 301 /mj10    http://www.imbibemagazine.com/In-this-Issue-May/June-2010
+redirect 301 /nd09    http://imbibemagazine.com/In-This-Issue-Nov/Dec-2009
+redirect 301 /newsstands.asp    http://www.imbibemagazine.com/Where-To-Buy
+redirect 301 /nightschool    https://www.imbibemagazine.com/subscribe.php?SourceCode=nightschool&promo=nightschool
+redirect 301 /nov08-nycgiveaway.html    http://www.imbibemagazine.com/
+redirect 301 /Old-Fashioned    http://www.imbibemagazine.com/Old-Fashioned-Cocktail-Recipe
+redirect 301 /payinvoice_sample.asp    http://www.imbibemagazine.com/renew_sample.php
+redirect 301 /payinvoice-order.asp    https://www.imbibemagazine.com/invoice.php
+redirect 301 /payinvoice.asp    https://www.imbibemagazine.com/invoice.php
+redirect 301 /payinvoice    https://www.imbibemagazine.com/invoice.php?SourceCode=print
+redirect 301 /pinot    https://www.imbibemagazine.com/subscribe.php?SourceCode=pinot
+redirect 301 /pinotdays    https://www.imbibemagazine.com/subscribe.php?SourceCode=pinot&promo=pinotdays
+redirect 301 /press.html    http://www.imbibemagazine.com/Press
+redirect 301 /privacy.asp    http://www.imbibemagazine.com/Privacy
+redirect 301 /reader-poll.asp    http://www.imbibemagazine.com/
+
+redirect 301 /recipes_alcoholfree.html    http://www.imbibemagazine.com/Mocktails-Alcohol-Free-Recipes
+redirect 301 /recipes_cocktails    http://www.imbibemagazine.com/Cocktail-Recipes
+redirect 301 /recipes_cocktails.html    http://www.imbibemagazine.com/Cocktail-Recipes
+redirect 301 /recipes_food.html    http://www.imbibemagazine.com/Food-Garnish-Recipes
+redirect 301 /recipes_garnish.html    http://www.imbibemagazine.com/Food-Garnish-Recipes
+redirect 301 /recipes/default.asp    http://www.imbibemagazine.com/Recipes
+redirect 301 /recipes/BGSMASH_F.pdf    http://www.imbibemagazine.com/images/stories/pdfs/recipes/bgsmash_f.pdf
+redirect 301 /recipes/imbibe_crimson-recipe.pdf    http://www.imbibemagazine.com/images/stories/pdfs/recipes/imbibe_crimson-recipe.pdf
+redirect 301 /recipes/imbibe_DrinkodeGallo.pdf    http://www.imbibemagazine.com/images/stories/pdfs/recipes/imbibe_drinkodegallo.pdf
+redirect 301 /recipes/imbibe_HoneydewMintLimeade.pdf    http://www.imbibemagazine.com/images/stories/pdfs/recipes/imbibe_honeydewmintlimeade.pdf
+redirect 301 /recipes/imbibe_swafford-ecard.pdf    http://www.imbibemagazine.com/images/stories/pdfs/recipes/imbibe_swafford-ecard.pdf
+redirect 301 /recipe.html    http://www.imbibemagazine.com/ecard-greeting.html
+
+redirect 301 /recipes    http://www.imbibemagazine.com/Recipes
+
+redirect 301 /RedHook_Recipe.pdf    http://www.imbibemagazine.com/images/stories/pdfs/recipes/redHook_recipe.pdf
+
+redirect 301 /renew_sample.asp    http://www.imbibemagazine.com/renew_sample.php
+redirect 301 /renewal.asp    https://www.imbibemagazine.com/renewal.php
+
+redirect 301 /renew    https://www.imbibemagazine.com/renewal.php?SourceCode=print
+
+redirect 301 /RIT    https://www.imbibemagazine.com/subscribe.php?promo=trade&SourceCode=RIT
+redirect 301 /roast    https://www.imbibemagazine.com/subscribe.php?promo=scaa&SourceCode=roast
+redirect 301 /roastextra.html    http://www.imbibemagazine.com/Roasting-at-Home-12-Steps
+redirect 301 /sake    https://www.imbibemagazine.com/subscribe.php?SourceCode=sake1
+redirect 301 /scaa    https://www.imbibemagazine.com/subscribe.php?promo=scaa&SourceCode=scaa
+redirect 301 /security.asp    http://www.imbibemagazine.com/security.php
+redirect 301 /share    https://www.imbibemagazine.com/gift.php?SourceCode=print
+redirect 301 /sneakpeek3.htm    http://www.imbibemagazine.com/In-the-Magazine
+redirect 301 /so09    http://imbibemagazine.com/In-This-Issue-Sept/Oct-2009
+redirect 301 /student    https://www.imbibemagazine.com/subscribe.php?promo=trade&SourceCode=student
+
+redirect 301 /subscribe_edpro.asp    https://www.imbibemagazine.com/subscribe.php?promo=trade
+redirect 301 /subscribe.asp    https://www.imbibemagazine.com/subscribe.php
+redirect 301 /subscribe.asp?src=phiz    https://www.imbibemagazine.com/subscribe.php?SourceCode=phiz
+
+redirect 301 /subscribe    https://www.imbibemagazine.com/subscribe.php?SourceCode=housead
+
+redirect 301 /survey.asp    http://www.imbibemagazine.com/
+
+redirect 301 /survey    http://www.imbibemagazine.com/
+
+redirect 301 /sweeps_rules.html    http://www.imbibemagazine.com/
+redirect 301 /tales   https://www.imbibemagazine.com/subscribe.php?promo=tales&SourceCode=tocsite
+redirect 301 /tasting_notes    http://app.streamsend.com/public/wSMT/HKQ/subscribe
+redirect 301 /tastingnotes    http://app.streamsend.com/public/wSMT/HKQ/subscribe
+redirect 301 /ToC_Nomination_Form.pdf    http://www.imbibemagazine.com/
+redirect 301 /trade    https://www.imbibemagazine.com/subscribe.php?promo=trade&SourceCode=trade
+redirect 301 /vintage    https://www.imbibemagazine.com/subscribe.php?SourceCode=vinbouq
+redirect 301 /wallys    https://www.imbibemagazine.com/subscribe.php?promo=wallys&SourceCode=wallys
+redirect 301 /wheretobuy.asp    http://www.imbibemagazine.com/Where-To-Buy
+redirect 301 /whisky    https://www.imbibemagazine.com/subscribe.php?promo=whisky&SourceCode=wlive
+redirect 301 /wine    https://www.imbibemagazine.com/subscribe.php?SourceCode=sdwff&promo=sdwff
+redirect 301 /wineclub    https://www.imbibemagazine.com/subscribe.php?promo=wineclub&SourceCode=winec0410
+redirect 301 /winespies    https://www.imbibemagazine.com/subscribe.php?promo=winespies&SourceCode=winespies
+redirect 301 /works    https://www.imbibemagazine.com/subscribe.php?promo=works&SourceCode=kegwks2
+redirect 301 /wow    https://www.imbibemagazine.com/subscribe.php?promo=wow&SourceCode=wow
+redirect 301 /zap    https://www.imbibemagazine.com/subscribe.php?SourceCode=zap&promo=zinfandel
+redirect 301 ^cards/?(.*)$    http://www.imbibemagazine.com/ecard-greeting.html
+
+#SSL Redirects for the subscribe pages
+
+########## Begin - Rewrite rules to block out some common exploits
+## If you experience problems on your site block out the operations listed below
+## This attempts to block the most common type of exploit `attempts` to Joomla!
+#
+# Block out any script trying to set a mosConfig value through the URL
+RewriteCond %{QUERY_STRING} mosConfig_[a-zA-Z_]{1,21}(=|\%3D) [OR]
+# Block out any script trying to base64_encode crap to send via URL
+RewriteCond %{QUERY_STRING} base64_encode.*\(.*\) [OR]
+# Block out any script that includes a <script> tag in URL
+RewriteCond %{QUERY_STRING} (\<|%3C).*script.*(\>|%3E) [NC,OR]
+# Block out any script trying to set a PHP GLOBALS variable via URL
+RewriteCond %{QUERY_STRING} GLOBALS(=|\[|\%[0-9A-Z]{0,2}) [OR]
+# Block out any script trying to modify a _REQUEST variable via URL
+RewriteCond %{QUERY_STRING} _REQUEST(=|\[|\%[0-9A-Z]{0,2})
+# Send all blocked request to homepage with 403 Forbidden error!
+RewriteRule ^(.*)$ index.php [F,L]
+#
+########## End - Rewrite rules to block out some common exploits
+
+#  Uncomment following line if your webserver's URL
+#  is not directly related to physical file paths.
+#  Update Your Joomla! Directory (just / for root)
+
+# RewriteBase /
+
+########## Begin - Joomla! core SEF Section
+#
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_URI} !^/index.php
+RewriteCond %{REQUEST_URI} (/|\.php|\.html|\.htm|\.feed|\.pdf|\.raw|/[^.]*)$  [NC]
+RewriteRule (.*) index.php
+RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization},L]
+#
+########## End - Joomla! core SEF Section
+
