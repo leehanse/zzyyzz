@@ -167,6 +167,7 @@
 
     .navbar-inverse .nav > li > a {
             color: #FFFFFF;
+            text-transform: uppercase;
     }
     .navbar-inverse .nav > li.current-user > a {
             color: #FFFFFF !important;
@@ -183,10 +184,10 @@
     }
     .navbar-inverse .nav > li:hover > a, .navbar-inverse .nav > li:active > a {
             color: #555555;
-            background: #F5F5F5;
+            background: #6192AC;
     }
     .navbar-inverse .nav li.dropdown.open > .dropdown-toggle, .navbar-inverse .nav li.dropdown.active > .dropdown-toggle, .navbar-inverse .nav li.dropdown.open.active > .dropdown-toggle {
-            background: #D9D9D9;
+            background: #6192AC;
             color: #555555;
     }
 
@@ -227,21 +228,103 @@
     .circle-img {
         border-radius: 100%;
     }    
+    .dropdown-menu{
+        background: #6192AC !important;
+    }
+    .fhmm .fhmm-content.withdesc a{
+    }
+    .fhmm .dropdown-menu{
+        border: 1px solid #6192AC;
+    }
 </style>
-<div class="navbar navbar-inverse navbar-fixed-top">
-    <!-- start: TOP NAVIGATION CONTAINER -->
-    <div class="container">
+<nav class="navbar navbar-default navbar-inverse navbar-fixed-top fhmm" role="navigation">
+    <div class="menudrop container">
         <div class="navbar-header">
-            <!-- start: RESPONSIVE MENU TOGGLER -->
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="clip-list-2"></span>
-            </button>
-            <!-- end: RESPONSIVE MENU TOGGLER -->
-            <!-- start: LOGO -->
-            <a href="index.html" class="navbar-brand">
-                MYOTO
-            </a>
-            <!-- end: LOGO -->
+            <button type="button" data-toggle="collapse" data-target="#defaultmenu" class="navbar-toggle"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+        </div>
+        <!-- end navbar-header -->
+        <div id="defaultmenu">
+            <ul class="nav navbar-nav">
+                <!-- Mega Menu -->
+                <li class="dropdown fhmm-fw active"><a href="#"><i class="fa fa-home"></i> HOME</a></li><!-- mega menu -->
+                <!-- list elements -->
+                <li class="dropdown fhmm-fw"><a href="#" data-toggle="dropdown" class="dropdown-toggle">FEATURES <b class="caret"></b></a>
+                    <ul class="dropdown-menu fullwidth">
+                        <li class="fhmm-content withdesc">
+                            <div class="row">
+                                <div class="col-sm-2">
+                                    <h3 class="title">SPECIAL STYLES</h3>
+                                    <ul>
+                                        <li><a href="index.html">Home Slider Style</a></li>
+                                        <li><a href="index-2.html">Home Map Style</a></li>
+                                        <li><a href="index-3.html">Home Blog Style</a></li>
+                                        <li><a href="list-property.html">List A Property</a></li>
+                                        <li><a href="advanced-search.html">Advanced Search</a></li>
+                                    </ul>
+                                </div>
+                                <div class="col-sm-2">
+                                    <h3 class="title">PAGE STYLES</h3>
+                                    <ul>
+                                        <li><a href="page.html">Page Sidebar</a></li>
+                                        <li><a href="fullwidth.html">Page Full Width</a></li>
+                                        <li><a href="404.html">404 - Not Found</a></li>
+                                        <li><a href="sitemap.html">Sitemap</a></li>
+                                        <li><a href="login.html">Login / Register</a></li>
+                                    </ul>
+                                </div>
+                                <div class="col-sm-2">
+                                    <h3 class="title">LISTING VIEWS</h3>
+                                    <ul>
+                                        <li><a href="list-view.html">List view</a></li>
+                                        <li><a href="grid-view.html">Grid view</a></li>
+                                        <li><a href="with-google-map.html">With Google Map</a></li>
+                                        <li><a href="single-property.html">Single Property Page</a></li>
+                                        <li><a href="property-category.html">Property Category Page</a></li>
+                                    </ul>
+                                </div>
+                                <div class="col-sm-2">
+                                    <h3 class="title">AGENTS VIEWS</h3>
+                                    <ul>
+                                        <li><a href="about.html">About Us</a></li>
+                                        <li><a href="agencies.html">Agencies Page</a></li>
+                                        <li><a href="single-agency.html">Single Agency</a></li>
+                                        <li><a href="agents.html">Agents Page</a></li>
+                                        <li><a href="single-agent.html">Single Agent</a></li>
+                                    </ul>
+                                </div>
+                                <div class="col-sm-2">
+                                    <h3 class="title">GALLERY STYLES</h3>
+                                    <ul>
+                                        <li><a href="two-columns-gallery.html">Two Columns Gallery</a></li>
+                                        <li><a href="three-columns-gallery.html">Three Columns Gallery</a></li>
+                                        <li><a href="four-columns-gallery.html">Four Columns Gallery</a></li>
+                                        <li><a href="single-gallery.html">Single Gallery Page</a></li>
+                                        <li><a href="gallery-category.html">Gallery Category</a></li>
+                                    </ul>
+                                </div>
+                                <div class="col-sm-2">
+                                    <h3 class="title">BLOG STYLES</h3>
+                                    <ul>
+                                        <li><a href="blog.html">Standard Blog</a></li>
+                                        <li><a href="two-blog.html">Two Columns Blog</a></li>
+                                        <li><a href="grid-blog.html">Grid Style Blog</a></li>
+                                        <li><a href="single-blog.html">Single Blog Page</a></li>
+                                        <li><a href="blog-category.html">Blog Category</a></li>
+                                    </ul>
+                                </div>
+                            </div><!-- end row -->
+                        </li><!-- end grid demo -->
+                    </ul><!-- end drop down menu -->
+                </li><!-- end list elements -->
+                <!-- list elements -->
+                <li><a href="list-property.html">Menu Item 1</a></li>
+                <!-- list elements -->
+                <li><a href="list-property.html">Menu Item 2</a></li>
+                <!-- standard drop down -->
+                <li><a href="list-property.html">Menu Item 3</a></li>
+                <li><a href="list-property.html">Menu Item 4</a></li>
+            </ul>            
+            <!-- end nav navbar-nav -->
         </div>
         <div class="navbar-tools">
             <!-- start: TOP NAVIGATION MENU -->
@@ -618,5 +701,4 @@
             <!-- end: TOP NAVIGATION MENU -->
         </div>
     </div>
-    <!-- end: TOP NAVIGATION CONTAINER -->
-</div>
+</nav>

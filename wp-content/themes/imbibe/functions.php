@@ -154,6 +154,8 @@ function myoto_scripts_styles() {
         wp_enqueue_style('myoto-bootstrap', get_template_directory_uri() .'/assets/css/bootstrap.css');
         wp_enqueue_style('myoto-main', get_template_directory_uri() .'/main.css', array('myoto-bootstrap'), '1.0');
         wp_enqueue_style('myoto-font-style', get_template_directory_uri() .'/fonts/style.css', array('myoto-bootstrap'), '1.0');        
+        wp_enqueue_style('myoto-perfect-scrollbar', get_template_directory_uri() .'/assets/plugins/perfect-scrollbar/src/perfect-scrollbar.css', array(), '1.0');
+        
         
         wp_enqueue_script('myoto-bootstrap', get_template_directory_uri() .'/js/bootstrap.js', array('jquery'), '3.0.0', true);
         wp_enqueue_script('myoto-parallax', get_template_directory_uri() .'/js/jquery.parallax.js', array('jquery'), '2.0', true);
@@ -165,6 +167,9 @@ function myoto_scripts_styles() {
         wp_enqueue_script('myoto-bootstrap-fancybox', get_template_directory_uri() .'/fancyBox/jquery.fancybox.pack.js', array('jquery'), '2.1.5', true);
         wp_enqueue_script('myoto-application', get_template_directory_uri() .'/js/application.js', array('jquery'), '1.0', true);
         wp_enqueue_script('myoto-flexslider', get_template_directory_uri() .'/js/jquery.flexslider.js', array('jquery'), '2.0', true);
+        
+        wp_enqueue_script('myoto-jquery-mousewheel', get_template_directory_uri() .'/assets/plugins/perfect-scrollbar/src/jquery.mousewheel.js', array('jquery'), '3.0.6', true);
+        wp_enqueue_script('myoto-perfect-scrollbar', get_template_directory_uri() .'/assets/plugins/perfect-scrollbar/src/perfect-scrollbar.js', array('jquery'), '1.0', true);
         
         wp_enqueue_script('myoto-custom', get_template_directory_uri() .'/js/custom.js', array('jquery'), '1.0', true);
         
