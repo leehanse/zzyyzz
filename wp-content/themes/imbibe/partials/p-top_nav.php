@@ -39,7 +39,6 @@
     }
     .navbar-tools .dropdown-menu {
         background: none repeat scroll 0 0 white;
-        border: 1px solid #C7CBD5;
         border-radius: 0 0 4px 4px;
         box-shadow: none;
         list-style: none outside none;
@@ -234,7 +233,10 @@
     .fhmm .fhmm-content.withdesc a{
     }
     .fhmm .dropdown-menu{
-        border: 1px solid #6192AC;
+        border-style: solid;
+        border-width: 2px;
+        border-color: #6192AC;
+        border-top-width: 0px;
     }
 </style>
 <nav class="navbar navbar-default navbar-inverse navbar-fixed-top fhmm" role="navigation">

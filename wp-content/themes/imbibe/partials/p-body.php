@@ -1,6 +1,15 @@
 <section class="generalwrapper dm-shadow clearfix">
     <div class="container">
         <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-3 col-xs-12 first clearfix">
+                <?php get_template_part('partials/p','chat2');?>
+            </div>
+        </div>
+    </div>
+</section>    
+<section class="generalwrapper dm-shadow clearfix">
+    <div class="container">
+        <div class="row">
             <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12 first clearfix">
                 <div class="widget cats_widget clearfix">
                     <div class="title">

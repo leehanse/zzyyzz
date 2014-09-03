@@ -1,5 +1,5 @@
 $(document).ready(function(){
     if($('#wpadminbar').size()){
-        $(".navbar").css('top','30px');
+        $(".navbar").css('top','32px');
     }
 });
