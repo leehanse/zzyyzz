@@ -88,7 +88,31 @@ function my_taxonomies_car() {
 		'show_admin_column' => true,
 		'query_var'         => true
 	);
-	register_taxonomy( 'car_category', 'car', $args );
+	register_taxonomy( 'car_category', array('car'), $args );
+        
+        /**************/
+        $labels = array(
+		'name'              => _x( 'Location', 'taxonomy general name' ),
+		'singular_name'     => _x( 'Location', 'taxonomy singular name' ),
+		'search_items'      => __( 'Search Location' ),
+		'all_items'         => __( 'All Locations' ),
+		'parent_item'       => __( 'Parent Location' ),
+		'parent_item_colon' => __( 'Parent Location:' ),
+		'edit_item'         => __( 'Edit Location' ), 
+		'update_item'       => __( 'Update Location' ),
+		'add_new_item'      => __( 'Add New Location' ),
+		'new_item_name'     => __( 'New Location' ),
+		'menu_name'         => __( 'Locations' ),
+	);
+	$args = array(
+                'hierarchical'      => true,
+		'labels'            => $labels,		
+                'show_ui'           => true,
+		'show_admin_column' => true,
+		'query_var'         => true
+	);   
+        register_taxonomy( 'location', array('car','post'), $args );
+        
 }
 add_action( 'init', 'my_taxonomies_car', 0 );
 

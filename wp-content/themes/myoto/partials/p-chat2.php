@@ -127,7 +127,7 @@
 </style>    
 <ul class="chats">
     <li class="in">
-            <img src="assets/img/avatar1.jpg" alt="" class="avatar img-responsive">
+        <img src="<?php echo get_template_directory_uri()?>/assets/img/avatar1.jpg" alt="" class="avatar img-responsive">
             <div class="message">
                     <span class="arrow">
                     </span>
@@ -143,7 +143,7 @@
             </div>
     </li>
     <li class="out">
-            <img src="assets/img/avatar2.jpg" alt="" class="avatar img-responsive">
+            <img src="<?php echo get_template_directory_uri()?>/assets/img/avatar2.jpg" alt="" class="avatar img-responsive">
             <div class="message">
                     <span class="arrow">
                     </span>
@@ -159,7 +159,7 @@
             </div>
     </li>
     <li class="in">
-            <img src="assets/img/avatar1.jpg" alt="" class="avatar img-responsive">
+            <img src="<?php echo get_template_directory_uri()?>/assets/img/avatar1.jpg" alt="" class="avatar img-responsive">
             <div class="message">
                     <span class="arrow">
                     </span>
@@ -175,7 +175,7 @@
             </div>
     </li>
     <li class="out">
-            <img src="assets/img/avatar3.jpg" alt="" class="avatar img-responsive">
+            <img src="<?php echo get_template_directory_uri()?>/assets/img/avatar3.jpg" alt="" class="avatar img-responsive">
             <div class="message">
                     <span class="arrow">
                     </span>
@@ -191,7 +191,7 @@
             </div>
     </li>
     <li class="in">
-            <img src="assets/img/avatar3.jpg" alt="" class="avatar img-responsive">
+            <img src="<?php echo get_template_directory_uri()?>/assets/img/avatar3.jpg" alt="" class="avatar img-responsive">
             <div class="message">
                     <span class="arrow">
                     </span>
@@ -207,7 +207,7 @@
             </div>
     </li>
     <li class="out">
-            <img src="assets/img/avatar1.jpg" alt="" class="avatar img-responsive">
+            <img src="<?php echo get_template_directory_uri()?>/assets/img/avatar1.jpg" alt="" class="avatar img-responsive">
             <div class="message">
                     <span class="arrow">
                     </span>
@@ -223,7 +223,7 @@
             </div>
     </li>
     <li class="in">
-            <img src="assets/img/avatar3.jpg" alt="" class="avatar img-responsive">
+            <img src="<?php echo get_template_directory_uri()?>/assets/img/avatar3.jpg" alt="" class="avatar img-responsive">
             <div class="message">
                     <span class="arrow">
                     </span>
@@ -239,7 +239,7 @@
             </div>
     </li>
     <li class="out">
-            <img src="assets/img/avatar1.jpg" alt="" class="avatar img-responsive">
+            <img src="<?php echo get_template_directory_uri()?>/assets/img/avatar1.jpg" alt="" class="avatar img-responsive">
             <div class="message">
                     <span class="arrow">
                     </span>
