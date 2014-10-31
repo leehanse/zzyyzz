@@ -498,6 +498,22 @@ function twentytwelve_customize_preview_js() {
 }
 add_action( 'customize_preview_init', 'twentytwelve_customize_preview_js' );
 
-include('includes/post-types/paper_size.php');
-include('includes/post-types/paper_type.php');
-include('includes/post-types/print_type.php');
+//include('includes/post-types/paper_size.php');
+//include('includes/post-types/paper_type.php');
+//include('includes/post-types/print_type.php');
+
+/************ CMB2 Custom Fields ***************/
+if ( file_exists(  __DIR__ .'/cmb2/init.php' ) ) {
+	require_once  __DIR__ .'/cmb2/init.php';
+} elseif ( file_exists(  __DIR__ .'/CMB2/init.php' )){
+	require_once  __DIR__ .'/CMB2/init.php';
+}
+
+$mataboxes_files = glob(__DIR__."/metaboxes/*.php");
+
+if(count($mataboxes_files)){    
+    foreach ($mataboxes_files as $filename) {
+        include $filename;
+    }
+}
+/************ END CMB2 Custom Fields ***************/
