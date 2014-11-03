@@ -1,6 +1,4 @@
-<?php 
-
-
+<?php
 // validate
 $field['row_limit'] = intval( $field['row_limit'] );
 $field['row_min'] = intval( $field['row_min'] );

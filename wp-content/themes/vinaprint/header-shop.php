@@ -40,8 +40,8 @@
 		</hgroup>
 
 		<nav id="site-navigation" class="main-navigation" role="navigation">
-			<button class="menu-toggle"><?php _e( 'Menu', 'twentytwelve' ); ?></button>
-			<a class="assistive-text" href="#content" title="<?php esc_attr_e( 'Skip to content', 'twentytwelve' ); ?>"><?php _e( 'Skip to content', 'twentytwelve' ); ?></a>
+			<button class="menu-toggle"><?php _e( 'Menu', 'vinaprint' ); ?></button>
+			<a class="assistive-text" href="#content" title="<?php esc_attr_e( 'Skip to content', 'vinaprint' ); ?>"><?php _e( 'Skip to content', 'vinaprint' ); ?></a>
 			<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_class' => 'nav-menu' ) ); ?>
 		</nav><!-- #site-navigation -->
 

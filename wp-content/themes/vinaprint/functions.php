@@ -41,15 +41,15 @@ if ( ! isset( $content_width ) )
  *
  * @since Twenty Twelve 1.0
  */
-function twentytwelve_setup() {
+function vinaprint_setup() {
 	/*
 	 * Makes Twenty Twelve available for translation.
 	 *
 	 * Translations can be added to the /languages/ directory.
 	 * If you're building a theme based on Twenty Twelve, use a find and replace
-	 * to change 'twentytwelve' to the name of your theme in all the template files.
+	 * to change 'vinaprint' to the name of your theme in all the template files.
 	 */
-	load_theme_textdomain( 'twentytwelve', get_template_directory() . '/languages' );
+	load_theme_textdomain( 'vinaprint', get_template_directory() . '/languages' );
 
 	// This theme styles the visual editor with editor-style.css to match the theme style.
 	add_editor_style();
@@ -61,7 +61,7 @@ function twentytwelve_setup() {
 	add_theme_support( 'post-formats', array( 'aside', 'image', 'link', 'quote', 'status' ) );
 
 	// This theme uses wp_nav_menu() in one location.
-	register_nav_menu( 'primary', __( 'Primary Menu', 'twentytwelve' ) );
+	register_nav_menu( 'primary', __( 'Primary Menu', 'vinaprint' ) );
 
 	/*
 	 * This theme supports custom background color and image,
@@ -75,7 +75,7 @@ function twentytwelve_setup() {
 	add_theme_support( 'post-thumbnails' );
 	set_post_thumbnail_size( 624, 9999 ); // Unlimited height, soft crop
 }
-add_action( 'after_setup_theme', 'twentytwelve_setup' );
+add_action( 'after_setup_theme', 'vinaprint_setup' );
 
 /**
  * Add support for a custom header image.
@@ -92,19 +92,19 @@ require( get_template_directory() . '/inc/custom-header.php' );
  *
  * @return string Font stylesheet or empty string if disabled.
  */
-function twentytwelve_get_font_url() {
+function vinaprint_get_font_url() {
 	$font_url = '';
 
 	/* translators: If there are characters in your language that are not supported
 	 * by Open Sans, translate this to 'off'. Do not translate into your own language.
 	 */
-	if ( 'off' !== _x( 'on', 'Open Sans font: on or off', 'twentytwelve' ) ) {
+	if ( 'off' !== _x( 'on', 'Open Sans font: on or off', 'vinaprint' ) ) {
 		$subsets = 'latin,latin-ext';
 
 		/* translators: To add an additional Open Sans character subset specific to your language,
 		 * translate this to 'greek', 'cyrillic' or 'vietnamese'. Do not translate into your own language.
 		 */
-		$subset = _x( 'no-subset', 'Open Sans font: add new subset (greek, cyrillic, vietnamese)', 'twentytwelve' );
+		$subset = _x( 'no-subset', 'Open Sans font: add new subset (greek, cyrillic, vietnamese)', 'vinaprint' );
 
 		if ( 'cyrillic' == $subset )
 			$subsets .= ',cyrillic,cyrillic-ext';
@@ -129,7 +129,7 @@ function twentytwelve_get_font_url() {
  *
  * @since Twenty Twelve 1.0
  */
-function twentytwelve_scripts_styles() {
+function vinaprint_scripts_styles() {
 	global $wp_styles;
 
 	/*
@@ -140,35 +140,47 @@ function twentytwelve_scripts_styles() {
 		wp_enqueue_script( 'comment-reply' );
 
 	// Adds JavaScript for handling the navigation menu hide-and-show behavior.
-	wp_enqueue_script( 'twentytwelve-navigation', get_template_directory_uri() . '/js/navigation.js', array( 'jquery' ), '20140711', true );
+	wp_enqueue_script( 'vinaprint-navigation', get_template_directory_uri() . '/js/navigation.js', array( 'jquery' ), '20140711', true );
 
-	$font_url = twentytwelve_get_font_url();
+	$font_url = vinaprint_get_font_url();
 	if ( ! empty( $font_url ) )
-		wp_enqueue_style( 'twentytwelve-fonts', esc_url_raw( $font_url ), array(), null );
+		wp_enqueue_style( 'vinaprint-fonts', esc_url_raw( $font_url ), array(), null );
 
 	// Loads our main stylesheet.
-	wp_enqueue_style( 'twentytwelve-style', get_stylesheet_uri() );
+	wp_enqueue_style( 'vinaprint-style', get_stylesheet_uri() );
 
 	// Loads the Internet Explorer specific stylesheet.
-	wp_enqueue_style( 'twentytwelve-ie', get_template_directory_uri() . '/css/ie.css', array( 'twentytwelve-style' ), '20121010' );
-	$wp_styles->add_data( 'twentytwelve-ie', 'conditional', 'lt IE 9' );
+	wp_enqueue_style( 'vinaprint-ie', get_template_directory_uri() . '/css/ie.css', array( 'vinaprint-style' ), '20121010' );
+	$wp_styles->add_data( 'vinaprint-ie', 'conditional', 'lt IE 9' );
+        
+        wp_enqueue_style('vinaprint-main-style', get_template_directory_uri() .'/css/style.css', array(), '1.0');
+        wp_enqueue_style('vinaprint-avatark2slideitems-style', get_template_directory_uri() .'/css/avatark2slideitems.css', array(), '1.0');
+        wp_enqueue_style('vinaprint-nivo-style', get_template_directory_uri() .'/css/nivo-slider.css', array(), '1.0');
+        wp_enqueue_style('vinaprint-vmsite-style', get_template_directory_uri() .'/css/vmsite-ltr.css', array(), '1.0');
+        wp_enqueue_style('vinaprint-reset-style', get_template_directory_uri() .'/css/reset.css', array(), '1.0');
+        wp_enqueue_style('vinaprint-menu-style', get_template_directory_uri() .'/css/menu.css', array(), '1.0');
+        wp_enqueue_style('vinaprint-template-style', get_template_directory_uri() .'/css/template.css', array(), '1.0');
+                
+        wp_enqueue_script('vinaprint-migrate', get_template_directory_uri() .'/js/jquery-migrate-1.2.1.min.js', array('jquery'), '3.0.0', true);
+        wp_enqueue_script('vinaprint-nivo', get_template_directory_uri() .'/js/jquery.nivo.slider.js', array('jquery'), '3.0.0', true);
+
 }
-add_action( 'wp_enqueue_scripts', 'twentytwelve_scripts_styles' );
+add_action( 'wp_enqueue_scripts', 'vinaprint_scripts_styles' );
 
 /**
  * Filter TinyMCE CSS path to include Google Fonts.
  *
  * Adds additional stylesheets to the TinyMCE editor if needed.
  *
- * @uses twentytwelve_get_font_url() To get the Google Font stylesheet URL.
+ * @uses vinaprint_get_font_url() To get the Google Font stylesheet URL.
  *
  * @since Twenty Twelve 1.2
  *
  * @param string $mce_css CSS path to load in TinyMCE.
  * @return string Filtered CSS path.
  */
-function twentytwelve_mce_css( $mce_css ) {
-	$font_url = twentytwelve_get_font_url();
+function vinaprint_mce_css( $mce_css ) {
+	$font_url = vinaprint_get_font_url();
 
 	if ( empty( $font_url ) )
 		return $mce_css;
@@ -180,7 +192,7 @@ function twentytwelve_mce_css( $mce_css ) {
 
 	return $mce_css;
 }
-add_filter( 'mce_css', 'twentytwelve_mce_css' );
+add_filter( 'mce_css', 'vinaprint_mce_css' );
 
 /**
  * Filter the page title.
@@ -194,7 +206,7 @@ add_filter( 'mce_css', 'twentytwelve_mce_css' );
  * @param string $sep Optional separator.
  * @return string Filtered title.
  */
-function twentytwelve_wp_title( $title, $sep ) {
+function vinaprint_wp_title( $title, $sep ) {
 	global $paged, $page;
 
 	if ( is_feed() )
@@ -210,11 +222,11 @@ function twentytwelve_wp_title( $title, $sep ) {
 
 	// Add a page number if necessary.
 	if ( ( $paged >= 2 || $page >= 2 ) && ! is_404() )
-		$title = "$title $sep " . sprintf( __( 'Page %s', 'twentytwelve' ), max( $paged, $page ) );
+		$title = "$title $sep " . sprintf( __( 'Page %s', 'vinaprint' ), max( $paged, $page ) );
 
 	return $title;
 }
-add_filter( 'wp_title', 'twentytwelve_wp_title', 10, 2 );
+add_filter( 'wp_title', 'vinaprint_wp_title', 10, 2 );
 
 /**
  * Filter the page menu arguments.
@@ -223,12 +235,12 @@ add_filter( 'wp_title', 'twentytwelve_wp_title', 10, 2 );
  *
  * @since Twenty Twelve 1.0
  */
-function twentytwelve_page_menu_args( $args ) {
+function vinaprint_page_menu_args( $args ) {
 	if ( ! isset( $args['show_home'] ) )
 		$args['show_home'] = true;
 	return $args;
 }
-add_filter( 'wp_page_menu_args', 'twentytwelve_page_menu_args' );
+add_filter( 'wp_page_menu_args', 'vinaprint_page_menu_args' );
 
 /**
  * Register sidebars.
@@ -237,72 +249,52 @@ add_filter( 'wp_page_menu_args', 'twentytwelve_page_menu_args' );
  *
  * @since Twenty Twelve 1.0
  */
-function twentytwelve_widgets_init() {
-	register_sidebar( array(
-		'name' => __( 'Main Sidebar', 'twentytwelve' ),
-		'id' => 'sidebar-1',
-		'description' => __( 'Appears on posts and pages except the optional Front Page template, which has its own widgets', 'twentytwelve' ),
-		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-		'after_widget' => '</aside>',
-		'before_title' => '<h3 class="widget-title">',
-		'after_title' => '</h3>',
-	) );
-
-	register_sidebar( array(
-		'name' => __( 'First Front Page Widget Area', 'twentytwelve' ),
-		'id' => 'sidebar-2',
-		'description' => __( 'Appears when using the optional Front Page template with a page set as Static Front Page', 'twentytwelve' ),
-		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-		'after_widget' => '</aside>',
-		'before_title' => '<h3 class="widget-title">',
-		'after_title' => '</h3>',
-	) );
-
-	register_sidebar( array(
-		'name' => __( 'Second Front Page Widget Area', 'twentytwelve' ),
-		'id' => 'sidebar-3',
-		'description' => __( 'Appears when using the optional Front Page template with a page set as Static Front Page', 'twentytwelve' ),
-		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-		'after_widget' => '</aside>',
-		'before_title' => '<h3 class="widget-title">',
-		'after_title' => '</h3>',
-	) );
+function vinaprint_widgets_init() {
+    register_sidebar( array(
+            'name' => __( 'Main Sidebar', 'vinaprint' ),
+            'id' => 'sidebar-1',
+            'description' => __( 'Appears on posts and pages except the optional Front Page template, which has its own widgets', 'vinaprint' ),
+            'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+            'after_widget' => '</aside>',
+            'before_title' => '<h3 class="widget-title">',
+            'after_title' => '</h3>',
+    ) );    
 }
-add_action( 'widgets_init', 'twentytwelve_widgets_init' );
+add_action( 'widgets_init', 'vinaprint_widgets_init' );
 
-if ( ! function_exists( 'twentytwelve_content_nav' ) ) :
+if ( ! function_exists( 'vinaprint_content_nav' ) ) :
 /**
  * Displays navigation to next/previous pages when applicable.
  *
  * @since Twenty Twelve 1.0
  */
-function twentytwelve_content_nav( $html_id ) {
+function vinaprint_content_nav( $html_id ) {
 	global $wp_query;
 
 	$html_id = esc_attr( $html_id );
 
 	if ( $wp_query->max_num_pages > 1 ) : ?>
 		<nav id="<?php echo $html_id; ?>" class="navigation" role="navigation">
-			<h3 class="assistive-text"><?php _e( 'Post navigation', 'twentytwelve' ); ?></h3>
-			<div class="nav-previous"><?php next_posts_link( __( '<span class="meta-nav">&larr;</span> Older posts', 'twentytwelve' ) ); ?></div>
-			<div class="nav-next"><?php previous_posts_link( __( 'Newer posts <span class="meta-nav">&rarr;</span>', 'twentytwelve' ) ); ?></div>
+			<h3 class="assistive-text"><?php _e( 'Post navigation', 'vinaprint' ); ?></h3>
+			<div class="nav-previous"><?php next_posts_link( __( '<span class="meta-nav">&larr;</span> Older posts', 'vinaprint' ) ); ?></div>
+			<div class="nav-next"><?php previous_posts_link( __( 'Newer posts <span class="meta-nav">&rarr;</span>', 'vinaprint' ) ); ?></div>
 		</nav><!-- #<?php echo $html_id; ?> .navigation -->
 	<?php endif;
 }
 endif;
 
-if ( ! function_exists( 'twentytwelve_comment' ) ) :
+if ( ! function_exists( 'vinaprint_comment' ) ) :
 /**
  * Template for comments and pingbacks.
  *
  * To override this walker in a child theme without modifying the comments template
- * simply create your own twentytwelve_comment(), and that function will be used instead.
+ * simply create your own vinaprint_comment(), and that function will be used instead.
  *
  * Used as a callback by wp_list_comments() for displaying the comments.
  *
  * @since Twenty Twelve 1.0
  */
-function twentytwelve_comment( $comment, $args, $depth ) {
+function vinaprint_comment( $comment, $args, $depth ) {
 	$GLOBALS['comment'] = $comment;
 	switch ( $comment->comment_type ) :
 		case 'pingback' :
@@ -310,7 +302,7 @@ function twentytwelve_comment( $comment, $args, $depth ) {
 		// Display trackbacks differently than normal comments.
 	?>
 	<li <?php comment_class(); ?> id="comment-<?php comment_ID(); ?>">
-		<p><?php _e( 'Pingback:', 'twentytwelve' ); ?> <?php comment_author_link(); ?> <?php edit_comment_link( __( '(Edit)', 'twentytwelve' ), '<span class="edit-link">', '</span>' ); ?></p>
+		<p><?php _e( 'Pingback:', 'vinaprint' ); ?> <?php comment_author_link(); ?> <?php edit_comment_link( __( '(Edit)', 'vinaprint' ), '<span class="edit-link">', '</span>' ); ?></p>
 	<?php
 			break;
 		default :
@@ -325,28 +317,28 @@ function twentytwelve_comment( $comment, $args, $depth ) {
 					printf( '<cite><b class="fn">%1$s</b> %2$s</cite>',
 						get_comment_author_link(),
 						// If current post author is also comment author, make it known visually.
-						( $comment->user_id === $post->post_author ) ? '<span>' . __( 'Post author', 'twentytwelve' ) . '</span>' : ''
+						( $comment->user_id === $post->post_author ) ? '<span>' . __( 'Post author', 'vinaprint' ) . '</span>' : ''
 					);
 					printf( '<a href="%1$s"><time datetime="%2$s">%3$s</time></a>',
 						esc_url( get_comment_link( $comment->comment_ID ) ),
 						get_comment_time( 'c' ),
 						/* translators: 1: date, 2: time */
-						sprintf( __( '%1$s at %2$s', 'twentytwelve' ), get_comment_date(), get_comment_time() )
+						sprintf( __( '%1$s at %2$s', 'vinaprint' ), get_comment_date(), get_comment_time() )
 					);
 				?>
 			</header><!-- .comment-meta -->
 
 			<?php if ( '0' == $comment->comment_approved ) : ?>
-				<p class="comment-awaiting-moderation"><?php _e( 'Your comment is awaiting moderation.', 'twentytwelve' ); ?></p>
+				<p class="comment-awaiting-moderation"><?php _e( 'Your comment is awaiting moderation.', 'vinaprint' ); ?></p>
 			<?php endif; ?>
 
 			<section class="comment-content comment">
 				<?php comment_text(); ?>
-				<?php edit_comment_link( __( 'Edit', 'twentytwelve' ), '<p class="edit-link">', '</p>' ); ?>
+				<?php edit_comment_link( __( 'Edit', 'vinaprint' ), '<p class="edit-link">', '</p>' ); ?>
 			</section><!-- .comment-content -->
 
 			<div class="reply">
-				<?php comment_reply_link( array_merge( $args, array( 'reply_text' => __( 'Reply', 'twentytwelve' ), 'after' => ' <span>&darr;</span>', 'depth' => $depth, 'max_depth' => $args['max_depth'] ) ) ); ?>
+				<?php comment_reply_link( array_merge( $args, array( 'reply_text' => __( 'Reply', 'vinaprint' ), 'after' => ' <span>&darr;</span>', 'depth' => $depth, 'max_depth' => $args['max_depth'] ) ) ); ?>
 			</div><!-- .reply -->
 		</article><!-- #comment-## -->
 	<?php
@@ -355,22 +347,22 @@ function twentytwelve_comment( $comment, $args, $depth ) {
 }
 endif;
 
-if ( ! function_exists( 'twentytwelve_entry_meta' ) ) :
+if ( ! function_exists( 'vinaprint_entry_meta' ) ) :
 /**
  * Set up post entry meta.
  *
  * Prints HTML with meta information for current post: categories, tags, permalink, author, and date.
  *
- * Create your own twentytwelve_entry_meta() to override in a child theme.
+ * Create your own vinaprint_entry_meta() to override in a child theme.
  *
  * @since Twenty Twelve 1.0
  */
-function twentytwelve_entry_meta() {
+function vinaprint_entry_meta() {
 	// Translators: used between list items, there is a space after the comma.
-	$categories_list = get_the_category_list( __( ', ', 'twentytwelve' ) );
+	$categories_list = get_the_category_list( __( ', ', 'vinaprint' ) );
 
 	// Translators: used between list items, there is a space after the comma.
-	$tag_list = get_the_tag_list( '', __( ', ', 'twentytwelve' ) );
+	$tag_list = get_the_tag_list( '', __( ', ', 'vinaprint' ) );
 
 	$date = sprintf( '<a href="%1$s" title="%2$s" rel="bookmark"><time class="entry-date" datetime="%3$s">%4$s</time></a>',
 		esc_url( get_permalink() ),
@@ -381,17 +373,17 @@ function twentytwelve_entry_meta() {
 
 	$author = sprintf( '<span class="author vcard"><a class="url fn n" href="%1$s" title="%2$s" rel="author">%3$s</a></span>',
 		esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ),
-		esc_attr( sprintf( __( 'View all posts by %s', 'twentytwelve' ), get_the_author() ) ),
+		esc_attr( sprintf( __( 'View all posts by %s', 'vinaprint' ), get_the_author() ) ),
 		get_the_author()
 	);
 
 	// Translators: 1 is category, 2 is tag, 3 is the date and 4 is the author's name.
 	if ( $tag_list ) {
-		$utility_text = __( 'This entry was posted in %1$s and tagged %2$s on %3$s<span class="by-author"> by %4$s</span>.', 'twentytwelve' );
+		$utility_text = __( 'This entry was posted in %1$s and tagged %2$s on %3$s<span class="by-author"> by %4$s</span>.', 'vinaprint' );
 	} elseif ( $categories_list ) {
-		$utility_text = __( 'This entry was posted in %1$s on %3$s<span class="by-author"> by %4$s</span>.', 'twentytwelve' );
+		$utility_text = __( 'This entry was posted in %1$s on %3$s<span class="by-author"> by %4$s</span>.', 'vinaprint' );
 	} else {
-		$utility_text = __( 'This entry was posted on %3$s<span class="by-author"> by %4$s</span>.', 'twentytwelve' );
+		$utility_text = __( 'This entry was posted on %3$s<span class="by-author"> by %4$s</span>.', 'vinaprint' );
 	}
 
 	printf(
@@ -421,7 +413,7 @@ endif;
  * @param array $classes Existing class values.
  * @return array Filtered class values.
  */
-function twentytwelve_body_class( $classes ) {
+function vinaprint_body_class( $classes ) {
 	$background_color = get_background_color();
 	$background_image = get_background_image();
 
@@ -444,7 +436,7 @@ function twentytwelve_body_class( $classes ) {
 	}
 
 	// Enable custom font class only if the font CSS is queued to load.
-	if ( wp_style_is( 'twentytwelve-fonts', 'queue' ) )
+	if ( wp_style_is( 'vinaprint-fonts', 'queue' ) )
 		$classes[] = 'custom-font-enabled';
 
 	if ( ! is_multi_author() )
@@ -452,7 +444,7 @@ function twentytwelve_body_class( $classes ) {
 
 	return $classes;
 }
-add_filter( 'body_class', 'twentytwelve_body_class' );
+add_filter( 'body_class', 'vinaprint_body_class' );
 
 /**
  * Adjust content width in certain contexts.
@@ -462,13 +454,13 @@ add_filter( 'body_class', 'twentytwelve_body_class' );
  *
  * @since Twenty Twelve 1.0
  */
-function twentytwelve_content_width() {
+function vinaprint_content_width() {
 	if ( is_page_template( 'page-templates/full-width.php' ) || is_attachment() || ! is_active_sidebar( 'sidebar-1' ) ) {
 		global $content_width;
 		$content_width = 960;
 	}
 }
-add_action( 'template_redirect', 'twentytwelve_content_width' );
+add_action( 'template_redirect', 'vinaprint_content_width' );
 
 /**
  * Register postMessage support.
@@ -479,12 +471,12 @@ add_action( 'template_redirect', 'twentytwelve_content_width' );
  *
  * @param WP_Customize_Manager $wp_customize Customizer object.
  */
-function twentytwelve_customize_register( $wp_customize ) {
+function vinaprint_customize_register( $wp_customize ) {
 	$wp_customize->get_setting( 'blogname' )->transport         = 'postMessage';
 	$wp_customize->get_setting( 'blogdescription' )->transport  = 'postMessage';
 	$wp_customize->get_setting( 'header_textcolor' )->transport = 'postMessage';
 }
-add_action( 'customize_register', 'twentytwelve_customize_register' );
+add_action( 'customize_register', 'vinaprint_customize_register' );
 
 /**
  * Enqueue Javascript postMessage handlers for the Customizer.
@@ -493,27 +485,16 @@ add_action( 'customize_register', 'twentytwelve_customize_register' );
  *
  * @since Twenty Twelve 1.0
  */
-function twentytwelve_customize_preview_js() {
-	wp_enqueue_script( 'twentytwelve-customizer', get_template_directory_uri() . '/js/theme-customizer.js', array( 'customize-preview' ), '20130301', true );
+function vinaprint_customize_preview_js() {
+	wp_enqueue_script( 'vinaprint-customizer', get_template_directory_uri() . '/js/theme-customizer.js', array( 'customize-preview' ), '20130301', true );
 }
-add_action( 'customize_preview_init', 'twentytwelve_customize_preview_js' );
+add_action( 'customize_preview_init', 'vinaprint_customize_preview_js' );
 
-//include('includes/post-types/paper_size.php');
-//include('includes/post-types/paper_type.php');
-//include('includes/post-types/print_type.php');
 
-/************ CMB2 Custom Fields ***************/
-if ( file_exists(  __DIR__ .'/cmb2/init.php' ) ) {
-	require_once  __DIR__ .'/cmb2/init.php';
-} elseif ( file_exists(  __DIR__ .'/CMB2/init.php' )){
-	require_once  __DIR__ .'/CMB2/init.php';
-}
-
-$mataboxes_files = glob(__DIR__."/metaboxes/*.php");
-
-if(count($mataboxes_files)){    
-    foreach ($mataboxes_files as $filename) {
+// Register post types
+$post_types = glob(__DIR__."/post-types/*.php");
+if(count($post_types)){    
+    foreach ($post_types as $filename) {
         include $filename;
     }
 }
-/************ END CMB2 Custom Fields ***************/

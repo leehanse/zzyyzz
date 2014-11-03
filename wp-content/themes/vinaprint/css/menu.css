@@ -1,0 +1,126 @@
+/*
+	SPALTER
+*/
+
+li.item-227 ul,
+li.item-205 ul
+{
+	width:420px;
+}
+li.item-227 ul li,
+li.item-205 ul li
+
+{
+	float:left;
+	min-width: 140px!important;
+}
+
+/*
+	Ikke ændre herunder
+*/
+
+
+.moduletable_menu{float:left;margin-top:62px;margin-left:30px;}
+.moduletablecards{
+	clear:left; 
+	width:100%;
+	text-align:center;
+	background: url(../images/separator.png) repeat-x top;
+	padding-top:10px;
+}
+
+.menu{
+    list-style:none;
+    float:left;
+    width:100%;
+
+}
+.menu li{
+    float:left;
+    margin-right:10px;
+    position:relative;
+}
+.menu .separator{
+	background:none;
+}
+.top-bar .menu a, .top-bar .menu .separator{
+    display:block;
+    text-decoration:none;
+    color: #2d2d2d;
+	font-family: Exo, sans-serif;
+	font-size: 16px;
+	font-weight: 400;
+	height: 45px;
+	line-height: 45px;
+	padding: 0 15px;
+}
+.top-bar .menu li img{display:none;}
+.top-bar .menu > li.parent > a:after, .top-bar .menu > li.parent > .separator:after{
+	border: none!important;
+	width: 10px!important;
+	height: 10px!important;
+	border-color: transparent transparent transparent transparent!important;
+	margin-right: 0px!important;
+	background-image: url(../images/arrow-top.png);
+	content: "";
+	display: block;
+	position: absolute;
+	right:0px;
+	top:18px;
+}
+
+.menu a:hover{
+
+}
+
+
+.navigation .menu ul{
+    background:#fff; 
+    background:rgba(255,255,255,1);
+    list-style:none;
+    position:absolute;
+    left:-9999px;
+    opacity: 0;
+    -webkit-transition: opacity 0.15s ease-in-out;
+    -moz-transition: opacity 0.15s ease-in-out;
+    -o-transition: opacity 0.15s ease-in-out;
+    transition: opacity 0.15s ease-in-out;
+    z-index:99999;
+}
+.menu ul li{
+    padding-top:1px;
+}
+
+.menu ul a, .menu ul .separator {
+    white-space:nowrap;
+}
+.navigation .menu li:hover ul{
+    left:0;
+    opacity: 1;
+    background:rgba(255,255,255,0.9);
+}
+.navigation .menu li:hover ul li a, .navigation .menu li:hover ul li .separator{
+	padding:0 10px;
+	height:35px;
+	line-height: 37px;
+}
+.navigation .menu li:hover ul a, .navigation .menu li:hover ul .separator{ 
+    text-decoration:none;
+}
+.navigation .menu li ul li{
+	margin-right:0;
+	min-width:100px;
+
+}
+.navigation .menu li:hover ul li a:hover, .navigation .menu li:hover ul li .separator:hover{
+	background: #3c3c3c;
+	color:#ffffff!important;
+}
+
+li.item-227 ul{
+	width:420px;
+}
+li.item-227 ul li{
+	float:left;
+	min-width: 140px;
+}
