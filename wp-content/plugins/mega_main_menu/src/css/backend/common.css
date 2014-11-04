@@ -1,0 +1,457 @@
+/* bootstrap fixes */
+.modal-backdrop.fade.in
+{
+	display: none;
+}
+.modal.fade.in
+{
+	background-color: rgba(0,0,0, 0.5);
+}
+/* css tools */
+.bootstrap .no_left_margin
+{
+	margin-left: 0px;
+}
+.bootstrap .no_x_margin
+{
+	margin-left: 0px;
+	margin-right: 0px;
+}
+.float_holder:after 
+{
+	content: ' ';
+	display: table;
+	clear: both;
+}
+.clearboth 
+{
+	clear: both;
+}
+.hidden_important
+{
+	display: none !important;
+	visibility: hidden !important;
+}
+img
+{
+	max-width: 100%;
+}
+/* colors */ 
+.bootstrap .mmpm_theme_options_form .save_shanges,
+.bootstrap .mmpm_theme_options,
+.bootstrap .mmpm_theme_options > *,
+.bootstrap .mmpm_theme_options .option *,
+.bootstrap .h_separator,
+.bootstrap .nav-tabs > li,
+.bootstrap .nav-tabs > li > a,
+.bootstrap .nav-tabs > li > a:hover,
+.bootstrap .nav-tabs > li > a:focus,
+.bootstrap .nav-tabs > li.active > a, 
+.bootstrap .nav-tabs > li.active > a:hover, 
+.bootstrap .nav-tabs > li.active > a:focus,
+.bootstrap .mmpm_theme_options .mmpm_content .tab-pane .panel .panel-heading a.accordion-toggle:before,
+.bootstrap .color_picker .wp-picker-container
+{
+	border-color: rgba(128,128,128, 0.3);
+}
+.bootstrap .mmpm_theme_options_form .mmpm_theme_options,
+.bootstrap .mmpm_theme_options_form .save_shanges,
+.bootstrap .mmpm_theme_options .mmpm_content .tab-pane .panel.row .panel-title a.accordion-toggle,
+.bootstrap .color_picker .wp-picker-container,
+.bootstrap .color_picker .wp-picker-container .wp-picker-holder .iris-border
+{
+	background-color: #f1f1f1;
+}
+.bootstrap .mmpm_theme_options .mmpm_content
+{
+	background-color: #ffffff;
+}
+.bootstrap .checkbox 
+{
+	background-color: transparent;
+}
+.bootstrap input[type="text"], 
+.bootstrap input[type="password"], 
+.bootstrap input[type="file"], 
+.bootstrap input[type="email"], 
+.bootstrap input[type="number"], 
+.bootstrap input[type="search"], 
+.bootstrap input[type="tel"], 
+.bootstrap input[type="url"], 
+.bootstrap textarea, 
+.bootstrap select
+{
+	border-color: #cccccc;
+}
+/* option_generator */
+.bootstrap .option.row
+{
+	padding-bottom: 25px;
+}
+.mmpm_content .bootstrap:last-child .option.row
+{
+	padding-bottom: 15px;
+}
+/*
+.mmpm_content .bootstrap .panel .option.row 
+{
+	padding-bottom: 20px;
+}
+*/
+.bootstrap .option .h_separator
+{
+	border-width: 1px 0px 0px 0px;
+	border-style: dotted;
+	margin-bottom: 3px;
+}
+.bootstrap .option .h_separator:last-child
+{
+	margin-bottom: 15px;
+}
+.bootstrap .option .section_caption
+{
+	font-size: 130%;
+	text-align: center;
+}
+.bootstrap .option .option_header .caption
+{
+	margin-bottom: 5px;
+	text-transform: capitalize;
+}
+.bootstrap .option .option_header .descr
+{
+	margin-bottom: 5px;
+	font-size: 11px;
+	line-height: 135%;
+	opacity: 0.8;
+}
+
+.bootstrap .option .option_field .checkbox,
+.bootstrap .option .option_field .radio
+{
+	margin-top: 0px;
+	margin-bottom: 10px;
+}
+.bootstrap .option[class*="_html_type"] .option_field label input 
+{
+	visibility: hidden;
+} 
+.bootstrap .option.checkbox_type .option_field label input + *, 
+.bootstrap .option[class*="_html_type"] .option_field label input + * 
+{
+	opacity: 0.4;
+	max-width: 100%;
+}
+.bootstrap .option.checkbox_type .option_field label input:checked + *, 
+.bootstrap .option[class*="_html_type"] .option_field label input:checked + * 
+{
+	opacity: 1;
+}
+.bootstrap .option.multiplier_type > .option_field .multipler_pieces
+{
+	width: 160px;
+	margin-bottom: 15px;
+}
+.bootstrap .option.multiplier_type > .option_field .multipler_pieces input
+{
+	text-align: center;
+}
+.bootstrap .option.icons_type .icon_preview
+{
+	text-align: center;
+	line-height: 27px;
+}
+.bootstrap .option.icons_type .icon_preview i
+{
+	font-size: 26px;
+}
+.bootstrap .option .input-group-btn .btn 
+{
+	width: 120px;
+}
+.bootstrap .wp-editor-area
+{
+	-webkit-box-sizing: border-box !important;
+	-moz-box-sizing: border-box !important;
+	box-sizing: border-box !important;
+}
+body #TB_window
+{
+	z-index: 1100;
+}
+.bootstrap .gradient_selcetor .start_end
+{
+	line-height: 28px;
+	height: 28px;
+	text-align: right;
+}
+.bootstrap .gradient_selcetor .vertical_padding
+{
+	padding-top: 10px;
+}
+.bootstrap .gradient_selcetor .gradient_example 
+{
+/*
+	height: 30px;
+*/
+	line-height: 28px;
+	border-width: 1px;
+	border-style: solid;
+	border-radius: 3px;
+	cursor: pointer;
+	text-align: center;
+}
+.bootstrap .color_picker 
+{
+	position: relative;
+	min-height: 30px; 
+}
+.bootstrap .color_picker .wp-picker-container
+{
+	position: absolute;
+	z-index: 600;
+	border-width: 1px;
+	border-style: solid;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	-ms-border-radius: 3px;
+	border-radius: 3px;
+}
+.bootstrap .color_picker .wp-picker-container .wp-color-result
+{
+	white-space: nowrap;
+	top: 0px;
+	margin: 2px;
+	vertical-align: middle;
+}
+.bootstrap .color_picker .wp-picker-container .wp-color-result.wp-picker-open
+{
+	margin-right: 2px;
+}
+.bootstrap .color_picker .wp-picker-container .wp-picker-input-wrap
+{
+	margin-top: 2px;
+}
+.bootstrap .color_picker .wp-picker-container .wp-picker-input-wrap *
+{
+	vertical-align: middle;
+}
+.bootstrap .color_picker .wp-picker-container .wp-picker-input-wrap .wp-color-picker
+{
+	margin-right: 2px;
+}
+.bootstrap .color_picker .wp-picker-container .wp-picker-input-wrap .wp-picker-clear
+{
+	margin: 0px;
+}
+.bootstrap .color_picker .wp-picker-container .wp-picker-holder .iris-border
+{
+	border: 0px none;
+}
+.bootstrap .textarea 
+{
+	width: 100%;
+}
+/* theme options page */
+.bootstrap .mmpm_theme_page
+{
+	margin-top: 15px;
+}
+.bootstrap .mmpm_theme_options_form .theme_name
+{
+	font-size: 130%;
+	line-height: 24px;
+}
+.bootstrap .mmpm_theme_options_form .save_shanges
+{
+	border-width: 1px;
+	border-style: solid; 
+	padding-top: 15px;
+	padding-bottom: 15px;
+}
+.bootstrap .mmpm_theme_options_form .save_shanges:first-child
+{
+	-webkit-border-radius: 3px 3px 0px 0px;
+	-moz-border-radius: 3px 3px 0px 0px;
+	-ms-border-radius: 3px 3px 0px 0px;
+	border-radius: 3px 3px 0px 0px;
+}
+.bootstrap .mmpm_theme_options_form .save_shanges:last-child
+{
+	-webkit-border-radius: 0px 0px 3px 3px;
+	-moz-border-radius: 0px 0px 3px 3px;
+	-ms-border-radius: 0px 0px 3px 3px;
+	border-radius: 0px 0px 3px 3px;
+}
+.bootstrap .mmpm_theme_options
+{
+	border-width: 0px 0px 0px 1px;
+	border-style: solid; 
+}
+.bootstrap .mmpm_theme_options .mmpm_navigation,
+.bootstrap:first-child > .option.row > * > .h_separator,
+.bootstrap .mmpm_theme_options .mmpm_navigation .menu_item a,
+.bootstrap .mmpm_theme_options .mmpm_navigation .menu_item a:hover,
+.bootstrap .mmpm_theme_options .mmpm_navigation .menu_item a:active
+{
+	border-width: 0px;
+	border-style: none; 
+}
+
+.bootstrap .mmpm_theme_options .mmpm_navigation
+{
+	padding: 0px;
+}
+.bootstrap .mmpm_theme_options .mmpm_navigation .menu_item
+{
+	float: none;
+	border-width: 0px 0px 1px 0px;
+	margin: 0px;
+	padding: 0px;
+	border-style: solid; 
+}
+.bootstrap .mmpm_theme_options .mmpm_navigation .menu_item a,
+.bootstrap .mmpm_theme_options .mmpm_navigation .menu_item a:hover,
+.bootstrap .mmpm_theme_options .mmpm_navigation .menu_item a:active
+{
+	position: relative;
+	padding-left: 35px;
+	padding-right: 5px;
+	margin: 0px -1px 0px 0px;
+	-webkit-border-radius: 0px;
+	-moz-border-radius: 0px;
+	-ms-border-radius: 0px;
+	border-radius: 0px;
+	z-index: 1;
+}
+
+.bootstrap .mmpm_theme_options .mmpm_navigation .menu_item a i
+{
+	position: absolute;
+	left: 8px;
+	width: 20px;
+	display: inline-block;
+	text-align: center;
+}
+.bootstrap .mmpm_theme_options .mmpm_content
+{
+	border-width: 0px 1px;
+	border-style: solid; 
+	min-height: 500px;
+}
+.bootstrap .mmpm_theme_options .mmpm_content:after
+{
+	content: ' ';
+	display: table;
+	clear: both;
+	width: 100%;
+	position: relative;
+}
+.bootstrap .mmpm_theme_options .mmpm_content .tab-pane .panel 
+{
+	overflow: visible;
+}
+.bootstrap .mmpm_theme_options .mmpm_content .tab-pane .panel .panel-heading 
+{
+	padding: 0px;
+}
+.bootstrap .mmpm_theme_options .mmpm_content .tab-pane .panel .panel-heading a.accordion-toggle
+{
+	display: block;
+	position: relative;
+	height: 34px;
+	overflow: hidden;
+	line-height: 22px;
+	padding: 6px 8px 6px 50px;
+	text-decoration: none;
+}
+.bootstrap .mmpm_theme_options .mmpm_content .tab-pane .panel .panel-heading a.accordion-toggle:before
+{
+	content: '\2013';
+	display: block;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	float: left;
+	width: 36px;
+	height: 35px;
+	line-height: 34px;
+	text-align: center;
+	font-weight: 900;
+	font-size: 14px;
+	border-style: solid;
+	border-width: 0px 1px 0px 0px;
+}
+.bootstrap .mmpm_theme_options .mmpm_content .tab-pane .panel .panel-heading a.accordion-toggle.collapsed:before
+{
+	content: '\002B';
+	line-height: 36px;
+}
+/* menu-edit */
+.menu-edit .bootstrap .option.row 
+{
+	margin-right: 0px;
+	margin-bottom: 5px;
+	padding-bottom: 0px;
+} 
+.menu-edit .bootstrap .option.row > * 
+{
+	width: 100%;
+}
+.menu-edit .bootstrap .option.row .h_separator 
+{
+	display: none;
+	margin: 0px;
+
+}
+.menu-edit .bootstrap .option.row .option_header .caption 
+{
+	text-align: center;
+}
+.menu-edit .bootstrap .option.row .option_header .descr 
+{
+	opacity: 1;
+}
+.menu-edit .bootstrap .option.row .option_field .checkbox,
+.menu-edit .bootstrap .option.row .option_field .radio
+{
+	width: 100%;
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+
+.menu-edit .bootstrap .option.row .option_header .descr,  
+.menu-edit .bootstrap .option.row .option_field label 
+{
+	font-size: 12px;
+	font-style: italic;
+	font-family: sans-serif;
+}
+.menu-edit .bootstrap .option.row[class*="submenu"]
+{
+	display: none;
+	visibility: hidden;
+}
+.menu-edit .menu-item-depth-0 .bootstrap .option.row[class*="submenu"]
+{
+	display: block;
+	visibility: visible;
+}
+/* miscellaneous */
+/* responsive for sundry media */
+@media (max-width: 767px) {
+	.bootstrap .mmpm_theme_options .mmpm_navigation .menu_item a, 
+	.bootstrap .mmpm_theme_options .mmpm_navigation .menu_item a:hover, 
+	.bootstrap .mmpm_theme_options .mmpm_navigation .menu_item a:active
+	{
+		margin: 0px;
+	}
+	.bootstrap .mmpm_theme_options .mmpm_navigation .menu_item
+	{
+		border-width: 0px 1px 1px 0px;
+	}
+	.bootstrap .mmpm_theme_options .mmpm_content
+	{
+		border-width: 0px 1px 0px 0px;
+	}
+}
