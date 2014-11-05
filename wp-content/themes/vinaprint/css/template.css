@@ -75,7 +75,7 @@ a{color:#4266b1;}
     margin:20px 0;
 }
 .banner .moduletable{float:left;}
-.main_content, .after_component{padding:15px 15px;}
+.main_content, .after_component{}
 .item-page table td{vertical-align: top;}
 
 .item-page li{
@@ -1130,15 +1130,10 @@ html[xmlns] .eclear {
     top: 49px;
 }
 a#logo {
-    background: url("../img/logo/actionEnvelope.gif") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
-    display: block;
-    float: left;
-    height: 48px;
-    margin: 14px 0 0 25px;
-    position: relative;
-    text-indent: -9999px;
-    width: 156px;
-    z-index: 2;
+    display: inline-block;
+}
+a#logo img{
+    height: 80px;
 }
 #inspire {
     position: absolute;

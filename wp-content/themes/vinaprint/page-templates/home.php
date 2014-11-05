@@ -7,7 +7,23 @@
 <?php get_header(); ?>
 
          <?php echo get_template_part('partials/page','banner'); ?>
-
+         <?php 
+                $field_key = "field_5459d9dfce31c";
+                $post_id   = 173;
+                $value = get_field($field_key, $post_id);
+                var_dump($value);
+//                $value[] = array(
+//                    "more_contacts_name" => $row->ContactName, 
+//                    "more_contacts_email" => $row->ContactEmail, 
+//                    "acf_fc_layout" => "row_1"
+//                );
+//                $value[] = array(
+//                    "more_contacts_name" => $row->ContactName2, 
+//                    "more_contacts_email" => $row->ContactEmail2, 
+//                    "acf_fc_layout" => "row_2"
+//                );
+//                update_field( $field_key, $value, $post_id );
+         ?>
          <div class="separator" style="margin-bottom:20px;"></div>
          <div class="before_component">
             <div class="moduletable frontmenu">

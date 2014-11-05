@@ -38,7 +38,15 @@
 <body>            
     <div id="container" class="page-block">
         <div id="header">
-            <a href="/ae/control/main" id="logo">Logo</a>
+            <?php 
+                $logo_img = get_field('logo', 'option'); 
+                if(!$logo_img){
+                    $logo_img = get_template_directory_uri().'/img/logo/logo.gif';
+                }
+            ?>
+            <a href="<?php echo home_url(); ?>" id="logo">
+                <img src="<?php echo $logo_img;?>">
+            </a>
             <div id="utilities">
                 <div id="miniCart">
                         <div class="cartInfo">
@@ -56,13 +64,13 @@
                     <li class="last"><a href="/ae/control/orderStatus">Order Status</a></li>
                 </ul>
             </div>
-
+<!--
             <div id="envelopes_banner">
                 <a href="http://www.envelopes.com">
                     <img alt="Action Envelope is now Envelopes.com. Great new name, same great company. Your order history awaits you." src="http://www.actionenvelope.com/html/img/promo/ActionEnvelope_Banner.jpg">
                 </a>
             </div>
-
+-->
 
             <a href="javascript:void(0);" id="subscribeLink"><img class="bannerTop" alt="Join Our Mailing List" src="<?php echo get_template_directory_uri();?>/img/hl/joinOurMailingList.gif"></a>
             <div class="clr"></div>

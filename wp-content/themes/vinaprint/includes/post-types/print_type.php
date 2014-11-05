@@ -48,7 +48,7 @@ function print_type_updated_messages( $messages ) {
 	);
 	return $messages;
 }
-add_filter( 'post_updated_messages', 'print type_updated_messages' );
+add_filter( 'post_updated_messages', 'print_type_updated_messages' );
 
 /* Contextual Help */
 function print_type_contextual_help( $contextual_help, $screen_id, $screen ) { 

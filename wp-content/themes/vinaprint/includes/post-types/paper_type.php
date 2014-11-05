@@ -48,7 +48,7 @@ function paper_type_updated_messages( $messages ) {
 	);
 	return $messages;
 }
-add_filter( 'post_updated_messages', 'paper type_updated_messages' );
+add_filter( 'post_updated_messages', 'paper_type_updated_messages' );
 
 /* Contextual Help */
 function paper_type_contextual_help( $contextual_help, $screen_id, $screen ) { 
