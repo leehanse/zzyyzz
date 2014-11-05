@@ -1,21 +1,6 @@
     <div class="separator" style="margin-bottom:20px;"></div>
          <div class="footer">
             <div class="moduletable">
-               <div style="position:fixed;right:2px;bottom:10px; z-index:1000;">
-                  <div class="bookmark" style="text-align: center ">
-                     <div>
-                        <div style=" z-index:1000;"><a rel="nofollow" href="https://www.facebook.com/nemprint.dk" target="_blank"><img style="opacity:1.0;
-                           filter:alpha(opacity=100); width: 32px; height: 32px; margin:2px;" src="http://nemprint.dk/modules/mod_socialmedialinksgenius/icons/facebook.png" alt="Facebook" title="Facebook Facebook" /></a><a target="_blank" rel="nofollow" href="https://www.facebook.com/nemprint.dk"><img style="width: 36px; height: 36px; opacity:0.0;filter:alpha(opacity=0); position: relative; margin-bottom: 2px; margin-left: -36px; z-index: 2;" onmouseover="this.style.opacity=1;this.filters.alpha.opacity=100" onmouseout="this.style.opacity=0.0;this.filters.alpha.opacity=0" border="0" src="http://nemprint.dk/modules/mod_socialmedialinksgenius/icons/facebook.png" alt="Facebook" title="Facebook Facebook" /></a></div>
-                        <div style=" z-index:1000;"><a rel="nofollow" href="https://plus.google.com/+NemprintApS?prsrc=3" target="_blank"><img style="opacity:1.0;
-                           filter:alpha(opacity=100); width: 32px; height: 32px; margin:2px;" src="http://nemprint.dk/modules/mod_socialmedialinksgenius/icons/googleplus.png" alt="Googleplus" title="GooglePlus Googleplus" /></a><a target="_blank" rel="nofollow" href="https://plus.google.com/+NemprintApS?prsrc=3"><img style="width: 36px; height: 36px; opacity:0.0;filter:alpha(opacity=0); position: relative; margin-bottom: 2px; margin-left: -36px; z-index: 2;" onmouseover="this.style.opacity=1;this.filters.alpha.opacity=100" onmouseout="this.style.opacity=0.0;this.filters.alpha.opacity=0" border="0" src="http://nemprint.dk/modules/mod_socialmedialinksgenius/icons/googleplus.png" alt="Googleplus" title="GooglePlus Googleplus" /></a></div>
-                        <div style="clear: both;"></div>
-                        <div style="margin-left: 10px; text-align: center; font-size: 10px; color: #999999;"></div>
-                     </div>
-                  </div>
-               </div>
-               <div class="clr"></div>
-            </div>
-            <div class="moduletable">
                <h3>Diverse</h3>
                <ul class="menu">
                   <li class="item-398"><a href="/upload-en-fil" >Upload en fil</a></li>
