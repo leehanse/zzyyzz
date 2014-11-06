@@ -1,3 +1,8 @@
+<style>
+    .theme-default .nivoSlider img{
+        display: block !important;
+    }
+</style>
 <?php if( have_rows('banner_images') ): ?>
 <div class="banner">
     <div class="moduletable">
@@ -23,31 +28,31 @@
        <script type="text/javascript">
           (function($) 
           { 
-                $(function()
-                {
-                        $(document).ready( function()
-                        {			 
-                                $('#avatar_vm_slide_products').css("width","730px");
-                                $('#avatar_vm_slide_products').css("margin-bottom","5px");
-                                if($('#avatar_vm_slide_products').width()%2!=0)
-                                        $('#avatar_vm_slide_products').width($('#avatar_vm_slide_products').width()-1);
-                                $('#slider_vm_slide_products').css("width","730px");
-                                $('#slider_vm_slide_products').css("height","155");
-                                $('#slider_vm_slide_products').nivoSlider({
-                                        slices			:1,
-                                        boxRows			:1,
-                                        boxCols			:2,
-                                        animSpeed		:200,
-                                        pauseTime		:7000,
-                                });
-                        });
-                })
+//                $(function()
+//                {
+//                        $(document).ready( function()
+//                        {			 
+//                                $('#avatar_vm_slide_products').css("width","730px");
+//                                $('#avatar_vm_slide_products').css("margin-bottom","5px");
+//                                if($('#avatar_vm_slide_products').width()%2!=0)
+//                                        $('#avatar_vm_slide_products').width($('#avatar_vm_slide_products').width()-1);
+//                                $('#slider_vm_slide_products').css("width","730px");
+//                                $('#slider_vm_slide_products').css("height","155");
+//                                $('#slider_vm_slide_products').nivoSlider({
+//                                        slices			:1,
+//                                        boxRows			:1,
+//                                        boxCols			:2,
+//                                        animSpeed		:200,
+//                                        pauseTime		:7000,
+//                                });
+//                        });
+//                })
           })(jQuery);
        </script>
     </div>
-    <div class="moduletable">
+    <div class="moduletable" style="float:right;">
        <div class="custom"  >
-          <div style="background-color: white; text-align: center;"><img src="http://nemprint.dk/images/nemprint_anmeldelser.png" alt="nemprint anmeldelser" width="260" /><br /><br /></div>
+          <div style="background-color: white; text-align: center;padding-bottom: 14px;"><img src="http://nemprint.dk/images/nemprint_anmeldelser.png" alt="nemprint anmeldelser" width="260" /></div>
           <p><a href="http://www.trustpilot.dk/review/nemprint.dk"><img src="http://nemprint.dk/images/hvorfor-nemprint.png" alt="hvorfor-nemprint" width="310" /></a></p>
        </div>
     </div>

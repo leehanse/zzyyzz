@@ -8,10 +8,22 @@
 
          <?php echo get_template_part('partials/page','banner'); ?>
          <?php 
-                $field_key = "field_5459d9dfce31c";
-                $post_id   = 173;
-                $value = get_field($field_key, $post_id);
-                var_dump($value);
+//                $order_id = 175;
+//                $field_key_upload_files     = "field_5459d9dfce31c";
+//                $order      = new WC_Order( $order_id );
+//                $line_items = $order->get_items();
+//                $field_upload_files_values = get_field($field_key_upload_files, $order_id);
+//
+//                foreach ( $line_items as $item_id => $item ) {
+//                    $_product  = $order->get_product_from_item( $item );
+//                    echo '<pre>';print_r($_product);echo '</pre>';
+//                }
+//                
+//                
+//                $field_key = "field_5459d9dfce31c";
+//                $post_id   = 175;
+//                $value = get_field($field_key, $post_id);
+//                echo '<pre>';print_r($value); echo '</pre>';
 //                $value[] = array(
 //                    "more_contacts_name" => $row->ContactName, 
 //                    "more_contacts_email" => $row->ContactEmail, 

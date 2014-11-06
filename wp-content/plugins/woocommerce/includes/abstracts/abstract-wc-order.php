@@ -1007,7 +1007,7 @@ abstract class WC_Abstract_Order {
 	 * @param string|array $type Types of line items to get (array or string)
 	 * @return array
 	 */
-	public function get_items( $type = '' ) {
+	public function get_items( $type = '' ) {            
 		global $wpdb;
 
 		if ( empty( $type ) ) {

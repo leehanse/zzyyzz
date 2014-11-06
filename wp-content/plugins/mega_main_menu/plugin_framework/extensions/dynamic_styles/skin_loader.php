@@ -133,6 +133,7 @@
 				}
 				$out = str_replace( array( "\t", "
 ", ), array( "", " ", ), $out ) . ' /*' . date("Y-m-d H:i") . '*/';
+                                
 				if ( @fwrite( $cache_file, $out ) ) {
 					$skin_css = array( array( 'name' => MMPM_PREFIX . '_cache.skin', 'path' => MMPM_CSS_URI . '/cache.skin.css' ) );
 					touch( MMPM_CSS_DIR . '/cache.skin.css', time(), time() );
