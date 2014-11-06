@@ -1,0 +1,222 @@
+<html>
+<head>
+	<title>TEST</title>
+</head>
+<body>
+	<style>
+.commentwrap {
+    background: url("images/dashed-double.png") repeat-x scroll left top rgba(0, 0, 0, 0);
+    clear: both;
+    margin: 40px 0 20px;
+    padding: 30px 0 0;
+    position: relative;
+}
+.comment-title {
+    color: #603913;
+    font: 130%/160% 'Copse',Georgia,serif;
+    margin: 0 0 10px;
+    padding: 0;
+    text-transform: uppercase;
+}
+.commentlist {
+    clear: both;
+    font-size: 95%;
+    margin: 0;
+    padding: 10px 0 15px;
+    word-wrap: break-word;
+}
+.commentlist li {
+    clear: both;
+    list-style: none outside none;
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+.commentlist .comment-author {
+    margin: 0;
+    padding: 15px 0 0;
+}
+.avatar {
+    background-color: #FFFFFF;
+    border: 3px solid #FFFFFF;
+    border-radius: 10em 10em 10em 10em;
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2);
+    height: 60px;
+    width: 60px;
+}
+.commentlist .avatar {
+    float: left;
+    margin: -8px 12px 5px 0;
+}
+.commentlist cite {
+    color: #36160B;
+    font: italic 155% Baskerville,"Times New Roman",Times,serif;
+    margin-right: 30px;
+    text-transform: capitalize;
+}
+.commentlist cite a {
+    color: #75280C;
+    text-decoration: none;
+}
+.commentlist .author > .comment-author cite {
+    background: url("images/comment-author.png") no-repeat scroll right center rgba(0, 0, 0, 0);
+    padding-right: 58px;
+}
+.commentlist .comment-time {
+    color: #8C8C86;
+    font: 75%/120% "Lucida Grande",Arial,"Lucida Sans Unicode",sans-serif;
+    text-transform: uppercase;
+}
+.commentlist .commententry {
+    margin-top: 2px;
+    overflow: hidden;
+    position: relative;
+}
+.commentlist .commententry p {
+    margin: 0 0 1em;
+    padding: 0;
+}
+.commentlist ul, .commentlist ol {
+    margin: 0;
+    padding: 0 0 0 8%;
+}
+.commentlist .reply {
+    background: url("images/dashed-single.png") no-repeat scroll 4.3em center rgba(0, 0, 0, 0);
+}
+.commentlist .comment-reply-link {
+    background: url("images/nav-icons.png") no-repeat scroll -26px -1190px rgba(0, 0, 0, 0);
+    color: #CA6149;
+    font-size: 11px;
+    padding-left: 12px;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+.commentlist .comment-reply-link:hover {
+    border-bottom: 1px solid #CCCCCC;
+    text-decoration: none;
+}
+#respond {
+    clear: both;
+    margin: 0;
+    padding: 40px 0 20px;
+    position: relative;
+}
+.commentlist #respond {
+    margin-left: 10%;
+    margin-top: 0;
+    width: 90%;
+}
+#respond .cancel-comment-reply a {
+    background: url("images/nav-icons.png") no-repeat scroll -3px -1680px rgba(0, 0, 0, 0);
+    color: #BA8985;
+    font: 85%/120% "Lucida Grande",Arial,"Lucida Sans Unicode",sans-serif;
+    padding: 3px 0 3px 28px;
+    position: absolute;
+    right: 0;
+    text-decoration: none;
+    text-transform: uppercase;
+    top: 13px;
+}
+#respond .cancel-comment-reply a:hover {
+    color: #000000;
+}
+#commentform {
+    margin: 15px 0 0;
+}
+#commentform input[type="text"] {
+    margin-right: 5px;
+    width: 206px;
+}
+#commentform textarea {
+    height: 140px;
+}
+#commentform input#submit {
+    padding: 7px 20px;
+}
+.commentwrap .btn-comment {
+    background: url("images/nav-icons.png") no-repeat scroll -3px -1436px rgba(255, 255, 255, 0.4);
+    border-radius: 10em 10em 10em 10em;
+    cursor: pointer;
+    display: none;
+    height: 28px;
+    position: absolute;
+    transition: background-color 0.7s ease 0s;
+    width: 28px;
+}
+.commentwrap .collapse-all, .commentwrap .expand-all {
+    right: 0;
+    top: 69px;
+}
+.commentwrap .expand-all {
+    background-position: -3px -1368px;
+}
+.commentwrap .btn-comment:hover {
+    background-color: rgba(245, 236, 130, 0.8);
+}
+.commentwrap .expand, .commentwrap .collapse {
+    background-position: -7px -1246px;
+    height: 22px;
+    right: 3px;
+    top: 28px;
+    width: 22px;
+}
+.commentwrap .collapse {
+    background-position: -7px -1304px;
+}
+.commentwrap .btn-comment span {
+    background: none repeat scroll 0 0 #FFFFFF;
+    border: 1px solid #CCCCCC;
+    border-radius: 5px 5px 5px 5px;
+    display: none;
+    font: 9px/100% "Lucida Grande",Arial,"Lucida Sans Unicode",sans-serif;
+    left: -37px;
+    letter-spacing: 0.12em;
+    min-width: 90px;
+    padding: 4px 1px;
+    position: absolute;
+    text-align: center;
+    text-transform: uppercase;
+    top: -28px;
+    white-space: nowrap;
+    z-index: 4;
+}
+.commentwrap .btn-comment span:after {
+    border-left: 4px solid rgba(0, 0, 0, 0);
+    border-right: 4px solid rgba(0, 0, 0, 0);
+    border-top: 5px solid #999999;
+    bottom: -5px;
+    content: " ";
+    font-size: 0;
+    left: 50%;
+    line-height: 0;
+    position: absolute;
+    width: 0;
+    z-index: 1;
+}
+.commentwrap .btn-comment:hover > span {
+    display: block;
+}
+.commentwrap .pagenav {
+    margin: 0;
+}
+	</style>
+<div class="commentwrap">
+<h4 class="comment-title" id="comments">14 Comments</h4>
+<ol class="commentlist">
+<li id="comment-103942">
+		<p class="comment-author">
+			<span style="background:url(http://0.gravatar.com/avatar/e6077a124cf5a8ebb4bcf187cbfce45d?s=60&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D60&amp;r=G) no-repeat left top; width: 60px; height: 60px;" class="avatar avatar-60 photo"><img width="60" height="60" class="avatar-60 photo" src="http://0.gravatar.com/avatar/e6077a124cf5a8ebb4bcf187cbfce45d?s=60&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D60&amp;r=G" alt="" style="opacity: 0;"></span>			<cite><a class="url" rel="external nofollow" href="http://webseology.com">Summer Mote</a></cite><br>
+			<time class="comment-time" datetime="2013-9-16T11:50">Sep 16, 2013 @ 11:50</time>
+		</p>
+
+		<div id="commententry-103942" class="commententry" style="height: 100%; opacity: 1;">					
+			<p>I love where websites trends are heading. It’s a very exciting time for web designers &ndash; again. Responsive themes for mobile, interactive themes, etc bring web design back to life in my opinion. Thanks for the gallery of pics!!</p>
+		</div>
+
+		<div class="btn-comment expand" style="display: none;"></div><div class="btn-comment collapse" style="display: block;"></div>
+		
+</li>
+</ol>
+</div>
+</body>
+</html>
