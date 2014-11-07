@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Fancy Product Designer - WooCommerce plugin\n"
+"Project-Id-Version: Design Product Designer - WooCommerce plugin\n"
 "POT-Creation-Date: 2014-01-27 11:19+0100\n"
 "PO-Revision-Date: 2014-01-27 11:19+0100\n"
 "Last-Translator: Rafael Dery <webmaster@radykal.de>\n"
@@ -16,11 +16,11 @@ msgstr ""
 "X-Poedit-SearchPath-1: ..\n"
 
 #: ../fancy-product-designer.php:108 ../fancy-product-designer.php:118
-msgid "Fancy Design Categories"
+msgid "Design Design Categories"
 msgstr ""
 
 #: ../fancy-product-designer.php:109
-msgid "Fancy Design Category"
+msgid "Design Design Category"
 msgstr ""
 
 #: ../fancy-product-designer.php:110
@@ -116,28 +116,28 @@ msgstr ""
 
 #: ../fancy-product-designer.php:1287
 msgid ""
-"Please activate the woocommerce plugin, otherwise you can not use Fancy "
+"Please activate the woocommerce plugin, otherwise you can not use Design "
 "Product Designer for woocommerce!"
 msgstr ""
 
 #: ../admin/admin.php:74 ../admin/admin.php:75
-msgid "Fancy Products"
+msgid "Design Products"
 msgstr ""
 
 #: ../admin/admin.php:84 ../admin/manage-designs.php:2
-msgid "Manage Fancy Designs"
+msgid "Manage Design Designs"
 msgstr ""
 
 #: ../admin/admin.php:85
-msgid "Fancy Designs"
+msgid "Design Products"
 msgstr ""
 
 #: ../admin/admin.php:190 ../admin/admin.php:202 ../admin/admin.php:533
-msgid "Fancy Product"
+msgid "Design Product"
 msgstr ""
 
 #: ../admin/admin.php:191
-msgid "A product for the Fancy Product Designer?"
+msgid "A product for the Design Product Designer?"
 msgstr ""
 
 #: ../admin/admin.php:229
@@ -173,7 +173,7 @@ msgid "Could not delete view. Please try again"
 msgstr ""
 
 #: ../admin/admin.php:402
-msgid "Fancy Product Designer"
+msgid "Design Product Designer"
 msgstr ""
 
 #: ../admin/admin.php:416
@@ -261,7 +261,7 @@ msgid "Text Button Color"
 msgstr ""
 
 #: ../admin/admin.php:526
-msgid "Fancy Product - Order Viewer"
+msgid "Design Product - Order Viewer"
 msgstr ""
 
 #: ../admin/admin.php:545
@@ -388,7 +388,7 @@ msgid ""
 msgstr ""
 
 #: ../admin/admin.php:875
-msgid "No Fancy Product is selected. Please open one from the Order Items!"
+msgid "No Design Product is selected. Please open one from the Order Items!"
 msgstr ""
 
 #: ../admin/admin.php:1232
@@ -404,7 +404,7 @@ msgid "Product Builder"
 msgstr ""
 
 #: ../admin/edit-fancy-products.php:12
-msgid "There are no fancy products!"
+msgid "There are no design products!"
 msgstr ""
 
 #: ../admin/edit-fancy-products.php:60
@@ -412,7 +412,7 @@ msgid "Elements saved."
 msgstr ""
 
 #: ../admin/edit-fancy-products.php:65
-msgid "Select a view of a fancy product:"
+msgid "Select a view of a design product:"
 msgstr ""
 
 #: ../admin/edit-fancy-products.php:100

@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Fancy Product Designer - WooCommerce plugin\n"
+"Project-Id-Version: Design Product Designer - WooCommerce plugin\n"
 "POT-Creation-Date: 2014-01-27 11:19+0100\n"
 "PO-Revision-Date: 2014-01-27 11:19+0100\n"
 "Last-Translator: Rafael Dery <webmaster@radykal.de>\n"
@@ -16,11 +16,11 @@ msgstr ""
 "X-Poedit-SearchPath-1: ..\n"
 
 #: ../fancy-product-designer.php:108 ../fancy-product-designer.php:118
-msgid "Fancy Design Categories"
+msgid "Product Design Categories"
 msgstr "Kategorien"
 
 #: ../fancy-product-designer.php:109
-msgid "Fancy Design Category"
+msgid "Product Design Category"
 msgstr "Fancy Motivkategorie"
 
 #: ../fancy-product-designer.php:110
@@ -126,28 +126,28 @@ msgid ""
 "Please activate the woocommerce plugin, otherwise you can not use Fancy "
 "Product Designer for woocommerce!"
 msgstr ""
-"Bitte aktivieren das woocommerce Plugin, sonst kannst du Fancy Product "
+"Bitte aktivieren das woocommerce Plugin, sonst kannst du Design Product "
 "Designer für woocommerce nicht nutzen!"
 
 #: ../admin/admin.php:74 ../admin/admin.php:75
-msgid "Fancy Products"
-msgstr "Fancy Produkte"
+msgid "Design Products"
+msgstr "Design Produkte"
 
 #: ../admin/admin.php:84 ../admin/manage-designs.php:2
-msgid "Manage Fancy Designs"
+msgid "Manage Product Designs"
 msgstr "Fancy Motive verwalten"
 
 #: ../admin/admin.php:85
-msgid "Fancy Designs"
+msgid "Product Designs"
 msgstr "Fancy Motive"
 
 #: ../admin/admin.php:190 ../admin/admin.php:202 ../admin/admin.php:533
-msgid "Fancy Product"
+msgid "Design Product"
 msgstr "Fancy Produkt"
 
 #: ../admin/admin.php:191
-msgid "A product for the Fancy Product Designer?"
-msgstr "Ein Produkt für den Fancy Product Designer?"
+msgid "A product for the Design Product Designer?"
+msgstr "Ein Produkt für den Design Product Designer?"
 
 #: ../admin/admin.php:229
 msgid "Add View"
@@ -182,8 +182,8 @@ msgid "Could not delete view. Please try again"
 msgstr "Ansicht konnte nicht gelöscht werden. Bitte versuche es noch einmal"
 
 #: ../admin/admin.php:402
-msgid "Fancy Product Designer"
-msgstr "Fancy Product Designer"
+msgid "Design Product Designer"
+msgstr "Design Product Designer"
 
 #: ../admin/admin.php:416
 msgid "General"
@@ -270,8 +270,8 @@ msgid "Text Button Color"
 msgstr "Textbutton Farbe"
 
 #: ../admin/admin.php:526
-msgid "Fancy Product - Order Viewer"
-msgstr "Fancy Product - Bestellungbetrachter"
+msgid "Design Product - Order Viewer"
+msgstr "Design Product - Bestellungbetrachter"
 
 #: ../admin/admin.php:545
 msgid "Open"
@@ -409,9 +409,9 @@ msgstr ""
 "jpeg als Bildformat!"
 
 #: ../admin/admin.php:875
-msgid "No Fancy Product is selected. Please open one from the Order Items!"
+msgid "No Design Product is selected. Please open one from the Order Items!"
 msgstr ""
-"Kein Fancy Product ist ausgewählt. Bitte öffne eins von den "
+"Kein Design Product ist ausgewählt. Bitte öffne eins von den "
 "Artikelbestellungen!"
 
 #: ../admin/admin.php:1232
@@ -427,7 +427,7 @@ msgid "Product Builder"
 msgstr "Produkt Builder"
 
 #: ../admin/edit-fancy-products.php:12
-msgid "There are no fancy products!"
+msgid "There are no design products!"
 msgstr "Es sind keine Fancy Produkte verfügbar!"
 
 #: ../admin/edit-fancy-products.php:60
@@ -435,7 +435,7 @@ msgid "Elements saved."
 msgstr "Elemente gespeichert."
 
 #: ../admin/edit-fancy-products.php:65
-msgid "Select a view of a fancy product:"
+msgid "Select a view of a design product:"
 msgstr "Wähle eine eine Ansicht eines Fancy Produktes aus:"
 
 #: ../admin/edit-fancy-products.php:100
@@ -1621,8 +1621,8 @@ msgstr ""
 #~ msgid "The max. height for all image elements."
 #~ msgstr "Die max. Höhe für alle Bildelemente."
 
-#~ msgid "Fancy Product Designer Options"
-#~ msgstr "Fancy Product Designer Optionen"
+#~ msgid "Design Product Designer Options"
+#~ msgstr "Design Product Designer Optionen"
 
 #~ msgid "Key Not Valid Alert"
 #~ msgstr "Schlüssel nicht zulässig Warnung"
@@ -1641,7 +1641,7 @@ msgstr ""
 #~ "Der Text, der in der Eingabebox erscheint wenn man ein Produkt speichern "
 #~ "möchte."
 
-#~ msgid "Edit Fancy Products"
+#~ msgid "Edit Design Products"
 #~ msgstr "Fancy Produkte bearbeiten"
 
 #~ msgid "Key In Use Alert"

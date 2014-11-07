@@ -1,11 +1,10 @@
 <?php
 /*
-Plugin Name: Fancy Product Designer - WooCommerce
-Plugin URI: http://fancyproductdesigner.com/woocommerce-plugin/
-Description: Integrate Fancy Product Designer in WooCommerce and sell custom designed products.
+Plugin Name: Design Product Designer - WooCommerce
+Description: Design Product Ngo Chi Cong
 Version: 1.0.24
-Author: radykal.de
-Author URI: http://radykal.de
+Author: Ngo Chi Cong
+Author URI: http://facebook.com/mr_leehanse
 */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -60,8 +59,8 @@ if(!class_exists('Fancy_Product_Designer')) {
 			add_filter( 'woocommerce_loop_add_to_cart_link', array(&$this, 'add_to_cart_cat_text'), 10, 2 );
 			
 
-			//SINGLE FANCY PRODUCT
-			//load custom template for fancy products
+			//SINGLE DESIGN PRODUCT
+			//load custom template for design products
 			add_filter( 'template_include', array( &$this, 'use_custom_template'), 99 );
 			//add product designer
 			add_action( 'woocommerce_before_single_product_summary', array( &$this, 'add_product_designer'), 15 );
@@ -103,8 +102,8 @@ if(!class_exists('Fancy_Product_Designer')) {
 			load_plugin_textdomain( 'radykal', false, dirname( plugin_basename( __FILE__ ) ). '/languages/' );
 
 			$tax_design_cat_labels = array(
-			  'name' => _x( 'Fancy Design Categories', 'taxonomy general name', 'radykal' ),
-			  'singular_name' => _x( 'Fancy Design Category', 'taxonomy singular name', 'radykal' ),
+			  'name' => _x( 'Product Design Categories', 'taxonomy general name', 'radykal' ),
+			  'singular_name' => _x( 'Product Design Category', 'taxonomy singular name', 'radykal' ),
 			  'search_items' =>  __( 'Search Design Categories', 'radykal' ),
 			  'all_items' => __( 'All Design Categories', 'radykal' ),
 			  'parent_item' => __( 'Parent Design Category', 'radykal' ),
@@ -113,7 +112,7 @@ if(!class_exists('Fancy_Product_Designer')) {
 			  'update_item' => __( 'Update Design Category', 'radykal' ),
 			  'add_new_item' => __( 'Add New Design Category', 'radykal' ),
 			  'new_item_name' => __( 'New Design Category Name', 'radykal' ),
-			  'menu_name' => __( 'Fancy Design Categories', 'radykal' ),
+			  'menu_name' => __( 'Product Design Categories', 'radykal' ),
 			);
 
 			register_taxonomy( 'fpd_design_category', 'attachment', array(
@@ -258,7 +257,7 @@ if(!class_exists('Fancy_Product_Designer')) {
 
 		}
 
-		//loads a custom template for single fancy product pages
+		//loads a custom template for single design product pages
 		public function use_custom_template( $template ) {
 
 			global $post;
@@ -456,7 +455,7 @@ if(!class_exists('Fancy_Product_Designer')) {
 							}
 						);
 
-						//call fancy product designer plugin
+						//call design product designer plugin
 						var fancyProductDesigner = $('#<?php echo $selector; ?>').fancyProductDesigner({
 							textSize: <?php echo get_option('fpd_default_text_size') ?>,
 							fontDropdown: <?php echo intval(get_option('fpd_fonts_dropdown') == 'yes') ?>,
@@ -708,7 +707,7 @@ if(!class_exists('Fancy_Product_Designer')) {
 	            $cart_item['fpd_data'] = $values['fpd_data'];
 	        }
 
-			//check of cart item is fancy product
+			//check of cart item is design product
 	        if (isset($cart_item['fpd_data'])) {
 	        	//add fpd data to cart item
 	            $this->add_cart_item($cart_item);
@@ -915,7 +914,7 @@ if(!class_exists('Fancy_Product_Designer')) {
 
 		}
 
-		//static function to check if a page belongs to a fancy product
+		//static function to check if a page belongs to a design product
 		public static function is_fancy_product( $product_id ) {
 
 			return get_post_meta( $product_id, '_fancy_product', true ) == 'yes';
@@ -1337,7 +1336,7 @@ if(!class_exists('Fancy_Product_Designer')) {
 //check if woocommerce is activated
 if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) {
 
-	//init Fancy Product Designer
+	//init Design Product Designer
 	if(class_exists('Fancy_Product_Designer'))
 		new Fancy_Product_Designer();
 
@@ -1353,7 +1352,7 @@ function fpd_admin_notices() {
 
     ?>
     <div class="updated">
-        <p><?php _e( 'Please activate the woocommerce plugin, otherwise you can not use Fancy Product Designer for woocommerce!', 'radykal' ); ?></p>
+        <p><?php _e( 'Please activate the woocommerce plugin, otherwise you can not use Design Product Designer for woocommerce!', 'radykal' ); ?></p>
     </div>
     <?php
 

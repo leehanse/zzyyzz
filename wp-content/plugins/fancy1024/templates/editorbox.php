@@ -11,7 +11,7 @@ $colors_label = 'Color(s)';
 
 ?>
 
-<div class="fpd-editor-box">
+<div class="fpd-editor-box" style="margin-left: 0px;">
 	<h3><?php echo $headline; ?></h3>
 	<p><span><?php echo $element_label; ?>: </span><i class="fpd-current-element"></i></p>
 	<p><span><?php echo $position_label; ?>: </span><i class="fpd-position"></i></p>

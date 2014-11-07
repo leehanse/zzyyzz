@@ -1,5 +1,5 @@
 /*
- * Fancy Product Designer v2.0.51
+ * Design Product Designer v2.0.51
  *
  * Copyright 2013, Rafael Dery
  *

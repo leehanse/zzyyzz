@@ -187,9 +187,9 @@ Forside menu
 	float:left;
 	padding:5px;
 	margin:5px;
-	border:7px solid #ffffff;
+	border:7px solid #81C1E0;
 	position:relative;
-	background:#ffffff;
+	background:#81C1E0;
 }
 .frontmenu li:first-child{
   margin-left:0px;

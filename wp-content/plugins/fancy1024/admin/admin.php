@@ -65,21 +65,21 @@ if(!class_exists('Fancy_Product_designer_Admin')) {
 
 		public function add_menu_pages() {
 
-			//add fancy products sub menu page to products menu
+			//add design products sub menu page to products menu
 			add_submenu_page(
 				'edit.php?post_type=product',
-				 __('Fancy Products', 'radykal'),
-				 __('Fancy Products', 'radykal'),
+				 __('Design Products', 'radykal'),
+				 __('Design Products', 'radykal'),
 				 Fancy_Product_Designer::CAPABILITY,
 				 'edit_fancy_products',
 				 array($this, 'edit_fancy_products')
 			);
 
-			//add fancy designs sub menu page to products menu
+			//add product designs sub menu page to products menu
 			add_submenu_page(
 				'edit.php?post_type=product',
-				__('Manage Fancy Designs', 'radykal'),
-				__('Fancy Designs', 'radykal'),
+				__('Manage Product Designs', 'radykal'),
+				__('Product Designs', 'radykal'),
 				Fancy_Product_Designer::CAPABILITY,
 				'manage_designs',
 				array($this, 'manage_designs_page')
@@ -144,7 +144,7 @@ if(!class_exists('Fancy_Product_designer_Admin')) {
 		        }
 		    }
 
-			//edit fancy products
+			//edit design products
 		    if( $hook == 'product_page_edit_fancy_products') {
 
 		    	wp_enqueue_media();
@@ -183,14 +183,14 @@ if(!class_exists('Fancy_Product_designer_Admin')) {
 
 		/************************************ PRODUCT POST ************************************************/
 
-		//add checkbox to enable fancy product for a product
+		//add checkbox to enable design product for a product
 		public function add_product_type_option( $types ) {
 
 			$types['fancy_product'] = array(
 				'id' => '_fancy_product',
 				'wrapper_class' => 'show_if_fancy_product',
-				'label' => __( 'Fancy Product', 'radykal' ),
-				'description' => __( 'A product for the Fancy Product Designer?', 'radykal' )
+				'label' => __( 'Design Product', 'radykal' ),
+				'description' => __( 'A product for the Design Product Designer?', 'radykal' )
 			);
 
 			return $types;
@@ -201,7 +201,7 @@ if(!class_exists('Fancy_Product_designer_Admin')) {
 		public function add_product_data_tab() {
 
 			?>
-			<li class="fancy_product_tab hide_if_fancy_product fancy_product_options"><a href="#fancy_product_data"><?php _e( 'Fancy Product', 'radykal' ); ?></a></li>
+			<li class="fancy_product_tab hide_if_fancy_product fancy_product_options"><a href="#fancy_product_data"><?php _e( 'Design Product', 'radykal' ); ?></a></li>
 			<?php
 
 		}
@@ -218,7 +218,7 @@ if(!class_exists('Fancy_Product_designer_Admin')) {
 					<ul id="fpd-view-list">
 						<li>
 							<?php
-							//get views of a fancy product
+							//get views of a design product
 							$views = $wpdb->get_results("SELECT * FROM ".Fancy_Product_Designer::$views_table_name." WHERE product_id='{$post->ID}' ORDER BY ID ASC");
 							if(is_array($views)) {
 								foreach($views as $view) {
@@ -240,7 +240,7 @@ if(!class_exists('Fancy_Product_designer_Admin')) {
 
 					$viewsList = $( "#fpd-view-list" );
 
-					//fancy product checkbox handler
+					//design product checkbox handler
 					$('#_fancy_product').change(function() {
 						if($(this).is(':checked')) {
 							$('.hide_if_fancy_product').show();
@@ -401,7 +401,7 @@ if(!class_exists('Fancy_Product_designer_Admin')) {
 		//add custom tab (product post)
 		public function add_settings_tab( $tabs ) {
 
-			$tabs['fancy_product_designer'] = __( 'Fancy Product Designer', 'radykal' );
+			$tabs['fancy_product_designer'] = __( 'Design Product Designer', 'radykal' );
 			return $tabs;
 
 		}
@@ -520,19 +520,19 @@ if(!class_exists('Fancy_Product_designer_Admin')) {
 
 		public function add_meta_boxes() {
 
-			add_meta_box( 'fpd-order', __( 'Fancy Product - Order Viewer', 'radykal' ), array( &$this, 'fancy_product_order'), 'shop_order', 'normal', 'default' );
+			add_meta_box( 'fpd-order', __( 'Design Product - Order Viewer', 'radykal' ), array( &$this, 'fancy_product_order'), 'shop_order', 'normal', 'default' );
 
 		}
 
 		public function add_order_item_header() {
 
 			?>
-			<th class="fancy-product"><?php _e( 'Fancy Product', 'radykal' ); ?></th>
+			<th class="fancy-product"><?php _e( 'Design Product', 'radykal' ); ?></th>
 			<?php
 
 		}
 
-		//add a button to the ordered fancy product
+		//add a button to the ordered design product
 		public function admin_order_item_values( $_product, $item, $item_id ) {
 
 			$product = unserialize($item['fpd_data']);
@@ -546,7 +546,7 @@ if(!class_exists('Fancy_Product_designer_Admin')) {
 
 		}
 
-		//add fancy product panel to order post
+		//add design product panel to order post
 		public function fancy_product_order( $post ) {
 
 			global $post, $woocommerce, $thepostid;
@@ -556,7 +556,7 @@ if(!class_exists('Fancy_Product_designer_Admin')) {
 			<div id="fpd-order-panel" class="fpd-clearfix">
 				<div id="fpd-order-designer-wrapper" class="fpd-clearfix">
 					<p class="description"><strong><?php _e( 'To load an ordered product, you need to click the "Open" button next to the ordered item in the "Order Items" panel!', 'radykal' ); ?></strong></p>
-					<div id="fpd-order-designer" class="<?php echo get_option('fpd_layout'); ?>"></div>
+					<div id="fpd-order-designer" class="<?php echo get_option('fpd_layout'); ?>" style="margin-left:0px;"></div>
 					<div id="fpd-export-tools" class="fpd-clear fpd-clearfix" style="float: none;">
 						<h2><?php _e( 'Export', 'radykal' ); ?></h2>
 						<p>
@@ -869,7 +869,7 @@ if(!class_exists('Fancy_Product_designer_Admin')) {
 							return true;
 						}
 						else {
-							alert("<?php _e( 'No Fancy Product is selected. Please open one from the Order Items!', 'radykal' ); ?>");
+							alert("<?php _e( 'No Design Product is selected. Please open one from the Order Items!', 'radykal' ); ?>");
 							return false;
 						}
 
@@ -1005,7 +1005,7 @@ if(!class_exists('Fancy_Product_designer_Admin')) {
 
 		/************************************ AJAX ************************************************/
 
-		//add a new view to a fancy product
+		//add a new view to a design product
 		public function new_view() {
 
 			if ( !isset($_POST['title']) || !isset($_POST['product_id']) || !isset($_POST['thumbnail']) )
@@ -1068,7 +1068,7 @@ if(!class_exists('Fancy_Product_designer_Admin')) {
 
 		}
 
-		//remove a view from a fancy product
+		//remove a view from a design product
 		public function remove_view() {
 
 			if ( !isset($_POST['id']) )
@@ -1105,7 +1105,7 @@ if(!class_exists('Fancy_Product_designer_Admin')) {
 			$data_url = trim($_POST['data_url']);
 			$title = sanitize_title( trim($_POST['title']) );
 
-			//create fancy product orders directory
+			//create design product orders directory
 			if( !file_exists(FPD_ORDER_DIR) )
 				mkdir(FPD_ORDER_DIR);
 
@@ -1164,7 +1164,7 @@ if(!class_exists('Fancy_Product_designer_Admin')) {
 			$image_format = trim($_POST['image_format']);
 			$orientation = trim($_POST['orientation']);
 
-			//create fancy product orders directory
+			//create design product orders directory
 			if( !file_exists(FPD_ORDER_DIR) )
 				mkdir(FPD_ORDER_DIR);
 
@@ -1241,7 +1241,7 @@ if(!class_exists('Fancy_Product_designer_Admin')) {
 }
 
 
-//init Fancy Product Designer Admin
+//init Design Product Designer Admin
 if(class_exists('Fancy_Product_designer_Admin')) {
 	new Fancy_Product_designer_Admin();
 }

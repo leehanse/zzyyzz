@@ -1,5 +1,5 @@
 <div class="wrap" id="manage-designs-page">
-	<h2><i class="fa fa-picture-o"></i> <?php _e('Manage Fancy Designs', 'radykal'); ?></h2>
+	<h2><i class="fa fa-picture-o"></i> <?php _e('Manage Product Designs', 'radykal'); ?></h2>
 	<?php
 
 		if( isset($_POST['save_designs']) ) {

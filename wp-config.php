@@ -22,7 +22,7 @@ define('DB_NAME', 'vinaprint');
 define('DB_USER', 'root');
 
 /** MySQL database password */
-define('DB_PASSWORD', 'f0r1xus@');
+define('DB_PASSWORD', 'admin123');
 
 /** MySQL hostname */
 define('DB_HOST', 'localhost');

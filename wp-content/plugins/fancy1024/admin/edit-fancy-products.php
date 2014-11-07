@@ -9,7 +9,7 @@
 	$first_views_ids = array();
 
 	if(sizeof($fancy_products) == 0) {
-		echo '<div class="updated"><p><strong>'.__('There are no fancy products!', 'radykal').'</strong></p></div></div>';
+		echo '<div class="updated"><p><strong>'.__('There are no design products!', 'radykal').'</strong></p></div></div>';
 		exit;
 	}
 
@@ -62,7 +62,7 @@
 	}
 	?>
 	<br /><br />
-	<h3><?php _e( 'Select a view of a fancy product:', 'radykal' ); ?></h3>
+	<h3><?php _e( 'Select a view of a design product:', 'radykal' ); ?></h3>
 	<select id="fpd-view-switcher">
 		<?php
 			if(is_array($fancy_products)) {

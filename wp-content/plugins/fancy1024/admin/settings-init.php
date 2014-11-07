@@ -1047,7 +1047,7 @@ if( !class_exists('Fancy_Product_Designer_Settings') ) {
 							'id' 		=> 'fpd_stage_headline',
 							'type' 		=> 'text',
 							'css' 		=> 'min-width:300px;',
-							'default'	=> 'Fancy Product Designer'
+							'default'	=> 'Design Product Designer'
 						),
 
 						array(

@@ -1,4 +1,4 @@
-=== Fancy Product Designer (radykal) ===
+=== Design Product Designer (radykal) ===
 Contributors: radykal alias Rafael Dery
 
 
