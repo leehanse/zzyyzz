@@ -81,9 +81,15 @@ add_action( 'woocommerce_before_calculate_totals', 'add_custom_price', 10, 2 );
 function add_custom_price( $cart_object ) {
     global $woocommerce;
     foreach ( $cart_object->cart_contents as $key => $value ) {
-        //$value['data']->id
-        $value['data']->price = 500 ;
+        $product_id = $value['product_id'];
+        $qty   = $value['quantity'];
+        $price = $value['data']->price;
+        if($qty > 5){
+            $new_price = $price - 0.1 * $price;
+            $value['data']->price = $new_price;
+        }        
     }
+
     $woocommerce->cart->persistent_cart_update();
 }
 
@@ -144,9 +150,42 @@ function vinaprint_add_product_data_panel(){
 ?>
     <div id="vinaprint_product_price_table" class="panel woocommerce_options_panel">
         <div class="options_group">
-            <pre>
-            <?php print_r($product->get_attributes()); ?>
-            </pre>
+            <?php 
+                $product_attributes = array_keys($product->get_attributes());
+            ?>
+            <table id="vinaprint_table_price_table">
+                <?php if(count($product_attributes)): ?>
+                    <thead>
+                        <tr>
+                            <?php foreach($product_attributes as $att):?>
+                                <th data-attribute="<?php echo $att;?>">
+                                    <pre>
+                                        <?php //print_r(get_taxonomy($att));?>
+                                    </pre>
+                                    <?php echo get_taxonomy($att)->label;?>    
+                                </th>    
+                            <?php endforeach;?>
+                        </tr>
+                    </thead>
+                <?php endif;?>
+                <tbody>
+                    <?php if(count($product_attributes)): ?>
+                        <tr>
+                            <?php foreach($product_attributes as $att):?>                
+                                <td>
+                                    <?php
+                                        $terms = get_the_terms( $product->id, $att); 
+                                        //print_r($terms);
+                                    ?>
+                                </td>
+                            <?php endforeach;?>                    
+                        </tr>
+                    <?php endif;?>
+                </tbody>
+            </table>
         </div>
     </div>
 <?php }
+
+/* Only use simple product */
+/*End only use simple product */

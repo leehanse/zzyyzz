@@ -67,7 +67,7 @@
                         </div>
                 </div>
                 <ul class="eclear" id="utilNav">
-                    <li><strong>Call &nbsp;<span>111.111.11111</span>
+                    <li><strong>Call &nbsp;<span>111.111.11111</strong></span>
                     <li><a href="#">Customer Service</a></li>
                     <li class="last"><a href="#">Order Status</a></li>
                 </ul>
@@ -85,6 +85,7 @@
             
             <?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_class' => 'nav-menu' ) ); ?>            
             
-        </div> 
+        </div>
+        <div class="clr"></div>
         <div class="separator"></div>
         <div class="clr"></div>

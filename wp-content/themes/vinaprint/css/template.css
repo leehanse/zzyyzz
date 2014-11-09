@@ -75,7 +75,7 @@ a{color:#4266b1;}
     margin:20px 0;
 }
 .banner .moduletable{float:left;}
-.main_content, .after_component{}
+.main_content, .after_component{ padding-top:15px;}
 .item-page table td{vertical-align: top;}
 
 .item-page li{
@@ -92,7 +92,8 @@ a{color:#4266b1;}
 .main_small{
 	float:left;
 	position:relative;
-	max-width:795px;
+	width:825px;
+	overflow: hidden;
 }
 
 .main_content.mellemside .main{
@@ -368,37 +369,6 @@ Cart
 	right:110px;
 	bottom:1px;
 }
-.cart{float:right;}
-
-.cart-summary th{
-	font-weight: normal;
-	font-size:14px;
-}
-.cart-summary td a{
-	color:#424242;
-	text-decoration:none;
-	font-weight:normal;
-	font-size:15px;
-}
-.cart-summary td {
-	color:#5d5d5d;
-	text-decoration:none;
-	font-weight:normal;
-	font-size:14px;
-}
-.cart-summary .summary{
-	background:#e7efff;
-}
-.cart-summary .summary td{
-	padding:30px 5px;
-}
-.cart-summary tr.product{
-	border-bottom:1px solid #c9c9c9;
-}
-.cart-summary tr.product td{
-	margin-top:1px;
-	padding-top:10px;
-}
 .bold{font-weight:bold!important;}
 
 #login-form .userdata .inputbox{
@@ -407,15 +377,6 @@ Cart
 }
 #login-form #modlgn-username, #login-form #modlgn-passwd{
 	width:180px;
-}
-/*Cart-view*/
-.cart-view, .main{
-	background:#ffffff;
-	padding:15px;
-}
-.cart-view h1{
-	font-size:30px;
-	font-weight:normal;
 }
 #com-form-login .floatleft, span.floatleft{
 	float:none;
@@ -1346,4 +1307,20 @@ form#search #searchBtn {
 }
 form#search #searchBtn:hover {
     background-position: 0 -30px;
+}
+/*WOOCOMMERCE custom css */
+
+.item-price{
+	display:none;
+}
+.cart{
+	display: inline-block;
+	position: relative;
+	float:left;
+	width:100%;
+}
+.cart .product-addon{
+	width: 33%;
+	display: inline-block;;
+	float:left;
 }
