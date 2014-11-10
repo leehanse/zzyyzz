@@ -59,8 +59,8 @@ if ( ! class_exists( 'NemprintAjax' ) ) {
                     die;
                     break;
             }
-        }
-        
+        }    
+
         function calculateTablePrice($product_id){
             $wc_product = new WC_Product($product_id);
             
@@ -150,10 +150,38 @@ if ( ! class_exists( 'NemprintAjax' ) ) {
 
                 endforeach;
                 
+                $discount_by_quantity_list = get_field('discount_by_quantity_list', $product_id);
+
                 $qty        = isset($_POST['qty']) ? $_POST['qty'] : 1;
+                
                 $arr_amount = array();
-                for($j=0;$j<5;$j++){
-                    $arr_amount[] = $qty + $j;
+
+                if($qty < 10){
+                    $step = 1;
+                }elseif($qty < 25){
+                    $step = 5;
+                }elseif($qty < 50){
+                    $step = 10;
+                }elseif($qty < 500){
+                    $step = 50;
+                }elseif($qty < 1000){
+                    $step = 100;
+                }elseif($qty < 5000){
+                    $step = 500;
+                }elseif($qty < 10000){
+                    $step = 1000;
+                }else{
+                    $step = 10000;
+                }
+
+                $next_qty = ceil($qty/$step) * $step;
+
+                if($next_qty == $qty){
+                    $next_qty = $qty + $step;
+                }
+                $arr_amount[] = $qty;
+                for($j=0;$j<4;$j++){
+                    $arr_amount[] = $next_qty + $step * $j; 
                 }
                 //$arr_amount = array(1,2,3,4,5);
                 $html = "<table>";
@@ -175,8 +203,60 @@ if ( ! class_exists( 'NemprintAjax' ) ) {
                             $html .= $option_price;
                             $html .= '</td>';
                             foreach($arr_amount as $amount){
+
+                                $h_discount_type    = 'percent';
+                                $h_discount_value   = 0;
+                                $h_quantity_to    = 0;
+                                $h_quantity_from  = 0;
+
+                                if(count($discount_by_quantity_list)){
+                                    foreach($discount_by_quantity_list as $discount_by_quantity){
+                                        $quantity_from_to = $discount_by_quantity['quantity_from_to'];
+
+                                        $quantity_from_to_arr = explode('-', $quantity_from_to);
+
+                                        if(count($quantity_from_to_arr) == 2){
+                                            $quantity_from    = $quantity_from_to_arr[0];
+                                            if(strlen($quantity_from) == 0){
+                                                $quantity_from = 0;
+                                            }
+
+                                            $quantity_to      = $quantity_from_to_arr[1];
+                                            if(strlen($quantity_to) == 0){
+                                                $quantity_to = 999999999;
+                                            }
+                                        }elseif(count($quantity_from_to_arr) == 1){
+                                            $quantity_from = $quantity_from_to_arr[0];
+                                            $quantity_to = 999999999;
+                                        }   
+
+                                        if($amount >= $quantity_from && $amount <= $quantity_to){                                            
+                                            $h_quantity_from  = $quantity_from;
+                                            $h_quantity_to    = $quantity_to;
+                                            $h_discount_type    = $discount_by_quantity['discount_type'];
+                                            $h_discount_value   = $discount_by_quantity['discount_value'];
+                                            break;
+                                        }
+                                    }
+                                }
                                 $single_price = $wc_product->get_price();
                                 $price = $amount * ($single_price + $total_adjust_price + (float)esc_attr( $option['price'] ));
+                                
+                                if($h_discount_value){
+
+                                    switch ($h_discount_type) {
+                                        case 'percent':
+                                                $price = $price - ($price * ($h_discount_value / 100));
+                                            break;
+                                        case 'cash':
+                                                $price = $price - $h_discount_value;
+                                            break;
+                                        default:
+                                                $price = $price - ($price * ($h_discount_value / 100));
+                                            break;
+                                    }
+                                }
+
                                 $format_price = woocommerce_price($price);
                                 $html.="<td><b>{$format_price}</b></td>";
                             }

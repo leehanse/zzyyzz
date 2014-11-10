@@ -2,7 +2,9 @@ jQuery(document).ready(function(){
     calculateTablePrice();
     if(jQuery('.product-addons-field').size() >0){
         jQuery('.product-addons-field').change(function(){
-            calculateTablePrice();
+            var qty = jQuery('.qty').val() * 1;
+            if(qty == 0) qty = 1;
+            calculateTablePrice(qty);
         });
     }
     jQuery('.qty').change(function(){
@@ -31,6 +33,7 @@ function calculateTablePrice(qty){
             value: qty,        
         });
     }
+    jQuery('.vinaprint_table_price').html('<div class="loader">Loading...</div>');
     jQuery.ajax({
         url : nemprintAjax.ajaxurl,
         data: data,

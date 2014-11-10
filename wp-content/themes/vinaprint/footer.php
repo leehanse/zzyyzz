@@ -33,24 +33,8 @@
                </div>
             </div>
             <div class="moduletable review">
-               <div class="custom review"  >
-                  <div class="tp_-_box" data-tp-settings="domainId:879317,borderWidth:0,borderColor:,showHeader:False,width:300,numOfReviews:4,useDynamicHeight:False,height:150">
-                     <a href="http://www.trustpilot.dk/review/nemprint.dk" rel="nofollow" hidden>NemPrint.dk Anmeldelser</a>
-                  </div>
-                  <script type="text/javascript">
-                     (function () { var a = "https:" == document.location.protocol ? "https://ssl.trustpilot.com" : "http://s.trustpilot.com", b = document.createElement("script"); b.type = "text/javascript"; b.async = true; b.src = a + "/tpelements/tp_elements_all.js"; var c = document.getElementsByTagName("script")[0]; c.parentNode.insertBefore(b, c) })();
-                  </script>
-               </div>
             </div>
             <div class="moduletable trustpilot">
-               <div class="custom trustpilot"  >
-                  <div class="tp_-_category-badge" data-tp-settings="domainId:879317,size:140">
-                     <a href="http://www.trustpilot.dk/review/nemprint.dk" hidden>NemPrint.dk Anmeldelser</a>
-                  </div>
-                  <script type="text/javascript">
-                     (function(){var a="https:"==document.location.protocol?"https://ssl.trustpilot.com":"http://s.trustpilot.com",b=document.createElement("script");b.type="text/javascript";b.async=true;b.src=a+"/tpelements/tp_elements_all.js";var c=document.getElementsByTagName("script")[0];c.parentNode.insertBefore(b,c)})();
-                  </script>
-               </div>
             </div>
             <div class="moduletablecards">
                <div class="customcards"  >
