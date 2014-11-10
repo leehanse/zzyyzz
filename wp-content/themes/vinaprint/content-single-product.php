@@ -27,6 +27,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 ?>
 
 <div itemscope itemtype="<?php echo woocommerce_get_product_schema(); ?>" id="product-<?php the_ID(); ?>" <?php post_class(); ?>>
+        <input type="hidden" name="product_id_hidden" id="product_id_hidden" value="<?php the_ID(); ?>"/>
 	<?php
 		/**
 		 * woocommerce_before_single_product_summary hook
@@ -55,7 +56,9 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 		?>
 
 	</div><!-- .summary -->
-
+        <div class="vinaprint_table_price">
+            
+        </div>
 	<?php
 		/**
 		 * woocommerce_after_single_product_summary hook

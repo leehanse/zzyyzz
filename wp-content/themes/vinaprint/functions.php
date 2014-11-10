@@ -517,6 +517,6 @@ function jk_dequeue_styles( $enqueue_styles ) {
 	unset( $enqueue_styles['woocommerce-smallscreen'] ); // Remove the smallscreen optimisation
 	return $enqueue_styles;
 }
- 
-// Or just remove them all in one line
-//add_filter( 'woocommerce_enqueue_styles', '__return_false' );    
+
+// embed the javascript file that makes the AJAX request
+include __DIR__. '/includes/ajax.php';

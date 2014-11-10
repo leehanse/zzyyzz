@@ -79,6 +79,7 @@ if (is_woocommerce_active()) {
 		    }
 		    
 		    function meta_box( $post ) {
+                                    $products = get_posts(array( 'post_type' => 'product', 'posts_per_page' => -1 ));
 				?>
 				<div id="product_addons" class="panel">
 					<div class="woocommerce_addons">
@@ -106,7 +107,7 @@ if (is_woocommerce_active()) {
 										<option <?php selected('select', $addon['type']); ?> value="select"><?php _e('Select box', 'wc_product_addons'); ?></option>
 										<option <?php selected('custom', $addon['type']); ?> value="custom"><?php _e('Custom input (text)', 'wc_product_addons'); ?></option>
 										<option <?php selected('custom_textarea', $addon['type']); ?> value="custom_textarea"><?php _e('Custom input (textarea)', 'wc_product_addons'); ?></option>
-										<option <?php selected('file_upload', $addon['type']); ?> value="file_upload"><?php _e('File upload', 'wc_product_addons'); ?></option>
+										<!--<option <?php selected('file_upload', $addon['type']); ?> value="file_upload"><?php _e('File upload', 'wc_product_addons'); ?></option>-->
 									</select>
 								</p>
 								<p class="addon_description">
@@ -152,11 +153,14 @@ if (is_woocommerce_active()) {
 					<h4>
 						<a href="#" class="import button" tip="<?php _e('Import From Text', 'wc_product_addons'); ?>">Import From Text</a>						
 						<a href="#" class="export button" tip="<?php _e('Export', 'wc_product_addons'); ?>">Export To Text</a>
-						<select >
-							<option></option>
+						<select class="import-from-product" name="import_from_product">
+                                                    <option value="">-- Import from product--</option>
+                                                    <?php foreach($products as $p):?>
+                                                        <?php if($post->ID != $p->ID):?>
+                                                            <option value="<?php echo $p->ID;?>"><?php echo $p->post_title;?></option>
+                                                        <?php endif;?>
+                                                    <?php endforeach;?>
 						</select>
-						<a href="#" class="import-from-product button" tip="<?php _e('Import From Product', 'wc_product_addons'); ?>">Import From Product</a>
-
 						<a href="#" class="add_new_addon"><?php _e('+ Add New Product Add-on', 'wc_product_addons'); ?></a>
 					</h4>
 					
@@ -165,7 +169,16 @@ if (is_woocommerce_active()) {
 				</div>
 				<script type="text/javascript">
 				jQuery(function(){
-
+                                        jQuery('select[name="import_from_product"]').change(function(){
+                                            if(jQuery(this).val()){
+                                                jQuery('textarea[name="import_product_addon"]').val('');
+                                            }
+                                        });
+                                        jQuery('textarea[name="import_product_addon"]').change(function(){
+                                            if(jQuery(this).val()){
+                                                jQuery('select[name="import_from_product"]').val('');
+                                            }
+                                        });
 					jQuery('#product_addons').on('click', 'a.add_new_addon', function(){
 						
 						var loop = jQuery('.woocommerce_addons .woocommerce_addon').size();
@@ -183,7 +196,7 @@ if (is_woocommerce_active()) {
 									<option value="select"><?php _e('Select box', 'wc_product_addons'); ?></option>\
 									<option value="custom"><?php _e('Custom input (text)', 'wc_product_addons'); ?></option>\
 									<option value="custom_textarea"><?php _e('Custom input (textarea)', 'wc_product_addons'); ?></option>\
-									<option value="file_upload"><?php _e('File upload', 'wc_product_addons'); ?></option>\
+									<!--<option value="file_upload"><?php _e('File upload', 'wc_product_addons'); ?></option>-->\
 								</select>\
 							</p>\
 							<p class="addon_description">\
@@ -402,7 +415,24 @@ if (is_woocommerce_active()) {
 							$product_addons = array_merge( $product_addons, $import_addons );
 						}
 					}
-				}
+				}elseif($_POST['import_from_product']){
+                                    $import_addons = get_post_meta( $_POST['import_from_product'], '_product_addons', true );
+                                    if (is_array($import_addons) && sizeof($import_addons)>0) {
+                                        $valid = true;
+                                        foreach ($import_addons as $addon) {
+                                                if (!isset($addon['name']) || !$addon['name']) $valid = false;
+                                                if (!isset($addon['description'])) $valid = false;
+                                                if (!isset($addon['type'])) $valid = false;
+                                                if (!isset($addon['position'])) $valid = false;
+                                                if (!isset($addon['options'])) $valid = false;
+                                                if (!isset($addon['required'])) $valid = false;
+                                        }
+                                        if ($valid) {
+                                                // Append data
+                                                $product_addons = array_merge( $product_addons, $import_addons );
+                                        }
+                                    }
+                                }
 
 				update_post_meta( $post_id, '_product_addons', $product_addons );
 		
@@ -418,76 +448,90 @@ if (is_woocommerce_active()) {
 				
 				$product_addons = get_post_meta( $post->ID, '_product_addons', true );
 				
-				if (is_array($product_addons) && sizeof($product_addons)>0) foreach ($product_addons as $addon) :
-							
+				if (is_array($product_addons) && sizeof($product_addons)>0)
+                                    $index = 0;
+                                    $last_addons = null;
+                                    foreach ($product_addons as $addon) :							
 					if (!isset($addon['name'])) continue;
 					
-					?>
-					<div class="product-addon product-addon-<?php echo sanitize_title($addon['name']); ?>">
-						<?php if ($addon['name']) : ?><h3><?php echo wptexturize($addon['name']); ?> <?php if ($addon['type']=='file_upload') echo sprintf(__('(max size %s)', 'wc_product_addons'), $this->max_upload_size()); ?></h3><?php endif; ?>
-						<?php if ($addon['description']) : ?><p><?php echo wptexturize($addon['description']); ?></p><?php endif; ?>
-						<?php
-						switch ($addon['type']) :
-							case "checkbox" :
-								foreach ($addon['options'] as $option) :
-								
-									$current_value = (
-										isset($_POST['addon-'. sanitize_title( $addon['name'] )]) && 
-										in_array(sanitize_title( $option['label'] ), $_POST['addon-'. sanitize_title( $addon['name'] )])
-										) ? 1 : 0;
-									
-									$price = ($option['price']>0) ? ' (' . woocommerce_price($option['price']) . ')' : '';
-									echo '<p class="form-row form-row-wide"><label><input class="product-addons-field" data-price="'.$option['price'].'" type="checkbox" name="addon-'. sanitize_title( $addon['name'] ) .'[]" value="'. sanitize_title( $option['label'] ) .'" '.checked($current_value, 1, false).' /> '. wptexturize($option['label']) . $price .'</label></p>';
-									
-								endforeach;
-							break;
-							case "select" :
-							
-								$current_value = (isset($_POST['addon-'. sanitize_title( $addon['name'] )])) ? $_POST['addon-'. sanitize_title( $addon['name'] )] : '';
-								
-								echo '<p class="form-row form-row-wide"><select class="product-addons-field" name="addon-'. sanitize_title( $addon['name'] ) .'"><option value="">'. __('None', 'wc_product_addons') .'</option>';
-								$loop = 0;
-								foreach ($addon['options'] as $option) : $loop++;
-									$price = ($option['price']>0) ? ' (' . woocommerce_price($option['price']) . ')' : '';
-									echo '<option data-price="'.$option['price'].'" value="'. sanitize_title( $option['label'] ) .'-'. $loop .'" '.selected($current_value, sanitize_title( $option['label'] ), false).'>'. wptexturize($option['label']) . $price .'</option>';
-								endforeach;
-								echo '</select></p>';
-								
-							break;
-							case "custom" :
-								foreach ($addon['options'] as $option) :
-									
-									$current_value = (isset($_POST['addon-' . sanitize_title( $addon['name'] ) . '-' . sanitize_title( $option['label'] )])) ? $_POST['addon-' . sanitize_title( $addon['name'] ) . '-' . sanitize_title( $option['label'] )] : '';
-									
-									$price = ($option['price']>0) ? ' (' . woocommerce_price($option['price']) . ')' : '';
-									echo '<p class="form-row form-row-wide"><label>'. wptexturize($option['label']) . $price .': <input type="text" class="input-text product-addons-field" data-price="'.$option['price'].'" name="addon-' . sanitize_title( $addon['name'] ) . '-' . sanitize_title( $option['label'] ) .'" value="'.$current_value.'" /></label></p>';
-								
-								endforeach;
-							break;
-							case "custom_textarea" :
-								foreach ($addon['options'] as $option) :
-									
-									$current_value = (isset($_POST['addon-' . sanitize_title( $addon['name'] ) . '-' . sanitize_title( $option['label'] )])) ? $_POST['addon-' . sanitize_title( $addon['name'] ) . '-' . sanitize_title( $option['label'] )] : '';
-									
-									$price = ($option['price']>0) ? ' (' . woocommerce_price($option['price']) . ')' : '';
-									echo '<p class="form-row form-row-wide"><label>'. wptexturize($option['label']) . $price .': <textarea class="textarea input-text product-addons-field" data-price="'.$option['price'].'"  name="addon-' . sanitize_title( $addon['name'] ) . '-' . sanitize_title( $option['label'] ) .'" rows="4" cols="20">'. esc_textarea($current_value) .'</textarea></label></p>';
-								
-								endforeach;
-							break;
-							case "file_upload" :
-								foreach ($addon['options'] as $option) :
-								
-									$price = ($option['price']>0) ? ' (' . woocommerce_price($option['price']) . ')' : '';									
-									
-									echo '<p class="form-row form-row-wide"><label>'. wptexturize($option['label']) . $price .': <input type="file" class="input-text product-addons-field" data-price="'.$option['price'].'" name="addon-' . sanitize_title( $addon['name'] ) . '-' . sanitize_title( $option['label'] ) .'" /></label></p>';
-								
-								endforeach;
-							break;
-						endswitch;
-						?>
-						<div class="clear"></div>
-					</div>
-					<?php
+					?>          
+                                        <?php if($index < count($product_addons)- 1):?>
+                                            <div class="product-addon product-addon-<?php echo sanitize_title($addon['name']); ?>">
+                                                    <?php if ($addon['name']) : ?><h3><?php echo wptexturize($addon['name']); ?> <?php if ($addon['type']=='file_upload') echo sprintf(__('(max size %s)', 'wc_product_addons'), $this->max_upload_size()); ?></h3><?php endif; ?>
+                                                    <?php if ($addon['description']) : ?><p class="product-addon-description"><?php echo wptexturize($addon['description']); ?></p><?php endif; ?>
+                                                    <?php
+                                                    switch ($addon['type']) :
+                                                            case "checkbox" :
+                                                                    foreach ($addon['options'] as $option) :
+
+                                                                            $current_value = (
+                                                                                    isset($_POST['addon-'. sanitize_title( $addon['name'] )]) && 
+                                                                                    in_array(sanitize_title( $option['label'] ), $_POST['addon-'. sanitize_title( $addon['name'] )])
+                                                                                    ) ? 1 : 0;
+
+                                                                            $price = ($option['price']>0) ? ' (+' . woocommerce_price($option['price']) . ')' : '';
+                                                                            echo '<p class="form-row form-row-wide"><label><input class="product-addons-field" data-price="'.$option['price'].'" type="checkbox" name="addon-'. sanitize_title( $addon['name'] ) .'[]" value="'. sanitize_title( $option['label'] ) .'" '.checked($current_value, 1, false).' /> '. wptexturize($option['label']) . $price .'</label></p>';
+
+                                                                    endforeach;
+                                                            break;
+                                                            case "select" :
+
+                                                                    $current_value = (isset($_POST['addon-'. sanitize_title( $addon['name'] )])) ? $_POST['addon-'. sanitize_title( $addon['name'] )] : '';
+
+                                                                    echo '<p class="form-row form-row-wide"><select class="product-addons-field" name="addon-'. sanitize_title( $addon['name'] ) .'">';
+                                                                    if(!$addon['required']){
+                                                                        echo '<option value="">'. __('None', 'wc_product_addons') .'</option>';
+                                                                    }
+                                                                    $loop = 0;
+                                                                    foreach ($addon['options'] as $option) : $loop++;
+                                                                            $price = ($option['price']>0) ? ' (+' . woocommerce_price($option['price']) . ')' : '';
+                                                                            echo '<option data-price="'.$option['price'].'" value="'. sanitize_title( $option['label'] ) .'-'. $loop .'" '.selected($current_value, sanitize_title( $option['label'] ), false).'>'. wptexturize($option['label']) . $price .'</option>';
+                                                                    endforeach;
+                                                                    echo '</select></p>';
+
+                                                            break;
+                                                            case "custom" :
+                                                                    foreach ($addon['options'] as $option) :
+
+                                                                            $current_value = (isset($_POST['addon-' . sanitize_title( $addon['name'] ) . '-' . sanitize_title( $option['label'] )])) ? $_POST['addon-' . sanitize_title( $addon['name'] ) . '-' . sanitize_title( $option['label'] )] : '';
+
+                                                                            $price = ($option['price']>0) ? ' (+' . woocommerce_price($option['price']) . ')' : '';
+                                                                            echo '<p class="form-row form-row-wide"><label>'. wptexturize($option['label']) . $price .': <input type="text" class="input-text product-addons-field" data-price="'.$option['price'].'" name="addon-' . sanitize_title( $addon['name'] ) . '-' . sanitize_title( $option['label'] ) .'" value="'.$current_value.'" /></label></p>';
+
+                                                                    endforeach;
+                                                            break;
+                                                            case "custom_textarea" :
+                                                                    foreach ($addon['options'] as $option) :
+
+                                                                            $current_value = (isset($_POST['addon-' . sanitize_title( $addon['name'] ) . '-' . sanitize_title( $option['label'] )])) ? $_POST['addon-' . sanitize_title( $addon['name'] ) . '-' . sanitize_title( $option['label'] )] : '';
+
+                                                                            $price = ($option['price']>0) ? ' (+' . woocommerce_price($option['price']) . ')' : '';
+                                                                            echo '<p class="form-row form-row-wide"><label>'. wptexturize($option['label']) . $price .': <textarea class="textarea input-text product-addons-field" data-price="'.$option['price'].'"  name="addon-' . sanitize_title( $addon['name'] ) . '-' . sanitize_title( $option['label'] ) .'" rows="4" cols="20">'. esc_textarea($current_value) .'</textarea></label></p>';
+
+                                                                    endforeach;
+                                                            break;
+                                                            case "file_upload" :
+                                                                    foreach ($addon['options'] as $option) :
+
+                                                                            $price = ($option['price']>0) ? ' (+' . woocommerce_price($option['price']) . ')' : '';									
+
+                                                                            echo '<p class="form-row form-row-wide"><label>'. wptexturize($option['label']) . $price .': <input type="file" class="input-text product-addons-field" data-price="'.$option['price'].'" name="addon-' . sanitize_title( $addon['name'] ) . '-' . sanitize_title( $option['label'] ) .'" /></label></p>';
+
+                                                                    endforeach;
+                                                            break;
+                                                    endswitch;
+                                                    ?>
+                                                    <div class="clear"></div>
+                                            </div>
+                                        <?php endif;?>    
+                                
+                                        <?php if($index % 4 == 3):?>
+                                            <div class="clear"></div>
+                                            <div class="separator" style="margin-top:5px;margin-bottom: 5px;"></div>
+                                        <?php endif;?>
+                                            
+					<?php                                        
+                                        $index++;                                        
 				endforeach;
 
 			}
