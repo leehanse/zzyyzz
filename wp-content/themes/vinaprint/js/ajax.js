@@ -5,8 +5,11 @@ jQuery(document).ready(function(){
             calculateTablePrice();
         });
     }
+    jQuery('.qty').change(function(){
+        calculateTablePrice(jQuery(this).val());
+    });
 });
-function calculateTablePrice(){
+function calculateTablePrice(qty){
     var _data = jQuery('.cart').serializeArray();
     var data  = [];
     for(i=0; i<_data.length; i++){
@@ -22,6 +25,12 @@ function calculateTablePrice(){
        name:  'product_id',
        value: jQuery("#product_id_hidden").val()
     });
+    if(qty !== undefined){
+        data.push({
+            name: 'qty',
+            value: qty,        
+        });
+    }
     jQuery.ajax({
         url : nemprintAjax.ajaxurl,
         data: data,

@@ -523,9 +523,8 @@ if (is_woocommerce_active()) {
                                                     ?>
                                                     <div class="clear"></div>
                                             </div>
-                                        <?php endif;?>    
-                                
-                                        <?php if($index % 4 == 3):?>
+                                        <?php endif;?>                                        
+                                        <?php if(($index % 4 == 3 && $index !=  count($product_addons)-2) || $index ==  count($product_addons)-1):?>
                                             <div class="clear"></div>
                                             <div class="separator" style="margin-top:5px;margin-bottom: 5px;"></div>
                                         <?php endif;?>

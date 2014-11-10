@@ -150,7 +150,12 @@ if ( ! class_exists( 'NemprintAjax' ) ) {
 
                 endforeach;
                 
-                $arr_amount = array(1,2,3,4,5);
+                $qty        = isset($_POST['qty']) ? $_POST['qty'] : 1;
+                $arr_amount = array();
+                for($j=0;$j<5;$j++){
+                    $arr_amount[] = $qty + $j;
+                }
+                //$arr_amount = array(1,2,3,4,5);
                 $html = "<table>";
                 $html .= "<thead>";
                 $html .= "<tr>";
