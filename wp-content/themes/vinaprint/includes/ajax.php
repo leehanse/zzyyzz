@@ -196,49 +196,21 @@ if ( ! class_exists( 'NemprintAjax' ) ) {
                 if($end_items){
                     $options   = $end_items['options'];
                     if(count($options)){
-                        foreach($options as $option){
+                        foreach($options as $option_index => $option){
                             $html .= '<tr>';
                             $html .= '<td>'.$option['label'].' ';
                             $option_price = ($option['price']>0) ? ' (+' . woocommerce_price($option['price']) . ')' : '';
                             $html .= $option_price;
                             $html .= '</td>';
                             foreach($arr_amount as $amount){
-
-                                $h_discount_type    = 'percent';
-                                $h_discount_value   = 0;
-                                $h_quantity_to    = 0;
-                                $h_quantity_from  = 0;
-
-                                if(count($discount_by_quantity_list)){
-                                    foreach($discount_by_quantity_list as $discount_by_quantity){
-                                        $quantity_from_to = $discount_by_quantity['quantity_from_to'];
-
-                                        $quantity_from_to_arr = explode('-', $quantity_from_to);
-
-                                        if(count($quantity_from_to_arr) == 2){
-                                            $quantity_from    = $quantity_from_to_arr[0];
-                                            if(strlen($quantity_from) == 0){
-                                                $quantity_from = 0;
-                                            }
-
-                                            $quantity_to      = $quantity_from_to_arr[1];
-                                            if(strlen($quantity_to) == 0){
-                                                $quantity_to = 999999999;
-                                            }
-                                        }elseif(count($quantity_from_to_arr) == 1){
-                                            $quantity_from = $quantity_from_to_arr[0];
-                                            $quantity_to = 999999999;
-                                        }   
-
-                                        if($amount >= $quantity_from && $amount <= $quantity_to){                                            
-                                            $h_quantity_from  = $quantity_from;
-                                            $h_quantity_to    = $quantity_to;
-                                            $h_discount_type    = $discount_by_quantity['discount_type'];
-                                            $h_discount_value   = $discount_by_quantity['discount_value'];
-                                            break;
-                                        }
-                                    }
-                                }
+                                $discount_by_qty    = vinaprint_get_discount_price_by_qty($product_id, $amount, $discount_by_quantity_list);
+                                
+                                $h_discount_type    = $discount_by_qty['discount_type'];
+                                $h_discount_value   = $discount_by_qty['discount_value'];
+                                
+//                                $h_quantity_to      = $discount_by_qty['quantity_to'];
+//                                $h_quantity_from    = $discount_by_qty['quantity_from'];
+                                
                                 $single_price = $wc_product->get_price();
                                 $price = $amount * ($single_price + $total_adjust_price + (float)esc_attr( $option['price'] ));
                                 
@@ -258,7 +230,10 @@ if ( ! class_exists( 'NemprintAjax' ) ) {
                                 }
 
                                 $format_price = woocommerce_price($price);
-                                $html.="<td><b>{$format_price}</b></td>";
+                                $html.= "<td class='table-cell-price'>";
+                                $html.= '<input type="checkbox" class="slt-table-price" data-price="'.sanitize_title( $option['label'] ).'-'.($option_index + 1).'" data-qty="'.$amount.'"/>';
+                                $html.= "<b>{$format_price}</b>";
+                                $html.= "</td>";
                             }
                             $html .= '</tr>';
                         }

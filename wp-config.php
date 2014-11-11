@@ -16,13 +16,13 @@
 
 // ** MySQL settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
-define('DB_NAME', 'vinaprint_10_11_2014');
+define('DB_NAME', 'vinaprint_11_11_2014');
 
 /** MySQL database username */
 define('DB_USER', 'root');
 
 /** MySQL database password */
-define('DB_PASSWORD', 'f0r1xus@');
+define('DB_PASSWORD', 'admin123');
 
 /** MySQL hostname */
 define('DB_HOST', 'localhost');
@@ -59,7 +59,7 @@ define('NONCE_SALT',       'mBD5,3HF9.k~bYm2+0~g/<sb}<lrZwqvuXAj_^Bd{/i~KG<`+[O?
  * You can have multiple installations in one database if you give each a unique
  * prefix. Only numbers, letters, and underscores please!
  */
-$table_prefix  = 'wp_';
+$table_prefix  = 'vinaprint_';
 
 /**
  * For developers: WordPress debugging mode.

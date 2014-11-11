@@ -51,10 +51,14 @@
                 <div id="miniCart">
                         <div class="cartInfo">
                                 <div class="general">
-					 <?php global $woocommerce; ?>
-                                        <a id="viewCart" class="cartIcon" href="<?php echo $woocommerce->cart->get_checkout_url() ?>" title="<?php _e( 'View Cart' ) ?>">View Cart</a>
+					<?php 
+                                            global $woocommerce; 
+                                            $cart_url = $woocommerce->cart->get_cart_url();
+                                        ?>
+                                        <a id="viewCart" class="cartIcon" href="<?php echo $cart_url; ?>" title="<?php _e( 'View Cart' ) ?>">View Cart</a>
 					<!--  
-                                        <span class="divider">|</span>                                        
+                                        <span class="divider">|</span>       
+     
 					  <?php if ( sizeof( $woocommerce->cart->cart_contents) > 0 ): ?>
 					    <a href="<?php echo $woocommerce->cart->get_checkout_url() ?>" title="<?php _e( 'Checkout' ) ?>"><?php _e( 'Checkout' ) ?></a>
 					  <?php else: ?>                                        					  
@@ -80,7 +84,7 @@
             </div>
 -->
 
-            <a href="javascript:void(0);" id="subscribeLink"><img class="bannerTop" alt="Join Our Mailing List" src="<?php echo get_template_directory_uri();?>/img/hl/joinOurMailingList.gif"></a>
+            <!--<a href="javascript:void(0);" id="subscribeLink"><img class="bannerTop" alt="Join Our Mailing List" src="<?php echo get_template_directory_uri();?>/img/hl/joinOurMailingList.gif"></a>-->
             <div class="clr"></div>
             
             <?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_class' => 'nav-menu' ) ); ?>            

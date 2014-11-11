@@ -16,13 +16,13 @@
 
 // ** MySQL settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
-define('DB_NAME', 'vinaprint');
+define('DB_NAME', 'vinaprint_11_11_2014');
 
 /** MySQL database username */
 define('DB_USER', 'root');
 
 /** MySQL database password */
-define('DB_PASSWORD', 'f0r1xus@');
+define('DB_PASSWORD', 'admin123');
 
 /** MySQL hostname */
 define('DB_HOST', 'localhost');

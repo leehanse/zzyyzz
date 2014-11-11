@@ -455,8 +455,8 @@ if (is_woocommerce_active()) {
 					if (!isset($addon['name'])) continue;
 					
 					?>          
-                                        <?php if($index < count($product_addons)- 1):?>
-                                            <div class="product-addon product-addon-<?php echo sanitize_title($addon['name']); ?>">
+                                        <?php if($index < count($product_addons)):?>
+                                            <div class="product-addon product-addon-<?php echo sanitize_title($addon['name']); ?> <?php if($index == count($product_addons)-1) echo 'product-addons-field-last';?>">
                                                     <?php if ($addon['name']) : ?><h3><?php echo wptexturize($addon['name']); ?> <?php if ($addon['type']=='file_upload') echo sprintf(__('(max size %s)', 'wc_product_addons'), $this->max_upload_size()); ?></h3><?php endif; ?>
                                                     <?php if ($addon['description']) : ?><p class="product-addon-description"><?php echo wptexturize($addon['description']); ?></p><?php endif; ?>
                                                     <?php
@@ -522,13 +522,12 @@ if (is_woocommerce_active()) {
                                                     endswitch;
                                                     ?>
                                                     <div class="clear"></div>
-                                            </div>
-                                        <?php endif;?>                                        
+                                            </div>                                                                         
+                                        <?php endif;?>
                                         <?php if(($index % 4 == 3 && $index !=  count($product_addons)-2) || $index ==  count($product_addons)-1):?>
                                             <div class="clear"></div>
                                             <div class="separator" style="margin-top:5px;margin-bottom: 5px;"></div>
-                                        <?php endif;?>
-                                            
+                                        <?php endif;?>                                            
 					<?php                                        
                                         $index++;                                        
 				endforeach;

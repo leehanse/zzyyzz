@@ -59,6 +59,12 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
         <div class="vinaprint_table_price">
             
         </div>
+        <?php global $product;?>
+        <?php if ( $product->is_purchasable() && $product->is_in_stock() ) : ?>
+            <div class="add-to-cart-wrapper">
+                <button type="submit" class="custom-add-to-cart-button single_add_to_cart_button button alt"><?php echo $product->single_add_to_cart_text(); ?></button>
+            </div>
+        <?php endif;?>
 	<?php
 		/**
 		 * woocommerce_after_single_product_summary hook

@@ -32,10 +32,10 @@ if(!function_exists('vinaprint_add_user_custom_option_from_session_into_cart'))
         /*code to add custom data on Cart & checkout Page*/    
         if(count($values['vinaprint_order_item_upload_file_value']) > 0)
         {
-            $return_string = $product_name . "</a><dl class='variation'>";
-            $return_string .= "<table class='vinaprint_options_table' id='" . $values['product_id'] . "'>";
-            $return_string .= "<tr><td>" . $values['vinaprint_order_item_upload_file_value'] . "</td></tr>";
-            $return_string .= "</table></dl>"; 
+            $return_string  = $product_name;
+//            $return_string .= "<table class='vinaprint_options_table' id='" . $values['product_id'] . "'>";
+//            $return_string .= "<tr><td>" . $values['vinaprint_order_item_upload_file_value'] . "</td></tr>";
+//            $return_string .= "</table>"; 
             return $return_string;
         }
         else
@@ -76,18 +76,34 @@ if(!function_exists('vinaprint_remove_user_custom_data_options_from_cart'))
     }
 }
 
-add_action( 'woocommerce_before_calculate_totals', 'add_custom_price', 10, 2 );
+add_action( 'woocommerce_before_calculate_totals', 'vinaprint_add_custom_price', 10, 2 );
 
-function add_custom_price( $cart_object ) {
+function vinaprint_add_custom_price( $cart_object ) {
     global $woocommerce;
     foreach ( $cart_object->cart_contents as $key => $value ) {
         $product_id = $value['product_id'];
         $qty   = $value['quantity'];
         $price = $value['data']->price;
-        if($qty > 5){
-            $new_price = $price - 0.1 * $price;
-            $value['data']->price = $new_price;
-        }        
+        
+        $discount_by_qty    = vinaprint_get_discount_price_by_qty($product_id, $qty);
+        
+        $h_discount_type    = $discount_by_qty['discount_type'];
+        $h_discount_value   = $discount_by_qty['discount_value'];
+        
+        if($h_discount_value){
+            switch ($h_discount_type) {
+                case 'percent':
+                        $new_price = $price - ($price * ($h_discount_value / 100));
+                    break;
+                case 'cash':
+                        $new_price = $price - $h_discount_value;
+                    break;
+                default:
+                        $new_price = $price - ($price * ($h_discount_value / 100));
+                    break;
+            }
+        }
+        $value['data']->price = $new_price;
     }
 
     $woocommerce->cart->persistent_cart_update();
@@ -189,3 +205,52 @@ function vinaprint_add_product_data_panel(){
 
 /* Only use simple product */
 /*End only use simple product */
+
+function vinaprint_get_discount_price_by_qty($product_id, $amount, $discount_by_quantity_list = null){
+    
+    if(!$discount_by_quantity_list){
+        $discount_by_quantity_list = get_field('discount_by_quantity_list', $product_id);
+    }
+    
+    $h_discount_type    = 'percent';
+    $h_discount_value   = 0;
+    $h_quantity_to      = 0;
+    $h_quantity_from    = 0;
+
+    if(count($discount_by_quantity_list)){
+        foreach($discount_by_quantity_list as $discount_by_quantity){
+            $quantity_from_to = $discount_by_quantity['quantity_from_to'];
+
+            $quantity_from_to_arr = explode('-', $quantity_from_to);
+
+            if(count($quantity_from_to_arr) == 2){
+                $quantity_from    = $quantity_from_to_arr[0];
+                if(strlen($quantity_from) == 0){
+                    $quantity_from = 0;
+                }
+
+                $quantity_to      = $quantity_from_to_arr[1];
+                if(strlen($quantity_to) == 0){
+                    $quantity_to = 999999999;
+                }
+            }elseif(count($quantity_from_to_arr) == 1){
+                $quantity_from = $quantity_from_to_arr[0];
+                $quantity_to = 999999999;
+            }   
+
+            if($amount >= $quantity_from && $amount <= $quantity_to){                                            
+                $h_quantity_from  = $quantity_from;
+                $h_quantity_to    = $quantity_to;
+                $h_discount_type    = $discount_by_quantity['discount_type'];
+                $h_discount_value   = $discount_by_quantity['discount_value'];
+                break;
+            }
+        }
+    }
+    return array(
+        'quantity_from'  => $h_quantity_from,
+        'quantity_to'    => $h_quantity_to,
+        'discount_type'  => $h_discount_type,
+        'discount_value' => $h_discount_value
+    );
+}

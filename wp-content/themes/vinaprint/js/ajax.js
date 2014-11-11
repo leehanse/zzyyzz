@@ -10,6 +10,25 @@ jQuery(document).ready(function(){
     jQuery('.qty').change(function(){
         calculateTablePrice(jQuery(this).val());
     });
+    jQuery(document).on('click','.table-cell-price', function(){
+        var slt_price = jQuery(this).find('.slt-table-price');
+        jQuery('.slt-table-price').prop("checked",false);
+        jQuery('.table-cell-price-select').removeClass('table-cell-price-select');
+        
+        slt_price.parent('td').addClass('table-cell-price-select');
+        slt_price.prop("checked",true);        
+        
+        jQuery('.product-addons-field-last .product-addons-field').val(slt_price.data('price'));
+        jQuery('#target_quantity').val(slt_price.data('qty'));
+        
+    }).on('click','.custom-add-to-cart-button', function(){
+        if(jQuery('.slt-table-price:checked').size() > 0){
+            jQuery('form.cart').submit();
+        }else{
+            alert('Please choose price to continue...');
+        }
+    });
+    
 });
 function calculateTablePrice(qty){
     var _data = jQuery('.cart').serializeArray();
@@ -19,6 +38,9 @@ function calculateTablePrice(qty){
             data.push(_data[i]);
         }
     }
+    
+    data.pop();
+    
     data.push({
         name: 'action',
         value: 'calculateTablePrice',        

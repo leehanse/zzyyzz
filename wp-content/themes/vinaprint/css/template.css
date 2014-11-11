@@ -1309,7 +1309,13 @@ form#search #searchBtn:hover {
     background-position: 0 -30px;
 }
 /*WOOCOMMERCE custom css */
-
+.item-page{
+    background: #FDFDFD;
+    padding: 0px 10px;
+}
+.item-page .entry-header .entry-title{
+    padding-top: 10px;
+}
 .item-price{
 	display:none;
 }
@@ -1340,9 +1346,12 @@ form#search #searchBtn:hover {
     padding:0px;
     line-height: 23px;
 }
+.product-addons-field-last{
+    display: none !important;
+}
 .vinaprint_table_price {
     clear:left;
-    margin-bottom: 20px;
+    margin-bottom: 5px;
     padding:0px;
     width:100%;
     border:1px solid #CACACA;
@@ -1440,7 +1449,21 @@ form#search #searchBtn:hover {
 .vinaprint_table_price tr:first-child td:last-child{
     border-width:0px 0px 1px 1px;
 }
-
+.table-cell-price{
+    cursor: pointer;
+}
+.table-cell-price:hover{
+    background: #FFF9C0;
+}
+.table-cell-price-select{
+    background: #88AF77;
+}
+.add-to-cart-wrapper{
+    text-align: right;
+    display: inline-block;
+    width:100%;
+    margin-bottom: 20px;
+}
 /* Loading CSS */
 .loader {
   margin: 6em auto;
@@ -1488,4 +1511,148 @@ form#search #searchBtn:hover {
 }
 .woocommerce .products ul li:first-child, .woocommerce ul.products li:first-child, .woocommerce-page .products ul li:first-child, .woocommerce-page ul.products li:first-child{
 	padding-left: 0px;
+}
+/* CSS product list */
+.products{
+	/*padding:0 10px;*/
+}
+.products li{
+	width: 143.57px;
+	height:145px;
+	float:left;
+	padding:5px;
+	margin:5px;
+	border:7px solid #81C1E0;
+	position:relative;
+	background:#81C1E0;
+}
+.products li:first-child{
+  margin-left:0px;
+}
+.products li:nth-child(7n+1){
+  margin-left:0px;
+}
+
+.products li img{
+	max-width:120px;
+	position:absolute;
+	top:0;
+}
+.products li span{
+	position:absolute;
+	bottom:0;
+	background:#2d2d2d;
+	color:#ffffff;
+	width:120px;
+	padding:2px 4px 2px 18px;
+	-webkit-transition: all 0.1s ease-in-out;
+    -moz-transition: all 0.1s ease-in-out;
+    -o-transition: all 0.1s ease-in-out;
+    transition: all 0.1s ease-in-out;
+}
+.products li span:before{
+	border: none!important;
+	width: 10px!important;
+	height: 10px!important;
+	margin-top: 5px!important;
+	border-color: transparent transparent transparent transparent!important;
+	margin-right: 0px!important;
+	background-image: url(../images/template/arrow-left.png);
+	content: "";
+	display: block;
+	position: absolute;
+	margin-left: -14px;
+}
+.products li:hover span{
+	background:#3c58a7;
+}
+.woocommerce-result-count{
+    text-align: right;
+}
+.woocommerce-ordering{
+    text-align: right;
+}
+
+.product-addons-field-last{
+    display:none;
+}
+.shop_table thead tr th{
+    background: #3170A7;
+    color: #ffffff;
+    width:100% !important;
+}
+.shop_table tbody tr .product-remove, .shop_table thead tr .product-remove{
+    width: 100px !important;
+}
+.shop_table tbody tr .product-thumbnail, .shop_table thead tr .product-thumbnail{
+    width: 100px !important;
+}
+.shop_table tbody tr .product-price, .shop_table thead tr .product-price{
+    width: 120px !important;
+}
+.shop_table thead tr .product-price .variation{
+    margin: 0px !important;
+}
+.shop_table tbody tr .actions .cart-action-buttons{
+    margin-top: 5px;
+    text-align: right;
+}
+.cart-collaterals .cart_totals table{
+    border: 1px solid #E3E3E3;
+    border-radius: 5px;
+}
+.cart-collaterals .cart_totals h2{
+    background: #3170A7;
+    color: #ffffff;
+    padding-left: 5px;
+    margin-bottom: 10px;
+}
+.woocommerce .woocommerce-message:before, .woocommerce .woocommerce-error:before, .woocommerce .woocommerce-info:before, .woocommerce-page .woocommerce-message:before, .woocommerce-page .woocommerce-error:before, .woocommerce-page .woocommerce-info:before{
+        height: 3em !important;
+}
+
+/* billing and shipping page */
+#customer_details{
+    width: 100%;
+    display: inline-block;
+    border: 1px solid #E3E3E3;
+    border-radius: 5px;
+    padding: 10px;
+}
+#customer_details .col-1{
+    width: 48%;
+    position: relative;  
+    float:left;
+}
+#customer_details .col-1 .woocommerce-billing-fields h3{
+    margin-top:0px;
+    background: #3271A8;
+    color: #ffffff;
+    border-radius: 3px;
+    border-radius: 3px;
+    width: 100%;
+    padding-left: 5px;    
+}
+#customer_details .col-2{
+    width: 48%;
+    position: relative;
+    float:right;
+ 
+}
+#ship-to-different-address{
+    margin-top:0px;
+    background: #3271A8;
+    color: #ffffff;
+    border-radius: 3px;
+    width: 100%;
+    padding-left: 5px;
+}
+
+#payment{
+    border: 1px solid #E3E3E3;
+}
+/* checkout page */
+.woocommerce .order_details{
+    background: #3271A8;
+    color: #ffffff;
 }
