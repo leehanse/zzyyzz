@@ -493,7 +493,7 @@ add_action( 'customize_preview_init', 'vinaprint_customize_preview_js' );
 
 // Register post types
 $post_types = glob(__DIR__."/includes/post-types/*.php");
-if(count($post_types)){    
+if($post_types && count($post_types)){    
     foreach ($post_types as $filename) {
         include $filename;
     }
@@ -501,7 +501,7 @@ if(count($post_types)){
 
 // Register acf metabox file
 $acf_files = glob(__DIR__."/includes/acf/*.php");
-if(count($acf_files)){    
+if($acf_files && count($acf_files)){    
     foreach ($acf_files as $filename) {
         include $filename;
     }

@@ -102,6 +102,8 @@ function vinaprint_add_custom_price( $cart_object ) {
                         $new_price = $price - ($price * ($h_discount_value / 100));
                     break;
             }
+        }else{
+            $new_price = $price;
         }
         $value['data']->price = $new_price;
     }
@@ -145,9 +147,7 @@ function vinaprint_admin_order_item_values( $_product, $item, $item_id ){ ?>
             <td>No upload file</td>
         <?php endif;?>    
     <?php endif;?>
-<?php } ?>
-        
-<?php
+<?php }
 add_action( 'woocommerce_admin_order_item_headers','vinaprint_add_order_item_header');
 function vinaprint_add_order_item_header() { ?>
     <th class="vinaprint-upload-file-header">File Uploaded</th>
@@ -254,3 +254,4 @@ function vinaprint_get_discount_price_by_qty($product_id, $amount, $discount_by_
         'discount_value' => $h_discount_value
     );
 }
+?>
