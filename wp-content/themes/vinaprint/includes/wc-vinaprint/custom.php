@@ -88,7 +88,7 @@ function vinaprint_add_custom_price( $cart_object ) {
         $discount_by_qty    = vinaprint_get_discount_price_by_qty($product_id, $qty);
         
         $h_discount_type    = $discount_by_qty['discount_type'];
-        $h_discount_value   = $discount_by_qty['discount_value'];
+        $h_discount_value   = (float)$discount_by_qty['discount_value'];
         
         if($h_discount_value){
             switch ($h_discount_type) {
