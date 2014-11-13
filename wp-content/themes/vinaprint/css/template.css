@@ -1346,8 +1346,29 @@ form#search #searchBtn:hover {
     padding:0px;
     line-height: 23px;
 }
+.product-addons-field{
+    width: 90%;
+}
 .product-addons-field-last{
     display: none !important;
+}
+.product-addons-field-width{
+    width: 40%;
+    padding:0px;
+    line-height: 23px;
+}
+.product-addons-field-height{
+    width: 40%;
+    padding:0px;
+    line-height: 23px;    
+    width: 40%;
+}
+.cart .product-addon .product-addons-field-addition-info{
+    font-style: italic;
+    font-size: 80%;
+}
+.cart .product-addon .product-addons-field-addition-info p{
+    margin-bottom: 0px;
 }
 .vinaprint_table_price {
     clear:left;

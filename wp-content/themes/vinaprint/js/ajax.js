@@ -1,6 +1,17 @@
 jQuery(document).ready(function(){
     calculateTablePrice();
     if(jQuery('.product-addons-field').size() >0){
+        jQuery('.product-addons-field-height').change(function(){
+            var qty = jQuery('.qty').val() * 1;
+            if(qty == 0) qty = 1;
+            calculateTablePrice(qty);
+        });
+
+        jQuery('.product-addons-field-width').change(function(){
+            var qty = jQuery('.qty').val() * 1;
+            if(qty == 0) qty = 1;
+            calculateTablePrice(qty);
+        });
         jQuery('.product-addons-field').change(function(){
             var qty = jQuery('.qty').val() * 1;
             if(qty == 0) qty = 1;

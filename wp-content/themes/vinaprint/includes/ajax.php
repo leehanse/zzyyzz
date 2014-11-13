@@ -64,7 +64,8 @@ if ( ! class_exists( 'NemprintAjax' ) ) {
         function calculateTablePrice($product_id){
             $wc_product = new WC_Product($product_id);
             
-            $total_adjust_price    = 0;
+            $total_adjust_price_x_qty_x_qty    = 0;
+            $total_adjust_price_add            = 0;
             global $woocommerce;
 				
             $product_addons = get_post_meta( $product_id, '_product_addons', true );
@@ -91,10 +92,17 @@ if ( ! class_exists( 'NemprintAjax' ) ) {
                                                 $cart_item_meta[] = array(
                                                         'name' 		=> esc_attr( $addon['name'] ),
                                                         'value'		=> esc_attr( $option['label'] ),
-                                                        'price' 	=> esc_attr( $option['price'] )
+                                                        'price' 	=> esc_attr( $option['price'] ),
+                                                        'price_type' 	=> esc_attr( $addon['price_type'] ),
                                                 );
-                                                $total_adjust_price += (float)esc_attr( $option['price'] );
-
+                                                switch(esc_attr( $addon['price_type'])){
+                                                    case 'x':
+                                                            $total_adjust_price_x_qty += (float)esc_attr( $option['price'] );
+                                                        break;
+                                                    case '+':
+                                                            $total_adjust_price_add += (float)esc_attr( $option['price'] );
+                                                        break;
+                                                }
                                         endif;
 
                                 endforeach;
@@ -122,10 +130,17 @@ if ( ! class_exists( 'NemprintAjax' ) ) {
                                 $cart_item_meta[] = array(
                                         'name' 		=> esc_attr( $addon['name'] ),
                                         'value'		=> esc_attr( $chosen_option['label'] ),
-                                        'price' 	=> esc_attr( $chosen_option['price'] )
+                                        'price' 	=> esc_attr( $chosen_option['price'] ),
+                                        'price_type'    => esc_attr( $addon['price_type'] )
                                 );	
-                                $total_adjust_price += (float)esc_attr( $chosen_option['price'] );
-
+                                switch(esc_attr( $addon['price_type'])){
+                                            case 'x':
+                                                    $total_adjust_price_x_qty += (float)esc_attr( $chosen_option['price'] );
+                                                break;
+                                            case '+':
+                                                    $total_adjust_price_add += (float)esc_attr( $chosen_option['price'] );
+                                                break;
+                                }
                             break;
                             case "custom" :
                             case "custom_textarea" :
@@ -139,18 +154,106 @@ if ( ! class_exists( 'NemprintAjax' ) ) {
                                         $cart_item_meta[] = array(
                                                 'name' 		=> esc_attr( $option['label'] ),
                                                 'value'		=> esc_attr( stripslashes( trim( $posted ) ) ),
-                                                'price' 	=> esc_attr( $option['price'] )
-                                        );			
-                                        $total_adjust_price += (float)esc_attr( $option['price'] );
-
+                                                'price' 	=> esc_attr( $option['price'] ),
+                                                'price_type' 	=> esc_attr( $addon['price_type'] )
+                                        );
+                                        switch(esc_attr( $addon['price_type'])){
+                                            case 'x':
+                                                    $total_adjust_price_x_qty += (float)esc_attr( $option['price'] );
+                                                break;
+                                            case '+':
+                                                    $total_adjust_price_add += (float)esc_attr( $option['price'] );
+                                                break;
+                                        }
                                 endforeach;
 
-                            break;						
+                            break;
+                            case 'width_height':
+                                $wh_input_unit = $addon['wh_input_unit'];
+                                $wh_option_price_unit = $addon['wh_option_price_unit'];
+                                $options = $addon['options'];
+                                $posted = (isset( $_POST['addon-' . sanitize_title( $addon['name'] )] )) ? $_POST['addon-' . sanitize_title( $addon['name'] )] : '';
+                                
+                                if (!$posted) continue;
+                                
+                                $input_with_height_arr = explode('x',$posted);
+                                $input_width  = $input_with_height_arr[0];
+                                $input_height = $input_with_height_arr[1];
+
+                                switch($wh_input_unit){
+                                    case 'm':
+                                            $square_input = ($input_width*100) * ($input_height * 100);
+                                        break;                                        
+                                    case 'cm':
+                                            $square_input = $input_width * $input_height;
+                                        break;
+                                }
+                                $price_range_by_with_height_arr = array();
+                                $price_range_by_with_height     = 0;
+                                
+                                if(count($options)){
+                                    foreach($options as $option){
+                                        if($wh_option_price_unit == 'm'){
+                                            $square = (float)$option['label'] * 10000;
+                                            $price_range_by_with_height_arr[$square] = (float)$option['price'];
+                                        }else{
+                                            $square = (float)$option['label'];
+                                            $price_range_by_with_height_arr[$square] = (float)$option['price'];
+                                        }
+                                    }
+                                    ksort($price_range_by_with_height_arr);
+                                    
+                                    $price_range_by_with_height_arr_keys = array_keys($price_range_by_with_height_arr);
+                                    
+                                    $h_square = 0;
+                                    $h_v      = 0;
+                                    $h_v1     = 0;
+                                    for($i=0; $i< count($price_range_by_with_height_arr_keys) -1; $i++){
+                                        $v  = $price_range_by_with_height_arr_keys[$i];
+                                        $v1 = $price_range_by_with_height_arr_keys[$i+1];
+                                        if($v <= $square_input && $square_input <= $v1){
+                                            $v_step       = $v1 - $v;
+                                            $v_step_div_2 = (float)$v_step / 2;
+                                            if($square_input <= $v + $v_step_div_2){
+                                                $h_square = $v;
+                                                $h_v      = $v;
+                                                $h_v1     = $v1;       
+                                            }else{
+                                                $h_square = $v1;
+                                                $h_v      = $v;
+                                                $h_v1     = $v1;
+                                            }
+                                        }
+                                    }if($h_v == 0 && $h_v1 == 0){
+                                        $h_square = reset($price_range_by_with_height_arr_keys);
+                                    }
+                                }
+                                
+                                $price  = $price_range_by_with_height_arr[$h_square];
+                                
+                                $fprice = (($input_width * $input_height) /10000) * $price;
+                                
+                                switch(esc_attr( $addon['price_type'])){
+                                    case 'x':
+                                            $total_adjust_price_x_qty += (float)esc_attr( $fprice );
+                                        break;
+                                    case '+':
+                                            $total_adjust_price_add += (float)esc_attr( $fprice );
+                                        break;
+                                }
+                                $cart_item_meta[] = array(
+                                    'name' 		=> esc_attr( $addon['name'] ),
+                                    'value'		=> esc_attr( stripslashes( trim( $posted ) ) ),
+                                    'price'             => esc_attr( $price ),
+                                    'price_type' 	=> esc_attr( $addon['price_type'] ),
+                                    'addition_info'     => '<p><b>Price: '.woocommerce_price($price).'/'.$wh_option_price_unit.'&sup2;</b><br/><b>+'.woocommerce_price($fprice).'</b></p>'
+                                );
+                            break;
                     endswitch;
 
                 endforeach;
                 
-                $discount_by_quantity_list = get_field('discount_by_quantity_list', $product_id);
+                //$discount_by_quantity_list = get_field('discount_by_quantity_list', $product_id);
 
                 $qty        = isset($_POST['qty']) ? $_POST['qty'] : 1;
                 
@@ -194,7 +297,9 @@ if ( ! class_exists( 'NemprintAjax' ) ) {
                 $html .= "</tr>";                
                 $end_items  = end($product_addons);
                 if($end_items){
-                    $options   = $end_items['options'];
+                    $options         = $end_items['options'];
+                    $last_price_type = $end_items['price_type'];
+                    
                     if(count($options)){
                         foreach($options as $option_index => $option){
                             $html .= '<tr>';
@@ -203,32 +308,22 @@ if ( ! class_exists( 'NemprintAjax' ) ) {
                             $html .= $option_price;
                             $html .= '</td>';
                             foreach($arr_amount as $amount){
-                                $discount_by_qty    = vinaprint_get_discount_price_by_qty($product_id, $amount, $discount_by_quantity_list);
-                                
-                                $h_discount_type    = $discount_by_qty['discount_type'];
-                                $h_discount_value   = $discount_by_qty['discount_value'];
-                                
-//                                $h_quantity_to      = $discount_by_qty['quantity_to'];
-//                                $h_quantity_from    = $discount_by_qty['quantity_from'];
-                                
                                 $single_price = $wc_product->get_price();
-                                $price = $amount * ($single_price + $total_adjust_price + (float)esc_attr( $option['price'] ));
                                 
-                                if($h_discount_value){
-
-                                    switch ($h_discount_type) {
-                                        case 'percent':
-                                                $price = $price - ($price * ($h_discount_value / 100));
-                                            break;
-                                        case 'cash':
-                                                $price = $price - $h_discount_value;
-                                            break;
-                                        default:
-                                                $price = $price - ($price * ($h_discount_value / 100));
-                                            break;
-                                    }
-                                }
-
+                                $temp_total_adjust_price_x_qty = $total_adjust_price_x_qty;
+                                $temp_total_adjust_price_add   = $total_adjust_price_add;
+                                
+                                switch($last_price_type){
+                                    case '+':
+                                            $temp_total_adjust_price_add += (float)esc_attr($option['price']);
+                                        break;
+                                    case 'x':
+                                            $temp_total_adjust_price_x_qty += (float)esc_attr($option['price']);
+                                        break;
+                                }                                
+                                
+                                $price = $amount * ($single_price + $temp_total_adjust_price_x_qty) + $temp_total_adjust_price_add;
+                                
                                 $format_price = woocommerce_price($price);
                                 $html.= "<td class='table-cell-price'>";
                                 $html.= '<input type="checkbox" class="slt-table-price" data-price="'.sanitize_title( $option['label'] ).'-'.($option_index + 1).'" data-qty="'.$amount.'"/>';
@@ -240,6 +335,17 @@ if ( ! class_exists( 'NemprintAjax' ) ) {
                     }
                 }
                 $html.= "</table>";
+                // add new addition info to origin product addon field
+                if(count($cart_item_meta)):
+                    foreach($cart_item_meta as $item_meta){
+                        if(isset($item_meta['addition_info']) && $item_meta['addition_info']){
+                            $meta_addition_tag = "addon-".sanitize_title($item_meta['name'])."-addition-info";
+                            $html.= '<script type="text/javascript">
+                                        jQuery(".'.$meta_addition_tag.'").html("'.addslashes($item_meta['addition_info']).'");
+                                     </script>';
+                        }
+                    }
+                endif;
             else:
                 $html = "";
             endif;
