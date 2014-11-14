@@ -286,16 +286,17 @@ if ( ! class_exists( 'NemprintAjax' ) ) {
                 for($j=0;$j<4;$j++){
                     $arr_amount[] = $next_qty + $step * $j; 
                 }
+                $end_items  = end($product_addons);
                 //$arr_amount = array(1,2,3,4,5);
                 $html = "<table>";
                 $html .= "<thead>";
                 $html .= "<tr>";
-                $html .= '<th>Paper Type</th>';
+                $html .= '<th>'. $end_items['name'].'</th>';
                 foreach($arr_amount as $amount){
                     $html .= "<th>$amount</th>";
                 }
                 $html .= "</tr>";                
-                $end_items  = end($product_addons);
+                
                 if($end_items){
                     $options         = $end_items['options'];
                     $last_price_type = $end_items['price_type'];

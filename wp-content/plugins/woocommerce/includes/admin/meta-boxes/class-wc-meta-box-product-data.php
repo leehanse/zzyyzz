@@ -888,7 +888,7 @@ class WC_Meta_Box_Product_Data {
 						'numberposts' => -1,
 						'orderby'     => 'menu_order',
 						'order'       => 'asc',
-						'post_parent' => $post->ID
+						'post_parent' => $post->ID                                                
 					);
 
 					$variations = get_posts( $args );

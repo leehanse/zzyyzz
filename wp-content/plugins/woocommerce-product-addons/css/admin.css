@@ -152,3 +152,8 @@
 	font-family: sans-serif;
 	margin: 0;
 }
+.wc-metaboxes-wrapper .wc-metabox h3 select{
+    width: 20% !important;    
+    font-size: 12px;
+    font-weight: normal;
+}

@@ -712,8 +712,7 @@ class WC_AJAX {
 			$options = array_map( 'sanitize_title', array_map( 'trim', $options ) );
 
 			$variations[ $attribute_field_name ] = $options;
-		}
-
+		}                
 		// Quit out if none were found
 		if ( sizeof( $variations ) == 0 ) {
 			die();

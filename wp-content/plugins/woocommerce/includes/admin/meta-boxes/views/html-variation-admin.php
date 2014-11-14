@@ -22,11 +22,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 				$variation_selected_value = isset( $variation_data[ 'attribute_' . sanitize_title( $attribute['name'] ) ][0] ) ? $variation_data[ 'attribute_' . sanitize_title( $attribute['name'] ) ][0] : '';
 
 				// Name will be something like attribute_pa_color
+                                
 				echo '<select name="attribute_' . sanitize_title( $attribute['name'] ) . '[' . $loop . ']"><option value="">' . __( 'Any', 'woocommerce' ) . ' ' . esc_html( wc_attribute_label( $attribute['name'] ) ) . '&hellip;</option>';
 
 				// Get terms for attribute taxonomy or value if its a custom attribute
-				if ( $attribute['is_taxonomy'] ) {
-
+				if ( $attribute['is_taxonomy'] ) {                                        
 					$post_terms = wp_get_post_terms( $parent_data['id'], $attribute['name'] );
 
 					foreach ( $post_terms as $term ) {
