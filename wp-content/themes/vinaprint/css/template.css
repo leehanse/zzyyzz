@@ -1325,11 +1325,6 @@ form#search #searchBtn:hover {
 	float:left;
 	width:100%;
 }
-.cart .product-addon{
-	width: 25%;
-	display: inline-block;;
-	float:left;
-}
 .cart .product-addon h3{
     font-size: 15px;
     margin-bottom: 5px;
@@ -1347,7 +1342,7 @@ form#search #searchBtn:hover {
     line-height: 23px;
 }
 .product-addons-field{
-    width: 90%;
+    /*width: 90%;*/
 }
 .product-addons-field-last{
     display: none !important;
@@ -1676,4 +1671,35 @@ form#search #searchBtn:hover {
 .woocommerce .order_details{
     background: #3271A8;
     color: #ffffff;
+}
+
+/******************************************/
+form.cart .cart-list-field li.last_attribute_field{
+	display: none;
+}
+form.cart .cart-list-field{
+	list-style: none;
+}
+form.cart .cart-list-field li{
+	width: 33%;
+	display: inline-block;
+	position: relative;
+	padding:0px;
+	margin-bottom: 10px;
+}
+form.cart .cart-list-field li .field-title{
+	width: 100%;
+	display: inline-block;
+	font-weight: bold;
+}
+form.cart .cart-list-field li .field-title-qty{
+	float:left;
+	font-weight: bold;
+	margin-right: 5px;
+}
+form.cart .cart-list-field li select,form.cart .cart-list-field li input[type="text"], form.cart .cart-list-field li textarea{
+	width: 90%;	
+}
+form.cart .cart-list-field li select,form.cart .cart-list-field li input[type="text"]{
+	line-height: 26px;
 }

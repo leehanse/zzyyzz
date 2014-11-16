@@ -9,6 +9,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 ?>
+<label class="field-title-qty">Qty</label>
 <?php if(is_product()): ?>
     <input type="hidden" name="<?php echo esc_attr( $input_name ); ?>" value="<?php echo esc_attr( $input_value ); ?>" id="target_quantity"/>
     <div class="quantity">    

@@ -206,52 +206,81 @@ function vinaprint_add_product_data_panel(){
 /* Only use simple product */
 /*End only use simple product */
 
-function vinaprint_get_discount_price_by_qty($product_id, $amount, $discount_by_quantity_list = null){
-    
-    if(!$discount_by_quantity_list){
-        $discount_by_quantity_list = get_field('discount_by_quantity_list', $product_id);
-    }
-    
-    $h_discount_type    = 'percent';
-    $h_discount_value   = 0;
-    $h_quantity_to      = 0;
-    $h_quantity_from    = 0;
-
-    if(count($discount_by_quantity_list)){
-        foreach($discount_by_quantity_list as $discount_by_quantity){
-            $quantity_from_to = $discount_by_quantity['quantity_from_to'];
-
-            $quantity_from_to_arr = explode('-', $quantity_from_to);
-
-            if(count($quantity_from_to_arr) == 2){
-                $quantity_from    = $quantity_from_to_arr[0];
-                if(strlen($quantity_from) == 0){
-                    $quantity_from = 0;
+function _get_discount_by_quantity_list($product_id){
+    $discount_by_quantity_list = get_field('discount_by_quantity_list', $product_id);
+    if($discount_by_quantity_list){
+        for($i=0; $i < count($discount_by_quantity_list) - 1; $i++){
+            for($j=$i+1; $j< count($discount_by_quantity_list); $j++){
+                if($discount_by_quantity_list[$i]['quantity'] > $discount_by_quantity_list[$j]['quantity']){
+                    $tmp = $discount_by_quantity_list[$i];
+                    $discount_by_quantity_list[$i] = $discount_by_quantity_list[$j];
+                    $discount_by_quantity_list[$j] = $tmp;
                 }
-
-                $quantity_to      = $quantity_from_to_arr[1];
-                if(strlen($quantity_to) == 0){
-                    $quantity_to = 999999999;
-                }
-            }elseif(count($quantity_from_to_arr) == 1){
-                $quantity_from = $quantity_from_to_arr[0];
-                $quantity_to = 999999999;
-            }   
-
-            if($amount >= $quantity_from && $amount <= $quantity_to){                                            
-                $h_quantity_from  = $quantity_from;
-                $h_quantity_to    = $quantity_to;
-                $h_discount_type    = $discount_by_quantity['discount_type'];
-                $h_discount_value   = $discount_by_quantity['discount_value'];
-                break;
             }
         }
+    }else{
+        $discount_by_quantity_list = array();
     }
-    return array(
-        'quantity_from'  => $h_quantity_from,
-        'quantity_to'    => $h_quantity_to,
-        'discount_type'  => $h_discount_type,
-        'discount_value' => $h_discount_value
-    );
+    if(count($discount_by_quantity_list)){
+        $first_item = reset($discount_by_quantity_list);
+        if($first_item['quantity'] != 0){
+            array_unshift($discount_by_quantity_list, array('quantity' => 0, 'discount_value' => 0));
+        }
+    }else{
+        array_unshift($discount_by_quantity_list, array('quantity' => 0, 'discount_value' => 0));
+    }
+    return $discount_by_quantity_list;
 }
-?>
+
+function vinaprint_get_discount_price_by_qty($product_id, $amount, $discount_by_quantity_list = null){
+    //echo $amount.'<br/>';
+    if(!$discount_by_quantity_list){
+        $discount_by_quantity_list = _get_discount_by_quantity_list($product_id);
+    }
+    
+    if(count($discount_by_quantity_list)){
+        $list_qty   = array();
+        $list_discount_value = array();
+
+        for($i=0;$i<count($discount_by_quantity_list);$i++){
+            $list_qty[] = $discount_by_quantity_list[$i]['quantity'];
+            $list_discount_value[] = $discount_by_quantity_list[$i]['discount_value'];
+        }
+        $h1_qty = null;
+        $h2_qty = null;
+        $h1_discount_value = null;
+        $h2_discount_value = null;
+
+        $first_item_qty = reset($list_qty);
+        for($i=0; $i< count($list_qty); $i++){
+            if($list_qty[$i] <= $amount){
+                if($i == count($list_qty) -1){
+                   $h1_qty =  $list_qty[$i];
+                   $h2_qty = null;
+                   $h1_discount_value = $list_discount_value[$i];
+                   $h2_discount_value = null;
+                }else{
+                    if($list_qty[$i+1] >= $amount){
+                       $h1_qty =  $list_qty[$i];
+                       $h2_qty = $list_qty[$i+1];
+                       $h1_discount_value = $list_discount_value[$i];
+                       $h2_discount_value = $list_discount_value[$i+1];
+                    }
+                }
+            }
+        }
+        //echo "$h1_qty($h1_discount_value)==$h2_qty($h2_discount_value)<br/>";
+        if($h2_qty){
+            if($h2_qty - $h1_qty == 0){
+                return $h1_discount_value;
+            }else{
+                $discount_step = (($h2_discount_value - $h1_discount_value) / ($h2_qty - $h1_qty));
+                return $h1_discount_value +  $discount_step * ($amount - $h1_qty);
+            }          
+        }else{
+            return $h1_discount_value;
+        }        
+    }else{
+        return 0;
+    }
+}

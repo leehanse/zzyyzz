@@ -11,7 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 global $product;
 
-if ( ! $product->is_purchasable() ) return;
+//if ( ! $product->is_purchasable() ) return;
 ?>
 
 <?php
@@ -22,12 +22,13 @@ if ( ! $product->is_purchasable() ) return;
 	echo apply_filters( 'woocommerce_stock_html', $availability_html, $availability['availability'], $product );
 ?>
 
-<?php if ( $product->is_in_stock() ) : ?>
-
+<?php if ( $product->is_in_stock() ) : ?>    
 	<?php do_action( 'woocommerce_before_add_to_cart_form' ); ?>
 
-	<form class="cart" method="post" enctype='multipart/form-data'>
-	 	<?php do_action( 'woocommerce_before_add_to_cart_button' ); ?>
+	<form class="cart" method="post" enctype='multipart/form-data' onsubmit="return false;">
+		<ul class="cart-list-field simple-addon-field">
+	 		<?php do_action( 'woocommerce_before_add_to_cart_button' ); ?>
+	 	</ul>
 	 	<?php
 	 		if ( ! $product->is_sold_individually() )
 	 			woocommerce_quantity_input( array(
