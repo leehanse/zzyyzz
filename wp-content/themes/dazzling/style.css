@@ -1321,6 +1321,33 @@ form.cart .cart-list-field li{
         min-height: 60px;
         float:left;
 }
+form.cart .cart-list-field li.upload{
+    width: 100%;
+}
+form.cart .cart-list-field li.upload ul{
+    display: inline-block;
+    margin:0px;
+    padding: 0px;
+    width: 400px;
+    margin-top:5px;
+}
+form.cart .cart-list-field li.upload .qq-uploader{
+    width: 100%;
+}
+form.cart .cart-list-field li.upload .qq-uploader .qq-upload-button{
+    background: #1B926C;
+    color: #ffffff;
+    font-weight: bold;
+}
+form.cart .cart-list-field li.upload .qq-uploader .qq-upload-list li{
+    width:100%;
+    min-height: 20px;
+    padding: 5px;
+}
+form.cart .cart-list-field li.upload .qq-uploader .qq-upload-list li.qq-upload-success{
+    background: #1B926C;
+    color: #ffffff;
+}
 form.cart .cart-list-field li .field-title, form.cart .cart-list-field li .field-title-qty{
 	width: 100%;
 	display: inline-block;

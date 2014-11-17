@@ -73,7 +73,10 @@ global $product, $post;
 			<!-- End Product Addons fields -->
 			<li class="qty-field">
 				<?php woocommerce_quantity_input(); ?>
-			</li>			
+			</li>	
+                        <li class="upload">
+                            <?php echo do_shortcode('[wp-multi-file-uploader]'); ?>
+                        </li>
 		</ul>
                 <input type="hidden" name="add-to-cart" value="<?php echo $product->id; ?>" />
                 <input type="hidden" name="product_id" value="<?php echo esc_attr( $post->ID ); ?>" />

@@ -182,7 +182,7 @@ if ( ! class_exists( 'VinaprintAjax' ) ) {
                             $html .= '<td>'.$option['label'].'</td>';
 
                             foreach($arr_amount as $amount){
-                                $price = $this->calculatePriceCell($product_id, $amount, $tmp_select_attributes, $tmp_select_addons, $available_variations, $product_addons);
+                                $price = calculatePriceCell($product_id, $amount, $tmp_select_attributes, $tmp_select_addons, $available_variations, $product_addons);
                                 if($price != 'no_price'){
                                     $html .='<td class="table-cell-price">';                                
                                         $html .= '<input type="checkbox" class="chk-table-price" data-map-field-name="'.$pname.'" data-map-field-value="'.$pvalue.'" data-qty="'.$amount.'"/>';
