@@ -816,9 +816,11 @@ class WC_Meta_Box_Product_Data {
 					<select id="field_to_edit">
 						<option value=""><?php _e( 'Choose a field to bulk edit&hellip;', 'woocommerce' ); ?></option>
 						<optgroup label="<?php esc_attr_e( 'Status', 'woocommerce' ); ?>">
+                                                        <!--
 							<option value="toggle_enabled"><?php _e( 'Toggle &quot;Enabled&quot;', 'woocommerce' ); ?></option>
 							<option value="toggle_downloadable"><?php _e( 'Toggle &quot;Downloadable&quot;', 'woocommerce' ); ?></option>
 							<option value="toggle_virtual"><?php _e( 'Toggle &quot;Virtual&quot;', 'woocommerce' ); ?></option>
+                                                        -->
 							<option value="delete_all"><?php _e( 'Delete all variations', 'woocommerce' ); ?></option>
 						</optgroup>
 						<optgroup label="<?php esc_attr_e( 'Pricing', 'woocommerce' ); ?>">
@@ -829,10 +831,12 @@ class WC_Meta_Box_Product_Data {
 							<option value="variable_sale_price_increase"><?php _e( 'Sale prices increase by (fixed amount or %)', 'woocommerce' ); ?></option>
 							<option value="variable_sale_price_decrease"><?php _e( 'Sale prices decrease by (fixed amount or %)', 'woocommerce' ); ?></option>
 						</optgroup>
+                                                <!--
 						<optgroup label="<?php esc_attr_e( 'Inventory', 'woocommerce' ); ?>">
 							<option value="toggle_manage_stock"><?php _e( 'Toggle &quot;Manage stock&quot;', 'woocommerce' ); ?></option>
 							<option value="variable_stock"><?php _e( 'Stock', 'woocommerce' ); ?></option>
 						</optgroup>
+                                                
 						<optgroup label="<?php esc_attr_e( 'Shipping', 'woocommerce' ); ?>">
 							<option value="variable_length"><?php _e( 'Length', 'woocommerce' ); ?></option>
 							<option value="variable_width"><?php _e( 'Width', 'woocommerce' ); ?></option>
@@ -843,6 +847,7 @@ class WC_Meta_Box_Product_Data {
 							<option value="variable_download_limit"><?php _e( 'Download limit', 'woocommerce' ); ?></option>
 							<option value="variable_download_expiry"><?php _e( 'Download Expiry', 'woocommerce' ); ?></option>
 						</optgroup>
+                                                -->
 						<?php do_action( 'woocommerce_variable_product_bulk_edit_actions' ); ?>
 					</select>
 					<a class="button bulk_edit"><?php _e( 'Go', 'woocommerce' ); ?></a>

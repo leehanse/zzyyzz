@@ -1,7 +1,7 @@
 jQuery(document).ready(function(){
     // register change select atrributes
     jQuery('form.cart .attribute_field select').change(function(){
-        calculateTablePrice();
+        calculateTablePrice();        
     })
 
     jQuery('form.cart .product-addons-field').change(function(){
@@ -24,7 +24,9 @@ jQuery(document).ready(function(){
         var map_field_name  = chk_price.data('map-field-name');
         var map_field_value = chk_price.data('map-field-value');
         jQuery('* [name="'+map_field_name+'"]').val(map_field_value);
-
+        
+        getVariationId();
+        
         //jQuery('.product-addons-field-last .product-addons-field').val(chk_price.data('price'));
         jQuery('#target_quantity').val(chk_price.data('qty'));
         
@@ -37,6 +39,35 @@ jQuery(document).ready(function(){
     });
     calculateTablePrice();
 });
+
+if(Array.prototype.diff === undefined){
+    Array.prototype.diff = function(a) {
+        return this.filter(function(i) {return a.indexOf(i) < 0;});
+    };
+}
+
+function getVariationId(){
+    var selectAttributes    = jQuery('.cart .attribute_field select').serializeArray();
+    if(selectAttributes.length){
+        var arrSelectAttributes = {};
+        for(i=0; i< selectAttributes.length; i++){
+            var item = selectAttributes[i];
+            arrSelectAttributes[item.name] = item.value;
+        }
+        var product_variations = jQuery('.cart').data('product_variations');
+        if(product_variations.length){
+            for(i = 0; i< product_variations.length; i++){
+                var attributes   = product_variations[i].attributes;
+                var variation_id = product_variations[i].variation_id;
+                if(JSON.stringify(arrSelectAttributes) === JSON.stringify(attributes)){
+                    jQuery('input[name="variation_id"]').val(variation_id);                
+                    return false;
+                } 
+            }
+        }
+        jQuery('input[name="variation_id"]').val('');
+    }
+}
 function calculateTablePrice(){
     var qty             = jQuery('.qty').val() * 1;
     if(qty == 0){

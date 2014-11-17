@@ -507,6 +507,7 @@ if($acf_files && count($acf_files)){
     }
 }
 include __DIR__. '/includes/wc-vinaprint/custom.php';
+include __DIR__. '/includes/wc-vinaprint/custom-product-variable.php';
     
 
 // Remove each style one by one

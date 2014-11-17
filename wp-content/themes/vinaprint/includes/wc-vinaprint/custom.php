@@ -76,41 +76,6 @@ if(!function_exists('vinaprint_remove_user_custom_data_options_from_cart'))
     }
 }
 
-add_action( 'woocommerce_before_calculate_totals', 'vinaprint_add_custom_price', 10, 2 );
-
-function vinaprint_add_custom_price( $cart_object ) {
-    global $woocommerce;
-    foreach ( $cart_object->cart_contents as $key => $value ) {
-        $product_id = $value['product_id'];
-        $qty   = $value['quantity'];
-        $price = $value['data']->price;
-        
-        $discount_by_qty    = vinaprint_get_discount_price_by_qty($product_id, $qty);
-        
-        $h_discount_type    = $discount_by_qty['discount_type'];
-        $h_discount_value   = (float)$discount_by_qty['discount_value'];
-        
-        if($h_discount_value){
-            switch ($h_discount_type) {
-                case 'percent':
-                        $new_price = $price - ($price * ($h_discount_value / 100));
-                    break;
-                case 'cash':
-                        $new_price = $price - $h_discount_value;
-                    break;
-                default:
-                        $new_price = $price - ($price * ($h_discount_value / 100));
-                    break;
-            }
-        }else{
-            $new_price = $price;
-        }
-        $value['data']->price = $new_price;
-    }
-
-    $woocommerce->cart->persistent_cart_update();
-}
-
 //add_filter('woocommerce_get_price', 'return_custom_price', $product, 2); 
 //function return_custom_price($price, $product) {    
 //    return 9.5;
@@ -206,81 +171,334 @@ function vinaprint_add_product_data_panel(){
 /* Only use simple product */
 /*End only use simple product */
 
-function _get_discount_by_quantity_list($product_id){
-    $discount_by_quantity_list = get_field('discount_by_quantity_list', $product_id);
-    if($discount_by_quantity_list){
-        for($i=0; $i < count($discount_by_quantity_list) - 1; $i++){
-            for($j=$i+1; $j< count($discount_by_quantity_list); $j++){
-                if($discount_by_quantity_list[$i]['quantity'] > $discount_by_quantity_list[$j]['quantity']){
-                    $tmp = $discount_by_quantity_list[$i];
-                    $discount_by_quantity_list[$i] = $discount_by_quantity_list[$j];
-                    $discount_by_quantity_list[$j] = $tmp;
+function getTierPrice($o_price, $tier_price, $qty){
+    $tier_price = trim($tier_price);    
+    if($tier_price){
+       $_tier_price_arr = explode(',', $tier_price);
+       $tier_price_arr  = array();
+       foreach($_tier_price_arr as $item){
+           $item = trim($item);
+           $item_arr = explode('-', $item);
+           if(count($item_arr) ==2){
+                $tier_price_arr[$item_arr[0]] = $item_arr[1];
+           }
+       }
+       if(count($tier_price_arr)){
+           ksort($tier_price_arr);
+           $amount_arr = array_keys($tier_price_arr);           
+           $value_arr  = array_values($tier_price_arr);
+           if($qty < $amount_arr[0]){
+               return $o_price;
+           }else{
+            if($qty >= end($amount_arr)){
+               return end($value_arr);
+            }else{
+                for($i=0;$i < count($amount_arr)-1; $i++){
+                    if($amount_arr[$i] <= $qty && $amount_arr[$i+1] > $qty){
+                        $a1 = $amount_arr[$i];
+                        $a2 = $amount_arr[$i+1];
+                        $v1 = $value_arr[$i];
+                        $v2 = $value_arr[$i+1];
+                        break;
+                    }                    
+                }
+                return $v1 + ($qty - $a1) * (($v2 - $v1) / ($a2 - $a1));
+            }
+           }
+       }else{
+           return $o_price;
+       }
+    }else return $o_price;
+}
+function calculatePriceCell($product_id, $qty, $select_attributes = array(), $select_addons = array(), $available_variations = null, $product_addons = null){
+    global $woocommerce;
+    $price           = 0;
+
+    $variation_price = 0;
+    $addon_price     = 0;
+
+    if(!$available_variations || !$product_addons){
+        $productVariable     = new  WC_Product_Variable($product_id);
+        if(!$product_addons){
+            $product_addons      = get_post_meta( $product_id, '_product_addons', true );
+        }
+        if(!$available_variations){
+            $available_variations = $productVariable->get_available_variations();        
+        }
+    }
+
+    // check variations 
+    $found_variation = false;
+    if(count($available_variations)){                
+        if(count($available_variations)){
+            foreach($available_variations as $variation){
+                if(count(array_diff_assoc($variation['attributes'], $select_attributes)) == 0){ // compare two array = equal
+                    $variation_price   = get_post_meta($variation["variation_id"], "_price", true);
+                    $tier_price        = get_post_meta($variation["variation_id"], "_tier_price", true);                            
+                    if($tier_price){
+                        $tier_price      = getTierPrice($variation_price, $tier_price, $qty);
+                        $variation_price =  $tier_price;                                                                        
+                    }
+                    if(!$variation_price){ // if price not set => return null
+                        return 'no_price';
+                    }
+                    $found_variation = true;
+                    break;
                 }
             }
         }
-    }else{
-        $discount_by_quantity_list = array();
-    }
-    if(count($discount_by_quantity_list)){
-        $first_item = reset($discount_by_quantity_list);
-        if($first_item['quantity'] != 0){
-            array_unshift($discount_by_quantity_list, array('quantity' => 0, 'discount_value' => 0));
+        if(!$found_variation){ // not found variation
+            return 'no_price';
         }
-    }else{
-        array_unshift($discount_by_quantity_list, array('quantity' => 0, 'discount_value' => 0));
     }
-    return $discount_by_quantity_list;
+
+    if($select_addons):
+        // check addons
+        $cart_item_meta = array();
+        if (is_array($product_addons) && sizeof($product_addons)>0):
+            foreach ($product_addons as $addon) :                    
+                if (!isset($addon['name'])) continue;
+                switch ($addon['type']) :
+                        case "checkbox" :
+
+                            // Posted var = name, value = label
+                            $posted = (isset( $select_addons['addon-' . sanitize_title( $addon['name'] )] )) ? $select_addons['addon-' . sanitize_title( $addon['name'] )] : '';
+
+                            if (!$posted || sizeof($posted)==0) continue;
+
+                                foreach ($addon['options'] as $option) :
+                                    if (array_search(sanitize_title($option['label']), $posted)!==FALSE) :
+                                        $price               = (float)esc_attr( $option['price'] );
+                                        $price_added_default = (float) esc_attr( $addon['price_added_default'] );
+                                        $price_type          = esc_attr( $addon['price_type']);
+
+                                        switch($price_type){
+                                            case 'x':
+                                                $fprice = $price_added_default + ($price * $qty);
+                                                break;
+                                            case '+':
+                                                $fprice = $price_added_default + $price;
+                                            break;
+                                        }
+                                        // Set
+                                        $cart_item_meta[] = array(
+                                            'name'       => esc_attr( $addon['name'] ),
+                                            'value'      => esc_attr( $option['label'] ),
+                                            'price'      => $price,
+                                            'fprice'     => $fprice,
+                                            'price_type' => $price_type,
+                                            'price_added_default' => $price_added_default
+                                        );
+                                    endif;
+                            endforeach;
+
+                        break;
+                        case "select" :                                
+                            // Posted var = name, value = label
+                            $posted = (isset( $select_addons['addon-' . sanitize_title( $addon['name'] )] )) ? $select_addons['addon-' . sanitize_title( $addon['name'] )] : '';
+
+                            if (!$posted) continue;
+
+                            $chosen_option = '';
+
+                            $loop = 0;
+                            foreach ( $addon['options'] as $option ) : $loop ++;
+                                    if ( sanitize_title( $option['label'] . '-' . $loop )==$posted) :
+                                        $chosen_option = $option;
+                                        break;
+                                    endif;
+                            endforeach;
+
+                            if (!$chosen_option) continue;
+
+                            $price               = (float)esc_attr( $chosen_option['price'] );
+                            $price_added_default = (float) esc_attr( $addon['price_added_default'] );
+                            $price_type          = esc_attr( $addon['price_type']);
+
+                            switch($price_type){
+                                case 'x':
+                                        $fprice = $price_added_default + ($price * $qty);
+                                    break;
+                                case '+':
+                                        $fprice = $price_added_default + $price;
+                                    break;
+                            }
+
+                            $cart_item_meta[] = array(
+                                    'name'      => esc_attr( $addon['name'] ),
+                                    'value'     => esc_attr( $chosen_option['label'] ),
+                                    'price'     => $price,
+                                    'fprice'    => $fprice,
+                                    'price_type'    => $price_type,
+                                    'price_added_default' => $price_added_default
+                            );
+                        break;
+                        case "custom" :
+                        case "custom_textarea" :
+                            // Posted var = label, value = custom
+                            foreach ($addon['options'] as $option) :
+                                    $posted = (isset( $select_addons['addon-' . sanitize_title( $addon['name'] ) . '-' . sanitize_title( $option['label'] )] )) ? $select_addons['addon-' . sanitize_title( $addon['name'] ) . '-' . sanitize_title( $option['label'] )] : '';
+                                    if (!$posted) continue;
+
+                                    $price               = (float)esc_attr( $option['price'] );
+                                    $price_added_default = (float) esc_attr( $addon['price_added_default'] );
+                                    $price_type          = esc_attr( $addon['price_type']);
+
+                                    switch($price_type){
+                                        case 'x':
+                                                $fprice = $price_added_default + ($price * $qty);
+                                            break;
+                                        case '+':
+                                                $fprice = $price_added_default + $price;
+                                            break;
+                                    }
+
+                                    $cart_item_meta[] = array(
+                                        'name'      => esc_attr( $option['label'] ),
+                                        'value'     => esc_attr( stripslashes( trim( $posted ) ) ),
+                                        'price'     => $price,
+                                        'price_type'    => $price_type,
+                                        'price_added_default' => $price_added_default
+                                    );
+                            endforeach;
+
+                        break;
+                        case 'width_height':
+                            $wh_input_unit = $addon['wh_input_unit'];
+                            $wh_option_price_unit = $addon['wh_option_price_unit'];
+                            $options = $addon['options'];
+                            $posted = (isset( $select_addons['addon-' . sanitize_title( $addon['name'] )] )) ? $select_addons['addon-' . sanitize_title( $addon['name'] )] : '';
+
+                            if (!$posted) continue;
+
+                            $input_with_height_arr = explode('x',$posted);
+                            $input_width  = $input_with_height_arr[0];
+                            $input_height = $input_with_height_arr[1];
+
+                            switch($wh_input_unit){
+                                case 'm':
+                                        $square_input = ($input_width*100) * ($input_height * 100);
+                                    break;                                        
+                                case 'cm':
+                                        $square_input = $input_width * $input_height;
+                                    break;
+                            }
+                            $price_range_by_with_height_arr = array();
+                            $price_range_by_with_height     = 0;
+
+                            if(count($options)){
+                                foreach($options as $option){
+                                    if($wh_option_price_unit == 'm'){
+                                        $square = (float)$option['label'] * 10000;
+                                        $price_range_by_with_height_arr[$square] = (float)$option['price'];
+                                    }else{
+                                        $square = (float)$option['label'];
+                                        $price_range_by_with_height_arr[$square] = (float)$option['price'];
+                                    }
+                                }
+                                ksort($price_range_by_with_height_arr);
+
+                                $price_range_by_with_height_arr_keys = array_keys($price_range_by_with_height_arr);
+
+                                $h_square = 0;
+                                $h_v      = 0;
+                                $h_v1     = 0;
+                                for($i=0; $i< count($price_range_by_with_height_arr_keys) -1; $i++){
+                                    $v  = $price_range_by_with_height_arr_keys[$i];
+                                    $v1 = $price_range_by_with_height_arr_keys[$i+1];
+                                    if($v <= $square_input && $square_input <= $v1){
+                                        $v_step       = $v1 - $v;
+                                        $v_step_div_2 = (float)$v_step / 2;
+                                        if($square_input <= $v + $v_step_div_2){
+                                            $h_square = $v;
+                                            $h_v      = $v;
+                                            $h_v1     = $v1;       
+                                        }else{
+                                            $h_square = $v1;
+                                            $h_v      = $v;
+                                            $h_v1     = $v1;
+                                        }
+                                    }
+                                }if($h_v == 0 && $h_v1 == 0){
+                                    $h_square = reset($price_range_by_with_height_arr_keys);
+                                }
+                            }
+
+                            $_price  = $price_range_by_with_height_arr[$h_square];
+
+                            $price = (($input_width * $input_height) /10000) * $_price;
+
+                            $price_added_default = (float) esc_attr( $addon['price_added_default'] );
+                            $price_type          = esc_attr( $addon['price_type']);
+
+
+                            switch($price_type){
+                                case 'x':
+                                        $fprice += $price_added_default + $price * $qty;
+                                    break;
+                                case '+':
+                                        $fprice += $price_added_default + $price;
+                                    break;
+                            }
+
+                            $cart_item_meta[] = array(
+                                'name'      => esc_attr( $addon['name'] ),
+                                'value'     => esc_attr( stripslashes( trim( $posted ) ) ),
+                                'price'     => esc_attr( $_price ),
+                                'fprice'    => $fprice,
+                                'price_type'    => esc_attr( $addon['price_type'] ),
+                                'price_added_default' => esc_attr( $addon['price_added_default']),
+                                'addition_info'     => '<p><b>Price: '.woocommerce_price($_price).'/'.$wh_option_price_unit.'&sup2;</b><br/><b>+'.woocommerce_price($fprice).'</b></p>'
+                            );
+                        break;
+                endswitch;
+            endforeach;
+        endif;
+        if(count($cart_item_meta)){
+            foreach($cart_item_meta as $item){
+                $addon_price += $item['fprice'];
+            }
+        }
+    endif;
+    // calculate discount variation by qty            
+    return $variation_price * $qty + $addon_price;
 }
 
-function vinaprint_get_discount_price_by_qty($product_id, $amount, $discount_by_quantity_list = null){
-    //echo $amount.'<br/>';
-    if(!$discount_by_quantity_list){
-        $discount_by_quantity_list = _get_discount_by_quantity_list($product_id);
-    }
-    
-    if(count($discount_by_quantity_list)){
-        $list_qty   = array();
-        $list_discount_value = array();
-
-        for($i=0;$i<count($discount_by_quantity_list);$i++){
-            $list_qty[] = $discount_by_quantity_list[$i]['quantity'];
-            $list_discount_value[] = $discount_by_quantity_list[$i]['discount_value'];
-        }
-        $h1_qty = null;
-        $h2_qty = null;
-        $h1_discount_value = null;
-        $h2_discount_value = null;
-
-        $first_item_qty = reset($list_qty);
-        for($i=0; $i< count($list_qty); $i++){
-            if($list_qty[$i] <= $amount){
-                if($i == count($list_qty) -1){
-                   $h1_qty =  $list_qty[$i];
-                   $h2_qty = null;
-                   $h1_discount_value = $list_discount_value[$i];
-                   $h2_discount_value = null;
-                }else{
-                    if($list_qty[$i+1] >= $amount){
-                       $h1_qty =  $list_qty[$i];
-                       $h2_qty = $list_qty[$i+1];
-                       $h1_discount_value = $list_discount_value[$i];
-                       $h2_discount_value = $list_discount_value[$i+1];
+/* add to cart price */
+add_action( 'woocommerce_before_calculate_totals', 'vinaprint_add_custom_price', 10, 2 );
+function vinaprint_add_custom_price( $cart_object ) {
+    global $woocommerce;
+    foreach ( $cart_object->cart_contents as $key => $value ) {        
+        $product_id = $value['product_id'];
+        $qty   = $value['quantity'];
+        $select_attributes = $value['variation'];
+        $select_addons = $value['addons'];
+        
+        if(count($select_addons)){
+            $product_addons = get_post_meta( $product_id, '_product_addons', true );            
+            for($i=0; $i<count($select_addons); $i++){
+                $addon_name  = $select_addons[$i]['name'];
+                $addon_value = $select_addons[$i]['value'];
+                if(count($product_addons)){
+                    foreach($product_addons as $paddon){
+                        if($paddon['name'] == $addon_name){
+                            $paddon_options = $paddon['options'];
+                            if(count($paddon_options)){
+                                foreach($paddon_options as $op_index => $option){
+                                    if($option['label'] == $addon_value){
+                                        $post_addon_name  = 'addon-'. sanitize_title( $select_addons[$i]['name'] );
+                                        $post_addon_value = sanitize_title( $option['label'] ) .'-'. ($op_index+1);
+                                        $select_addons[$post_addon_name] = $post_addon_value;
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             }
         }
-        //echo "$h1_qty($h1_discount_value)==$h2_qty($h2_discount_value)<br/>";
-        if($h2_qty){
-            if($h2_qty - $h1_qty == 0){
-                return $h1_discount_value;
-            }else{
-                $discount_step = (($h2_discount_value - $h1_discount_value) / ($h2_qty - $h1_qty));
-                return $h1_discount_value +  $discount_step * ($amount - $h1_qty);
-            }          
-        }else{
-            return $h1_discount_value;
-        }        
-    }else{
-        return 0;
+        $price = calculatePriceCell($product_id, $qty, $select_attributes, $select_addons);        
+        $value['data']->price = (float) $price / $qty;
     }
+    $woocommerce->cart->persistent_cart_update();
 }

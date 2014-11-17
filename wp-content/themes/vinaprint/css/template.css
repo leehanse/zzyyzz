@@ -1686,20 +1686,20 @@ form.cart .cart-list-field li{
 	position: relative;
 	padding:0px;
 	margin-bottom: 10px;
+        min-height: 60px;
+        float:left;
 }
-form.cart .cart-list-field li .field-title{
+form.cart .cart-list-field li .field-title, form.cart .cart-list-field li .field-title-qty{
 	width: 100%;
 	display: inline-block;
 	font-weight: bold;
-}
-form.cart .cart-list-field li .field-title-qty{
-	float:left;
-	font-weight: bold;
-	margin-right: 5px;
 }
 form.cart .cart-list-field li select,form.cart .cart-list-field li input[type="text"], form.cart .cart-list-field li textarea{
 	width: 90%;	
 }
 form.cart .cart-list-field li select,form.cart .cart-list-field li input[type="text"]{
-	line-height: 26px;
+	padding: 2px;
+}
+table.cart .cart_item .product-quantity .field-title-qty{
+    display: none;
 }

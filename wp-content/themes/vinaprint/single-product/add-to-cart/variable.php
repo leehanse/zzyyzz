@@ -75,20 +75,13 @@ global $product, $post;
 				<?php woocommerce_quantity_input(); ?>
 			</li>			
 		</ul>
-		<div style="display:none;">
-			<div class="single_variation_wrap" style="display:none;">
-				<input type="hidden" name="add-to-cart" value="<?php echo $product->id; ?>" />
-				<input type="hidden" name="product_id" value="<?php echo esc_attr( $post->ID ); ?>" />
-				<input type="text"   name="variation_id" value=""/>
-			</div>
-		</div>	
+                <input type="hidden" name="add-to-cart" value="<?php echo $product->id; ?>" />
+                <input type="hidden" name="product_id" value="<?php echo esc_attr( $post->ID ); ?>" />
+                <input type="hidden"   name="variation_id" value=""/>
 		<?php do_action( 'woocommerce_after_add_to_cart_button' ); ?>
 	<?php else : ?>
-
 		<p class="stock out-of-stock"><?php _e( 'This product is currently out of stock and unavailable.', 'woocommerce' ); ?></p>
-
 	<?php endif; ?>
-
 </form>
 
 <?php do_action( 'woocommerce_after_add_to_cart_form' ); ?>

@@ -23,7 +23,7 @@ do_action( 'woocommerce_before_cart' ); ?>
 			<th class="product-remove">&nbsp;</th>
 			<th class="product-thumbnail">&nbsp;</th>
 			<th class="product-name"><?php _e( 'Product', 'woocommerce' ); ?></th>
-			<th class="product-price"><?php _e( 'Price', 'woocommerce' ); ?></th>
+			<!--<th class="product-price"><?php _e( 'Price', 'woocommerce' ); ?></th>-->
 			<th class="product-quantity"><?php _e( 'Quantity', 'woocommerce' ); ?></th>
 			<th class="product-subtotal"><?php _e( 'Total', 'woocommerce' ); ?></th>
 		</tr>
@@ -72,13 +72,13 @@ do_action( 'woocommerce_before_cart' ); ?>
                					echo '<p class="backorder_notification">' . __( 'Available on backorder', 'woocommerce' ) . '</p>';
 						?>
 					</td>
-
+<!--
 					<td class="product-price">
 						<?php
 							echo apply_filters( 'woocommerce_cart_item_price', WC()->cart->get_product_price( $_product ), $cart_item, $cart_item_key );
 						?>
 					</td>
-
+-->
 					<td class="product-quantity">
 						<?php
 							if ( $_product->is_sold_individually() ) {
