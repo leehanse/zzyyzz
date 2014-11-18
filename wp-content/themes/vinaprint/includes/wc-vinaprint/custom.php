@@ -188,10 +188,18 @@ function getTierPrice($o_price, $tier_price, $qty){
            $amount_arr = array_keys($tier_price_arr);           
            $value_arr  = array_values($tier_price_arr);
            if($qty < $amount_arr[0]){
-               return $o_price;
+               $a1 = 1;
+               $a2 = $amount_arr[0];
+               $v1 = $o_price;
+               $v2 = $value_arr[0];
+               return $v1 + ($qty - $a1) * (($v2 - $v1) / ($a2 - $a1));
            }else{
             if($qty >= end($amount_arr)){
-               return end($value_arr);
+                $a1 = end($amount_arr);
+                $a2 = $qty;
+                $v1 = end($value_arr);
+                $v2 = ($v1/$a1) * $qty;
+                return $v1 + ($qty - $a1) * (($v2 - $v1) / ($a2 - $a1));
             }else{
                 for($i=0;$i < count($amount_arr)-1; $i++){
                     if($amount_arr[$i] <= $qty && $amount_arr[$i+1] > $qty){
@@ -237,7 +245,7 @@ function calculatePriceCell($product_id, $qty, $select_attributes = array(), $se
                     $tier_price        = get_post_meta($variation["variation_id"], "_tier_price", true);                            
                     if($tier_price){
                         $tier_price      = getTierPrice($variation_price, $tier_price, $qty);
-                        $variation_price =  $tier_price;                                                                        
+                        $variation_price =  $tier_price;
                     }
                     if(!$variation_price){ // if price not set => return null
                         return 'no_price';
@@ -460,8 +468,8 @@ function calculatePriceCell($product_id, $qty, $select_attributes = array(), $se
             }
         }
     endif;
-    // calculate discount variation by qty            
-    return $variation_price * $qty + $addon_price;
+    // calculate discount variation by qty
+    return $variation_price + $addon_price;
 }
 
 /* add to cart price */

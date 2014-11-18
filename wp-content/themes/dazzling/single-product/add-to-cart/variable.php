@@ -74,13 +74,20 @@ global $product, $post;
 			<li class="qty-field">
 				<?php woocommerce_quantity_input(); ?>
 			</li>	
-                        <li class="upload">
-                            <?php echo do_shortcode('[wp-multi-file-uploader]'); ?>
-                        </li>
+            <li class="upload">
+				<?php 
+					if(function_exists('wp_multi_file_uploader')){
+						wp_multi_file_uploader(array(
+							'allowed_mime_types'	=>	'jpg,png,gif,jpeg,ai,psd,zip,rar', // accepts .jpg, .png, .gif file types
+							'max_file_size'			=>	'32' // 32mb
+						)); 
+					};
+				?>            	
+            </li>
 		</ul>
-                <input type="hidden" name="add-to-cart" value="<?php echo $product->id; ?>" />
-                <input type="hidden" name="product_id" value="<?php echo esc_attr( $post->ID ); ?>" />
-                <input type="hidden"   name="variation_id" value=""/>
+        <input type="hidden" name="add-to-cart" value="<?php echo $product->id; ?>" />
+        <input type="hidden" name="product_id" value="<?php echo esc_attr( $post->ID ); ?>" />
+        <input type="hidden"   name="variation_id" value=""/>
 		<?php do_action( 'woocommerce_after_add_to_cart_button' ); ?>
 	<?php else : ?>
 		<p class="stock out-of-stock"><?php _e( 'This product is currently out of stock and unavailable.', 'woocommerce' ); ?></p>

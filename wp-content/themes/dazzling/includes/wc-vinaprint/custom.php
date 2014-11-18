@@ -5,8 +5,16 @@ if(!function_exists('vinaprint_add_item_data'))
 {
     function vinaprint_add_item_data($cart_item_data,$product_id)
     {
-        $new_value = array('vinaprint_order_item_upload_file_value' => '202,203');
-        return array_merge($cart_item_data,$new_value);        
+        $upload_files = array();
+        if(isset($_POST['wp_multi_file_uploader_1'])){
+            $i=1;
+            while(isset($_POST['wp_multi_file_uploader_'.$i])){
+                $upload_files[] = $_POST['wp_multi_file_uploader_'.$i];
+                $i++;
+            }
+        }
+        $new_value = array('vinaprint_order_item_upload_file_value' => $upload_files);
+        return array_merge($cart_item_data,$new_value);
     }
 }
 // Get cart from session
@@ -17,26 +25,46 @@ if(!function_exists('vinaprint_get_cart_items_from_session'))
     {
         if (array_key_exists( 'vinaprint_order_item_upload_file_value', $values ) )
         {
-        $item['vinaprint_order_item_upload_file_value'] = $values['vinaprint_order_item_upload_file_value'];
+            $item['vinaprint_order_item_upload_file_value'] = $values['vinaprint_order_item_upload_file_value'];
         }       
         return $item;
     }
 }
+add_filter( 'woocommerce_get_item_data', 'vinaprint_get_item_data', 10, 2 );
+if(!function_exists('vinaprint_get_item_data')){
+    function vinaprint_get_item_data( $other_data, $cart_item ) {
+        $upload_files = $cart_item['vinaprint_order_item_upload_file_value'];
+
+        if(is_array($upload_files) && count($upload_files)){
+            $loop = 1;
+            foreach ($upload_files as $attachment_id) :
+                $media = get_post($attachment_id);
+                $other_data[] = array(
+                    'name'    => 'Upload File '.$loop,
+                    'value'   => $attachment_id,
+                    'display' => '<a href="'.$media->guid.'">'.esc_attr($media->post_name).'('.$media->post_mime_type .')</a>'
+                );
+                $loop++;
+            endforeach;
+        }
+        return $other_data;
+    }
+}
+
 // display cart checkout page
 add_filter('woocommerce_checkout_cart_item_quantity','vinaprint_add_user_custom_option_from_session_into_cart',1,3);  
 add_filter('woocommerce_cart_item_price','vinaprint_add_user_custom_option_from_session_into_cart',1,3);
 if(!function_exists('vinaprint_add_user_custom_option_from_session_into_cart'))
 {
- function vinaprint_add_user_custom_option_from_session_into_cart($product_name, $values, $cart_item_key )
-    {
+ function vinaprint_add_user_custom_option_from_session_into_cart($product_name, $values, $cart_item_key ){
         /*code to add custom data on Cart & checkout Page*/    
         if(count($values['vinaprint_order_item_upload_file_value']) > 0)
         {
-            $return_string  = $product_name;
-//            $return_string .= "<table class='vinaprint_options_table' id='" . $values['product_id'] . "'>";
-//            $return_string .= "<tr><td>" . $values['vinaprint_order_item_upload_file_value'] . "</td></tr>";
-//            $return_string .= "</table>"; 
-            return $return_string;
+           $return_string  = $product_name;
+           $return_string .= "<table class='vinaprint_options_table' id='" . $values['product_id'] . "'>";
+           $return_string .= "<tr><td>" . $values['vinaprint_order_item_upload_file_value'] . "</td></tr>";
+           $return_string .= "</table>"; 
+           return $return_string;
         }
         else
         {
@@ -44,6 +72,7 @@ if(!function_exists('vinaprint_add_user_custom_option_from_session_into_cart'))
         }
     }
 }
+
 // Add Custom Data as Metadata to the Order Items
 add_action('woocommerce_add_order_item_meta','vinaprint_add_values_to_order_item_meta',1,2);
 if(!function_exists('vinaprint_add_values_to_order_item_meta'))
@@ -188,10 +217,22 @@ function getTierPrice($o_price, $tier_price, $qty){
            $amount_arr = array_keys($tier_price_arr);           
            $value_arr  = array_values($tier_price_arr);
            if($qty < $amount_arr[0]){
-               return $o_price;
+               $a1 = 1;
+               $a2 = $amount_arr[0];
+               $v1 = $o_price;
+               $v2 = $value_arr[0];
+               return $v1 + ($qty - $a1) * (($v2 - $v1) / ($a2 - $a1));
            }else{
             if($qty >= end($amount_arr)){
-               return end($value_arr);
+                $a1 = end($amount_arr);
+                $a2 = $qty;
+                $v1 = end($value_arr);
+                $v2 = ($v1/$a1) * $qty;
+                if($a2 - $a1 == 0){
+                    return $v2;
+                }else{
+                    return $v1 + ($qty - $a1) * (($v2 - $v1) / ($a2 - $a1));
+                }
             }else{
                 for($i=0;$i < count($amount_arr)-1; $i++){
                     if($amount_arr[$i] <= $qty && $amount_arr[$i+1] > $qty){
@@ -461,7 +502,7 @@ function calculatePriceCell($product_id, $qty, $select_attributes = array(), $se
         }
     endif;
     // calculate discount variation by qty            
-    return $variation_price * $qty + $addon_price;
+    return ceil($variation_price + $addon_price);
 }
 
 /* add to cart price */

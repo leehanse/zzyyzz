@@ -1,9 +1,4 @@
 <?php
-/**
- *	@version 1.1.3
- *	@author Dan Holloran
- *	@copyright GPLv2 (or later)
- */
 /*
 Plugin Name: WP Multi File Uploader
 Plugin URI: http://dholloran.github.com/WPMultiFileUploader/

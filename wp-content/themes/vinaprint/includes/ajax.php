@@ -60,8 +60,8 @@ if ( ! class_exists( 'VinaprintAjax' ) ) {
         
 
         function calculateTablePrice($product_id){
-            $_select_attributes    = $_POST['attributes'];
-            $_select_addons        = $_POST['addons'];
+            $_select_attributes    = isset($_POST['attributes']) ? $_POST['attributes'] : array();
+            $_select_addons        = isset($_POST['addons']) ? $_POST['addons'] : array();
             $qty                  = isset($_POST['qty']) ? $_POST['qty'] : 1;
 
             $productVariable      = new  WC_Product_Variable($product_id);            
@@ -149,7 +149,6 @@ if ( ! class_exists( 'VinaprintAjax' ) ) {
             }else{
                 if(count($product_addons)){ // product addons -> remove lass select addon to build table price
                     $select_attributes = $_select_attributes;
-
                     // get last select box addons
                     $last_addon = null;
                     for($j=count($product_addons)-1; $j >=0 ; $j--){

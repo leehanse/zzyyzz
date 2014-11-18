@@ -147,9 +147,8 @@ if ( ! class_exists( 'VinaprintAjax' ) ) {
                 $html = str_replace('{__NAME__}',wc_attribute_label( $last_attribute ), $html);
                 return $html;
             }else{
-                if(count($product_addons)){ // product addons -> remove lass select addon to build table price
+                if(is_array($product_addons) && count($product_addons)){ // product addons -> remove lass select addon to build table price
                     $select_attributes = $_select_attributes;
-
                     // get last select box addons
                     $last_addon = null;
                     for($j=count($product_addons)-1; $j >=0 ; $j--){
@@ -198,7 +197,7 @@ if ( ! class_exists( 'VinaprintAjax' ) ) {
                         $html = str_replace('{__NAME__}', $last_addon['name'], $html);
                     }
                 }else{
-                    return __( 'This product is currently out of stock and unavailable.', 'woocommerce' );
+                    return '<p class="error">'.__( 'This product is currently out of stock and unavailable.', 'woocommerce' ).'</p>';
                 }
             }
             

@@ -687,6 +687,7 @@ li.recentcomments {
   -webkit-box-shadow: 7px 7px 5px 0px rgba(50, 50, 50, 0.75);
   -moz-box-shadow:    7px 7px 5px 0px rgba(50, 50, 50, 0.75);
   box-shadow:         7px 7px 5px 0px rgba(50, 50, 50, 0.75);  
+  margin-left: -2px;
 }
 .navbar-nav > li > .dropdown-menu li{
     width: 195px;
@@ -1156,6 +1157,12 @@ p.logged-in-as {
 .table-cell-price-select{
     background: #88AF77;
 }
+.vinaprint_table_price .error{
+    color: red;
+    font-size: 16px;
+    margin-bottom: 0;
+    padding: 20px;  
+}
 .add-to-cart-wrapper{
     text-align: right;
     display: inline-block;
@@ -1206,6 +1213,14 @@ p.logged-in-as {
 /* Upsell product */
 .woocommerce .products ul li, .woocommerce ul.products li, .woocommerce-page .products ul li, .woocommerce-page ul.products li{
 	display: inline-block;
+}
+.woocommerce .products ul li .star-rating, 
+.woocommerce ul.products li .star-rating, 
+.woocommerce-page .products ul li .star-rating, 
+.woocommerce-page ul.products li .star-rating{
+  display: none;
+  width: 100%;
+  text-align: center;
 }
 .woocommerce .products ul li:first-child, .woocommerce ul.products li:first-child, .woocommerce-page .products ul li:first-child, .woocommerce-page ul.products li:first-child{
 	padding-left: 0px;
@@ -1269,12 +1284,12 @@ p.logged-in-as {
     display: none !important;
 }
 .product-addons-field-width{
-    width: 40%;
+    width: 40% !important;
     padding:0px;
     line-height: 23px;
 }
 .product-addons-field-height{
-    width: 40%;
+    width: 40% !important;
     padding:0px;
     line-height: 23px;    
     width: 40%;
@@ -1372,4 +1387,35 @@ table.cart .cart_item .product-quantity .field-title-qty{
 }
 .woocommerce div.product .product_title, .woocommerce #content div.product .product_title, .woocommerce-page div.product .product_title, .woocommerce-page #content div.product .product_title{
     color: #1b926c;
+}
+.woocommerce ul.products li.product .price, .woocommerce-page ul.products li.product .price{
+  text-align: center;
+  font-weight: bold;
+}
+
+.woocommerce .order_details{
+  background: #1B926C;
+  color:#ffffff;
+}
+.woocommerce .order_details li{
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+.woocommerce table.shop_table td a, 
+.woocommerce-page table.shop_table td a{
+  color: #ffffff;
+  font-weight: bold;
+  text-decoration: underline;
+}
+.woocommerce .customer_details,
+.woocommerce-page .customer_details{
+  border: 1px solid #1B926C;
+  border-radius: 5px;
+  padding:5px;
+}
+.woocommerce address,
+.woocommerce-page address{
+  border: 1px solid #1B926C;
+  border-radius: 5px;
+  padding:5px;
 }

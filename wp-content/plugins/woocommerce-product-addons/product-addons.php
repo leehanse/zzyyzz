@@ -74,6 +74,7 @@ if (is_woocommerce_active()) {
 		    	if ($typenow=='product') wp_enqueue_style( 'woocommerce_product_addons_css', plugins_url(basename(dirname(__FILE__))) . '/css/admin.css' );
 		    }
 		    
+		    
 		    function meta_box( $post ) {
                             $products = get_posts(array( 'post_type' => 'product', 'posts_per_page' => -1 ));
 				?>
