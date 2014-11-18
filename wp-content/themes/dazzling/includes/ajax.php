@@ -4,6 +4,7 @@ if ( ! class_exists( 'VinaprintAjax' ) ) {
 
         private $actions = array(
                 'calculateTablePrice',
+                'getWidthHeightPrice'
             );
 
         function __construct() {
@@ -49,6 +50,16 @@ if ( ! class_exists( 'VinaprintAjax' ) ) {
                         $product_id       = $_POST['product_id'];
                         $html_table_price = $this->calculateTablePrice($product_id);
                         echo $html_table_price; die;
+                    break;
+                case 'getWidthHeightPrice':
+                        $select_addons  = $_POST['addons'];
+                        $qty            = $_POST['qty'];
+                        $product_id     = $_POST['product_id'];
+                        
+                        $cart_item_meta = getAddonCartItemMeta($product_id, $qty , $select_addons);
+                        echo json_encode($cart_item_meta);
+                        die;
+                        //calculatePriceCell($product_id, 1, $select_attributes = array(), $select_addons = array(), $available_variations = null, $product_addons = null);
                     break;
                 default:
                         echo 'No ajax action found';

@@ -7,8 +7,6 @@
  * @package dazzling
  */
 ?>
-	</div><!-- #content -->
-
 	<div id="footer-area">
 		<div class="container footer-inner">
 			<?php get_sidebar( 'footer' ); ?>

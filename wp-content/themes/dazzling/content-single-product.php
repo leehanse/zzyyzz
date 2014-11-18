@@ -59,7 +59,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
             
         </div>
         <?php global $product;?>
-        <?php if ( $product->is_purchasable() && $product->is_in_stock() ) : ?>
+        <?php if ( $product->is_in_stock() ) : ?>
             <div class="add-to-cart-wrapper">
                 <button type="submit" class="custom-add-to-cart-button single_add_to_cart_button button alt"><?php echo $product->single_add_to_cart_text(); ?></button>
             </div>

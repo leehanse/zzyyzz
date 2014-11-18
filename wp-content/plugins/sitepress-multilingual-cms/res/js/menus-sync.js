@@ -8,7 +8,9 @@ jQuery(document).ready(function(){
        var on = jQuery(this).attr('checked');
        if(on){
            jQuery('#icl_msync_confirm :checkbox').attr('checked', 'checked');           
-           jQuery('#icl_msync_submit').removeAttr('disabled');
+           if(jQuery('#icl_msync_confirm tbody .check-column :checkbox').length){
+                jQuery('#icl_msync_submit').removeAttr('disabled');
+           }
        }else{
            jQuery('#icl_msync_confirm :checkbox').removeAttr('checked');
            if(!jQuery('input[name^="sync"]').length){

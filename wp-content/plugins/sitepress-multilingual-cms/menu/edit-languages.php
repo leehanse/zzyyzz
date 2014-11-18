@@ -12,7 +12,9 @@ class SitePress_EditLanguages {
 
 	function __construct() {
         
-		require_once ICL_PLUGIN_PATH . '/inc/lang-data.php';
+		$langs_names = icl_get_languages_names();
+		$lang_codes = icl_get_languages_codes();
+        $lang_locales = icl_get_languages_locales();
         $this->built_in_languages = array_values($lang_codes);
         
         if(isset($_GET['action']) && $_GET['action'] == 'delete-language' && wp_create_nonce('delete-language' . @intval($_GET['id'])) == $_GET['icl_nonce']){
@@ -384,7 +386,7 @@ For each language, you need to enter the following information:
 		if (!$this->add_validation_failed) {
 			unset($_POST['icl_edit_languages']['add']);
 		}
-			// Reser active languages.
+			// Reset active languages.
 		$this->get_active_languages();
 	}
 
@@ -396,8 +398,10 @@ For each language, you need to enter the following information:
 			$this->error(__('Adding language failed.', 'sitepress'));
 			return false;
 		}
-        
-        // add locale map
+
+		$default_language = $sitepress->get_default_language();
+
+		// add locale map
         if($wpdb->get_var("SELECT code FROM {$wpdb->prefix}icl_locale_map WHERE code='{$data['code']}'")){
             $wpdb->update($wpdb->prefix.'icl_locale_map', array('locale'=>$data['default_locale']), array('code'=>$data['code']));
         }else{
@@ -479,8 +483,8 @@ For each language, you need to enter the following information:
 		$sitepress->set_default_categories($default_categories);
 		
 		//update translations table
-		$default_category_trid = $sitepress->get_element_trid($default_categories[$sitepress->get_default_language()], 'tax_category');
-        $sitepress->set_element_language_details($tmp['term_taxonomy_id'], 'tax_category', $default_category_trid, $data['code'], $sitepress->get_default_language());
+		$default_category_trid = $sitepress->get_element_trid($default_categories[ $default_language ], 'tax_category');
+        $sitepress->set_element_language_details($tmp['term_taxonomy_id'], 'tax_category', $default_category_trid, $data['code'], $default_language );
 		
 	}
 
@@ -547,11 +551,11 @@ For each language, you need to enter the following information:
                 
                 $translation_ids = $wpdb->get_col($wpdb->prepare("SELECT translation_id FROM {$wpdb->prefix}icl_translations WHERE language_code=%s", $lang->code));
                 if($translation_ids){
-                    $rids = $wpdb->get_col("SELECT rid FROM {$wpdb->prefix}icl_translation_status WHERE translation_id IN (" . join($translation_ids) . ")");
+                    $rids = $wpdb->get_col("SELECT rid FROM {$wpdb->prefix}icl_translation_status WHERE translation_id IN (" . join(',', $translation_ids) . ")");
                     if($rids){
-                        $job_ids = $wpdb->get_col("SELECT job_id FROM {$wpdb->prefix}icl_translate_job WHERE rid IN (" . join($rids) . ")");    
+                        $job_ids = $wpdb->get_col("SELECT job_id FROM {$wpdb->prefix}icl_translate_job WHERE rid IN (" . join(',', $rids) . ")");
                         if($job_ids){
-                            $wpdb->query("DELETE FROM {$wpdb->prefix}icl_translate WHERE job_id IN (" . join($job_ids) . ")");    
+                            $wpdb->query("DELETE FROM {$wpdb->prefix}icl_translate WHERE job_id IN (" . join(',', $job_ids) . ")");
                         }
                     }    
                 }
@@ -617,10 +621,10 @@ For each language, you need to enter the following information:
 		foreach ($data as $key => $value) {
 			if (is_array($value)) {
 				foreach ($value as $k => $v) {
-					$data[$key][$k] = $wpdb->escape($v);
+					$data[$key][$k] = esc_sql($v);
 				}
 			}
-			$data[$key] = $wpdb->escape($value);
+			$data[$key] = esc_sql($value);
 		}
 		return $data;
 	}
@@ -651,6 +655,15 @@ For each language, you need to enter the following information:
         $validated = is_array($fileinfo) && in_array($fileinfo['mime'], array('image/gif', 'image/jpeg', 'image/png')) && $fileinfo['0'] > 0;
         
 		if ($validated && move_uploaded_file($_FILES['icl_edit_languages']['tmp_name'][$id]['flag_file'], $target_path) ) {
+            
+            if(function_exists('wp_get_image_editor')){
+                $image = wp_get_image_editor( $target_path );
+                if ( ! is_wp_error( $image ) ) {
+                    $image->resize( 18, 12, true );
+                    $image->save( $target_path );
+                }                
+            }
+            
     		return $filename;
 		} else {
     		$this->error(__('There was an error uploading the file, please try again!','sitepress'));

@@ -13,7 +13,16 @@ global $product, $post;
 ?>
 
 <?php do_action( 'woocommerce_before_add_to_cart_form' ); ?>
-
+<script type="text/javascript">
+    jQuery(document).ready(function(){
+        i=4;
+        jQuery('form.cart .simple-addon-field .product-addon:last').hide();
+        while(jQuery('form.cart .cart-list-field li:visible').slice(i).size()){
+            jQuery('form.cart .cart-list-field li:visible').slice(i).first().css('clear','left');
+            i+=4;
+        }                
+    })
+</script>
 <form class="variations_form cart" method="post" enctype='multipart/form-data' data-product_id="<?php echo $post->ID; ?>" data-product_variations="<?php echo esc_attr( json_encode( $available_variations ) ) ?>">
 	<?php if ( ! empty( $available_variations ) ) : ?>
 		<!-- default "variations" woocommerce auto filter with select attribute -->
@@ -74,16 +83,16 @@ global $product, $post;
 			<li class="qty-field">
 				<?php woocommerce_quantity_input(); ?>
 			</li>	
-            <li class="upload">
-				<?php 
-					if(function_exists('wp_multi_file_uploader')){
-						wp_multi_file_uploader(array(
-							'allowed_mime_types'	=>	'jpg,png,gif,jpeg,ai,psd,zip,rar', // accepts .jpg, .png, .gif file types
-							'max_file_size'			=>	'32' // 32mb
-						)); 
-					};
-				?>            	
-            </li>
+                        <li class="upload">
+                            <?php 
+                                if(function_exists('wp_multi_file_uploader')){
+                                        wp_multi_file_uploader(array(
+                                                'allowed_mime_types'	=>	'jpg,png,gif,jpeg,ai,psd,zip,rar', // accepts .jpg, .png, .gif file types
+                                                'max_file_size'			=>	'32' // 32mb
+                                        )); 
+                                };
+                            ?>            	
+                        </li>
 		</ul>
         <input type="hidden" name="add-to-cart" value="<?php echo $product->id; ?>" />
         <input type="hidden" name="product_id" value="<?php echo esc_attr( $post->ID ); ?>" />

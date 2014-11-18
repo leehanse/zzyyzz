@@ -568,9 +568,10 @@ if (is_woocommerce_active()) {
 				$product_addons = get_post_meta( $post->ID, '_product_addons', true );
 				if (is_array($product_addons) && sizeof($product_addons)>0): ?>
                                             <?php foreach ($product_addons as $addon) : if (!isset($addon['name'])) continue; ?>
-                                            <li class="product-addon product-addon-<?php echo sanitize_title($addon['name']); ?>">
+                                            <li class="product-addon product-addon-<?php echo sanitize_title($addon['name']); ?>"
+                                                data-field="<?php echo esc_attr(json_encode($addon));?>">
                                                 <?php if ($addon['name']) : ?>
-                                                            <label class="field-title"><?php echo wptexturize($addon['name']); ?></label>
+                                                    <label class="field-title"><?php echo wptexturize($addon['name']); ?></label>
                                                 <?php endif; ?>
                                                 <?php
                                                 switch ($addon['type']) :
@@ -630,7 +631,7 @@ if (is_woocommerce_active()) {
                                                 <?php endif; ?>
                                                 <div class="product-addons-field-addition-info addon-<?php echo sanitize_title( $addon['name'] ); ?>-addition-info"></div>
                                             </li>
-					<?php endforeach; ?>
+					<?php endforeach; ?>                                            
 				<?php endif;
 			}
 			

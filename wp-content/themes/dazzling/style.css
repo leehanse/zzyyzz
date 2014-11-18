@@ -678,7 +678,9 @@ li.recentcomments {
 .dropdown-menu .divider {
   background-color: rgba(0, 0, 0, 0.1);
 }
-.navbar-nav > li > .dropdown-menu {
+.navbar-nav > li > .dropdown-menu,
+.navbar-nav .open .dropdown-menu{
+  background: #ffffff;
   padding: 0;
   border-left: 2px solid #1B926C;
   border-right: 2px solid #1B926C;
@@ -1081,6 +1083,9 @@ p.logged-in-as {
 .vinaprint_table_price table tr th{
     text-align: center;
     font-weight: bold;
+    background: #1B926C;
+    color: #ffffff;
+    padding: 5px;
 }
 .vinaprint_table_price table tr th:first-child{
     text-align: left;
@@ -1107,7 +1112,7 @@ p.logged-in-as {
 }.vinaprint_table_price tr:hover td{
 	
 }
-.vinaprint_table_price tr:nth-child(odd){ background-color:#aad4ff; }
+.vinaprint_table_price tr:nth-child(odd){ background-color:#61FECC; }
 .vinaprint_table_price tr:nth-child(even)    { background-color:#ffffff; }.vinaprint_table_price td{
     vertical-align:middle;
     border:1px solid #CACACA;
@@ -1337,7 +1342,7 @@ form.cart .cart-list-field li{
         float:left;
 }
 form.cart .cart-list-field li.upload{
-    width: 100%;
+    width: 50%;
 }
 form.cart .cart-list-field li.upload ul{
     display: inline-block;
@@ -1364,10 +1369,13 @@ form.cart .cart-list-field li.upload .qq-uploader .qq-upload-list li.qq-upload-s
     color: #ffffff;
 }
 form.cart .cart-list-field li .field-title, form.cart .cart-list-field li .field-title-qty{
-	width: 100%;
-	display: inline-block;
-	font-weight: bold;
-        color: #1B926C;
+    width: 100%;
+    display: inline-block;
+    font-weight: bold;
+    color: #1B926C;
+    height: 19px;
+    overflow: visible;
+    white-space: nowrap;    
 }
 form.cart .cart-list-field li select,form.cart .cart-list-field li input[type="text"], form.cart .cart-list-field li textarea{
 	width: 90%;	
@@ -1394,8 +1402,9 @@ table.cart .cart_item .product-quantity .field-title-qty{
 }
 
 .woocommerce .order_details{
-  background: #1B926C;
-  color:#ffffff;
+  background: #ffffff;
+  color:#7c7c7c;
+  border: 1px solid #e5e5e5;
 }
 .woocommerce .order_details li{
   padding-top: 5px;
@@ -1403,19 +1412,85 @@ table.cart .cart_item .product-quantity .field-title-qty{
 }
 .woocommerce table.shop_table td a, 
 .woocommerce-page table.shop_table td a{
-  color: #ffffff;
+  color: #7c7c7c;
   font-weight: bold;
   text-decoration: underline;
 }
+.woocommerce table.shop_table .cart_item td a, 
+.woocommerce-page table.shop_table .cart_item td a{
+    color: #13684D;
+}
+
 .woocommerce .customer_details,
 .woocommerce-page .customer_details{
-  border: 1px solid #1B926C;
+  border: 1px solid #e5e5e5;
   border-radius: 5px;
   padding:5px;
 }
 .woocommerce address,
 .woocommerce-page address{
-  border: 1px solid #1B926C;
+  border: 1px solid #e5e5e5;
   border-radius: 5px;
   padding:5px;
+}
+#primary .page-header{
+    margin-top:0px;
+    padding-bottom: 0px;
+    background: #1B926C;
+}
+#primary .page-header .entry-title{
+    margin:0px;
+    color: #ffffff;
+    padding: 5px;
+    border: 4px double #ffffff;
+    font-size: 20px;
+    text-transform: uppercase;
+}
+#primary .woocommerce-breadcrumb{
+    background: none repeat scroll 0 0 #1b926c;
+    border: 4px double #ffffff;
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: bold;
+    padding: 5px;
+}
+#primary .woocommerce-breadcrumb a{
+    color: #ffffff;
+}
+.woocommerce .cart-collaterals{
+    border: 1px solid #e5e5e5;
+    padding:5px;
+    border-radius: 5px;
+}
+.woocommerce .cart-collaterals .cart_totals h2{
+    font-size: 18px;
+}
+.woocommerce .cart-collaterals .cart_totals table{
+    width:100%;
+}
+.woocommerce .cart-collaterals .cart_totals table tr th,.woocommerce .cart-collaterals .cart_totals table tr td{
+    border-bottom: 1px solid #e5e5e5;
+}
+.woocommerce .cart-collaterals .cart_totals table tr th{
+    width: auto;
+}
+.navbar-default .navbar-nav > .active > a{
+    background: none repeat scroll 0 0 #F7F6F7;
+    color:#1B926C;
+}
+.navbar-default .navbar-nav > .active > a:hover{
+    background: none repeat scroll 0 0 #F7F6F7;
+    color:#1B926C;
+}
+#lang_sel{
+    width: 100%;
+}
+#lang_sel li{
+    width:100%;
+}
+#lang_sel ul ul{
+    width: 100%;
+}
+#lang_sel li .icl-en{
+    width: 100%;
 }

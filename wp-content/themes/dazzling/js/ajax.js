@@ -1,5 +1,45 @@
 jQuery(document).ready(function(){
     // register change select atrributes
+    jQuery(".number-field").keydown(function (e) {
+        // Allow: backspace, delete, tab, escape, enter and .
+        if (jQuery.inArray(e.keyCode, [46, 8, 9, 27, 13, 110, 190]) !== -1 ||
+             // Allow: Ctrl+A
+            (e.keyCode == 65 && e.ctrlKey === true) || 
+             // Allow: home, end, left, right
+            (e.keyCode >= 35 && e.keyCode <= 39)) {
+                 // let it happen, don't do anything
+                 return;
+        }
+        // Ensure that it is a number and stop the keypress
+        if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
+            e.preventDefault();
+        }
+    });
+    jQuery('.product-addons-field-width').keyup(function(){
+       var w_tag  = jQuery(this);
+       var wh_tag = w_tag.prev();        
+       var h_tag  = w_tag.next();
+       
+       var w = w_tag.val() * 1;
+       var h = h_tag.val() * 1;
+       if(w && h){
+           wh_tag.val(w+'x'+h);
+           calculateTablePrice();
+       }
+    });
+    jQuery('.product-addons-field-height').keyup(function(){
+       var w_tag  = jQuery(this).prev();
+       var wh_tag = w_tag.prev();        
+       var h_tag  = w_tag.next();
+       
+       var w = w_tag.val() * 1;
+       var h = h_tag.val() * 1;
+       if(w && h){
+           wh_tag.val(w+'x'+h);
+           calculateTablePrice();
+       }
+    });
+    
     jQuery('form.cart .attribute_field select').change(function(){
         calculateTablePrice();        
     })
@@ -69,6 +109,7 @@ function getVariationId(){
     }
 }
 function calculateTablePrice(){
+    getSelectAddonMetaData();
     var qty             = jQuery('.qty').val() * 1;
     if(qty == 0){
       qty = 1;  
@@ -121,4 +162,62 @@ function calculateTablePrice(){
             jQuery('.vinaprint_table_price').html(response);
         }
     });
+}
+function getSelectAddonMetaData(){
+    var qty             = jQuery('.qty').val() * 1;
+    if(qty == 0){
+      qty = 1;  
+    }    
+    var data            = [];
+    var data_addons     = jQuery('form.cart .product-addons-field').serializeArray();
+
+    for(i = 0; i< data_addons.length; i++){
+        if(data_addons[i].name.indexOf('[]') != -1){
+            var tmp_name = data_addons[i].name.replace('[]','');
+            data_addons[i].name = "addons[" + tmp_name +"][]";
+        }else{
+            data_addons[i].name = "addons[" + data_addons[i].name+"]";
+        }
+        data.push(data_addons[i]);
+    }
+
+    data.push({
+        name: 'action',
+        value: 'getWidthHeightPrice',        
+    });
+
+    data.push({
+       name:  'product_id',
+       value: jQuery("#product_id_hidden").val()
+    });
+
+    data.push({
+        name: 'qty',
+        value: qty,        
+    });
+    
+    if(window.ajaxGetSelectAddonMetaData !== undefined){
+        window.ajaxGetSelectAddonMetaData.abort();
+    }
+
+    window.ajaxGetSelectAddonMetaData = jQuery.ajax({
+        url : vinaprintAjax.ajaxurl,
+        data: data,
+        type: 'post',
+        dataType: 'json',
+        success: function(response){
+            if(response.length){
+                for(i=0;i<response.length;i++){
+                    var addition_addon = response[i].addition_info;
+                    var sanitize_title = response[i].sanitize_title;
+                    var addon_type     = response[i].addon_type;
+                    if(addition_addon){
+                        if(addon_type == 'width_height'){
+                            jQuery('.addon-' + sanitize_title + '-addition-info').html(addition_addon);
+                        }
+                    }
+                }
+            }
+        }
+    });    
 }
