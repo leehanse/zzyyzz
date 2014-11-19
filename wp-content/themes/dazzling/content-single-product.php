@@ -64,6 +64,10 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
                 <button type="submit" class="custom-add-to-cart-button single_add_to_cart_button button alt"><?php echo $product->single_add_to_cart_text(); ?></button>
             </div>
         <?php endif;?>
+        <div class="shipping-line" style="">
+        	<img class="img-shipping" src="<?php echo get_template_directory_uri();?>/images/shipping.png">
+        	<h3>Fast lav pris på fragt, 49,-</h3>
+        </div>
 	<?php
 		/**
 		 * woocommerce_after_single_product_summary hook

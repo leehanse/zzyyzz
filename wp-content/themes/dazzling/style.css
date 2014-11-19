@@ -860,7 +860,7 @@ p.logged-in-as {
   margin-bottom: 2px;
 }
 .copyright {
-  margin-top: 10px;
+  margin-top: 0px;
   float: right;
   text-align: right;
 }
@@ -1172,7 +1172,7 @@ p.logged-in-as {
     text-align: right;
     display: inline-block;
     width:100%;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 /* Loading CSS */
 .loader {
@@ -1504,8 +1504,33 @@ table.cart .cart_item .product-quantity .field-title-qty{
     margin: 0;
     padding: 0;
     list-style: none;
-    margin-top: 10px;
+    margin-top: 20px;
 }
 .navbar .language-switcher li{
     height: 17px;
+    display: inline-block;
+}
+.shipping-line{
+    background: none repeat scroll 0 0 #61fecc;
+    border: 1px solid #cacaca;
+    border-radius: 3px;
+    margin-bottom: 10px;
+    padding-left: 2px;
+    color: #000000;
+}
+.shipping-line .img-shipping{
+  height: 50px;
+  float:left;
+  position: relative;
+}
+.shipping-line h3{
+  font-size: 20px;
+  color: #000000;
+  margin-left: 10px;
+}
+#secondary{
+  box-shadow: 10px 10px 5px #888888;
+}
+#primary{
+  box-shadow: 10px 10px 5px #888888; 
 }

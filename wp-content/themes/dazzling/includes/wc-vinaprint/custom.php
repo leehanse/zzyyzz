@@ -377,7 +377,8 @@ function getAddonCartItemMeta($product_id, $qty, $select_addons, $product_addons
                             $wh_input_unit = $addon['wh_input_unit'];
                             $wh_option_price_unit = $addon['wh_option_price_unit'];
                             $options = $addon['options'];
-                            $posted = (isset( $select_addons['addon-' . sanitize_title( $addon['name'] )] )) ? $select_addons['addon-' . sanitize_title( $addon['name'] )] : '';
+                            $posted = (isset( $select_addons['addon-' . sanitize_title( $addon['name'] )] ))
+                                      ? $select_addons['addon-' . sanitize_title( $addon['name'] )] : '';
 
                             if (!$posted) continue;
 
@@ -466,13 +467,17 @@ function getAddonCartItemMeta($product_id, $qty, $select_addons, $product_addons
                         break;
                 endswitch;
             endforeach;
-        endif; 
+        endif;
         return $cart_item_meta;
     else:
         return array();
     endif;
 }
 function calculatePriceCell($product_id, $qty, $select_attributes = array(), $select_addons = array(), $available_variations = null, $product_addons = null){
+    if(is_array($select_attributes) && count($select_attributes)){
+        $select_attributes = array_map('sanitize_title',$select_attributes);
+    }
+    
     global $woocommerce;
     $price           = 0;
 
@@ -562,7 +567,7 @@ function vinaprint_add_custom_price( $cart_object ) {
                 }
             }
         }
-        $price = calculatePriceCell($product_id, $qty, $select_attributes, $select_addons);        
+        $price = calculatePriceCell($product_id, $qty, $select_attributes, $select_addons);
         $value['data']->price = (float) $price / $qty;
     }
     $woocommerce->cart->persistent_cart_update();

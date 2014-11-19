@@ -157,3 +157,6 @@
     font-size: 12px;
     font-weight: normal;
 }
+.ui-dialog-content{
+	display: inline-block;
+}
