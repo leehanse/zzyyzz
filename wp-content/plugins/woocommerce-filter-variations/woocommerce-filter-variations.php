@@ -68,28 +68,43 @@ if (is_woocommerce_active()) {
                 }else{
                     $filter_attributes = array();                    
                     $product= new WC_Product($post->ID);
-                    $attributes = $product->get_attributes();
+                    $attributes = $product->get_attributes();                   
                     if(count($attributes)){
                         $html_filter ='<div id="product_filter_variations_wrapper" style="background-color:#F5F5F5;border-radius:5px;">';
                         $html_filter .= '<input type="hidden" name="filter_variation_product_id" value="'.$post->ID.'"/>';
                         $html_filter .= '<table>';
                         $html_filter .= '<tr>';                                          
                         foreach($attributes as $attribute){
-                            $post_terms  = wp_get_post_terms( $post->ID, $attribute['name'] );
-                            $first_value = reset($post_terms);
-
-                            $filter_attributes["attribute_".sanitize_title($attribute['name'])] = $first_value->slug;
                             $html_filter .= '<td width="'.(95/count($attributes)).'%">';      
-                            $html_filter .= '<select style="width:100% !important;" name="slt_filter_variation[attribute_' . sanitize_title( $attribute['name'] ).']">';
-                            $html_filter.= '<option value="">' . __( 'Any', 'woocommerce' ) . ' ' . esc_html( wc_attribute_label( $attribute['name'] ) ) . '&hellip;</option>';
-                            foreach ( $post_terms as $term ) {
-                                $selected = '';
-                                if($term == reset($post_terms)){
-                                    if($attribute != end($attributes)) $selected='selected="selected"';
+                                $html_filter .= '<select style="width:100% !important;" name="slt_filter_variation[attribute_' . sanitize_title( $attribute['name'] ).']">';
+                                $html_filter.= '<option value="">' . __( 'Any', 'woocommerce' ) . ' ' . esc_html( wc_attribute_label( $attribute['name'] ) ) . '&hellip;</option>';
+                                if($attribute['is_taxonomy']){                                    
+                                    foreach ( $post_terms as $term ) {
+                                        $post_terms  = wp_get_post_terms( $post->ID, $attribute['name'] );
+                                        $first_value = reset($post_terms);
+                                        $filter_attributes["attribute_".sanitize_title($attribute['name'])] = $first_value->slug;
+
+                                        $selected = '';
+                                        if($term == reset($post_terms)){
+                                            if($attribute != end($attributes)) $selected='selected="selected"';
+                                        }
+                                        $html_filter.= '<option '.$selected.' value="' . $term->slug . '">' . apply_filters( 'woocommerce_variation_option_name', esc_html( $term->name ) ) . '</option>';
+                                    }
+                                }else{                                    
+                                    $options = array_map( 'trim', explode( WC_DELIMITER, $attribute['value'] ) );                                    
+                                    if(count($options)){
+                                        $first_option = reset($options);
+                                        $filter_attributes["attribute_".sanitize_title($attribute['name'])] = sanitize_title($first_option);
+                                        foreach ( $options as $option ) {
+                                            $selected = '';
+                                            if($option == $first_option){
+                                                if($attribute != end($attributes)) $selected='selected="selected"';
+                                            }                                            
+                                            $html_filter .= '<option '.$selected.' value="' . esc_attr( sanitize_title( $option ) ) . '">' . esc_html( apply_filters( 'woocommerce_variation_option_name', $option ) ) . '</option>';
+                                        }
+                                    }
                                 }
-                                $html_filter.= '<option '.$selected.' value="' . $term->slug . '">' . apply_filters( 'woocommerce_variation_option_name', esc_html( $term->name ) ) . '</option>';
-                            }
-                            $html_filter.= '</select>';
+                                $html_filter.= '</select>';
                             $html_filter.= '</td>';
                         }        
                         $html_filter.= '<td>';
@@ -115,7 +130,8 @@ if (is_woocommerce_active()) {
                             $meta_query = $filter_meta_query;
                             $meta_query["relation"] = "AND";
                         }
-                        $query->set("meta_query", $meta_query);        
+                        $query->set("meta_query", $meta_query);
+                        
                         echo $html_filter;        
                     }
                 }

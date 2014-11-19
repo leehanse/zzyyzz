@@ -80,7 +80,8 @@ if ( ! class_exists( 'VinaprintAjax' ) ) {
             $available_variations = $productVariable->get_available_variations();
 
             $available_attributes = $productVariable->get_variation_attributes();
-
+            $all_attributes = $productVariable->get_attributes();            
+            
             $select_attributes    = array();
             $select_addons        = array();
 
@@ -111,33 +112,39 @@ if ( ! class_exists( 'VinaprintAjax' ) ) {
                 $html .= "<th>$amount</th>";
             }
             $html .= "</tr>";                
-
+            
             if(count($available_attributes)){ // variable product -> remove last select attribute to build table price
                 end($available_attributes);
-                $last_attribute = key($available_attributes);                
+                $last_attribute = key($available_attributes);
+                $last_attribute_sanitize_title = sanitize_title($last_attribute);
+                
                 if(count($_select_attributes)){
                     foreach($_select_attributes as $key => $item){
-                        if($key != 'attribute_'.$last_attribute){
+                        if($key != 'attribute_'.$last_attribute_sanitize_title){
                             $select_attributes[$key] = $item;
                         }
                     }
                 }
-
+                
                 if(count($available_attributes[$last_attribute])){
                     $select_addons = $_select_addons;
                     foreach($available_attributes[$last_attribute] as $attribute){
                         $tmp_select_attributes = $select_attributes;
 
-                        $pname    = 'attribute_'.$last_attribute;
-                        $pvalue   = $attribute;
+                        $pname    = 'attribute_'.$last_attribute_sanitize_title;
+                        $pvalue   = sanitize_title($attribute);
                         $tmp_select_attributes[$pname] = $pvalue;
-
-                        $tmp_select_addons     = $select_addons;
                         
+                        $tmp_select_addons     = $select_addons;                        
 
                         $html .= '<tr>';
-                        $term = get_term_by('slug', $attribute, $last_attribute);
-                        $html .= '<td>'.$term->name.'</td>';
+                        
+                        if($all_attributes[$last_attribute_sanitize_title]['is_taxonomy']){
+                            $term = get_term_by('slug', $attribute, $last_attribute);
+                            $html .= '<td>'.$term->name.'</td>';
+                        }else{
+                            $html .= '<td>'.$attribute.'</td>';
+                        }
 
                         foreach($arr_amount as $amount){
                             $price = calculatePriceCell($product_id, $amount, $tmp_select_attributes, $tmp_select_addons, $available_variations, $product_addons);

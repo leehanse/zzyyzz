@@ -571,7 +571,9 @@ if (is_woocommerce_active()) {
                                             <li class="product-addon product-addon-<?php echo sanitize_title($addon['name']); ?>"
                                                 data-field="<?php echo esc_attr(json_encode($addon));?>">
                                                 <?php if ($addon['name']) : ?>
-                                                    <label class="field-title"><?php echo wptexturize($addon['name']); ?></label>
+                                                    <label class="field-title" <?php if(strlen(wptexturize($addon['name'])) > 25) echo 'style="font-size:11px;"';?>>
+                                                        <?php echo wptexturize($addon['name']); ?>
+                                                    </label>
                                                 <?php endif; ?>
                                                 <?php
                                                 switch ($addon['type']) :

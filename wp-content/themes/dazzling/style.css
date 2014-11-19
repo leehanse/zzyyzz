@@ -1374,8 +1374,6 @@ form.cart .cart-list-field li .field-title, form.cart .cart-list-field li .field
     font-weight: bold;
     color: #1B926C;
     height: 19px;
-    overflow: visible;
-    white-space: nowrap;    
 }
 form.cart .cart-list-field li select,form.cart .cart-list-field li input[type="text"], form.cart .cart-list-field li textarea{
 	width: 90%;	
@@ -1446,6 +1444,12 @@ table.cart .cart_item .product-quantity .field-title-qty{
     font-size: 20px;
     text-transform: uppercase;
 }
+#primary .no-results .page-header{
+    background: #ffffff;
+}
+#primary .no-results .page-header .page-title{
+    color: red;
+}
 #primary .woocommerce-breadcrumb{
     background: none repeat scroll 0 0 #1b926c;
     border: 4px double #ffffff;
@@ -1493,4 +1497,15 @@ table.cart .cart_item .product-quantity .field-title-qty{
 }
 #lang_sel li .icl-en{
     width: 100%;
+}
+.navbar .language-switcher{
+    display: inline-block;
+    float: right;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    margin-top: 10px;
+}
+.navbar .language-switcher li{
+    height: 17px;
 }

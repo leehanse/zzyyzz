@@ -147,8 +147,8 @@ function vinaprint_add_order_item_header() { ?>
     <th class="vinaprint-upload-file-header">File Uploaded</th>
 <?php } 
 
-add_action( 'woocommerce_product_write_panel_tabs','vinaprint_add_product_data_tab');
-add_action( 'woocommerce_product_write_panels', 'vinaprint_add_product_data_panel');
+//add_action( 'woocommerce_product_write_panel_tabs','vinaprint_add_product_data_tab');
+//add_action( 'woocommerce_product_write_panels', 'vinaprint_add_product_data_panel');
 
 function vinaprint_add_product_data_tab() { ?>
     <li class="vinaprint_price_table"><a href="#vinaprint_product_price_table">Table Price</a></li>
@@ -567,3 +567,10 @@ function vinaprint_add_custom_price( $cart_object ) {
     }
     $woocommerce->cart->persistent_cart_update();
 }
+add_action( 'body_class', 'vinaprint_add_my_bodyclass');
+function vinaprint_add_my_bodyclass( $classes ) {
+  if ( basename(get_page_template()) == 'shop.php'){
+    $classes[] = 'woocommerce woocommerce-page';
+  }
+  return $classes;
+} 

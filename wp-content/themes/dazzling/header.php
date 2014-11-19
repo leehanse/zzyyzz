@@ -30,9 +30,8 @@
 
 <body <?php body_class(); ?>>
 <div id="page" class="hfeed site">
-
 		<nav class="navbar navbar-default" role="navigation">
-			<div class="container">
+                    <div class="container">
 		        <div class="navbar-header">
 		            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
 		                <span class="sr-only">Toggle navigation</span>
@@ -57,7 +56,19 @@
 
 				<?php endif; // header image was removed (again) ?>
 
-		        </div>
-				<?php dazzling_header_menu(); ?>
+		        </div>                        
+                        <?php 
+                            $_languages = icl_get_languages();
+                            if(count($_languages)):
+                        ?>
+                            <ul class="language-switcher">
+                                <?php foreach($_languages as $lang):?>
+                                <li>
+                                    <a href="<?php echo $lang['url'];?>"><img src="<?php echo $lang['country_flag_url'];?>"/></a>
+                                </li>
+                                <?php endforeach;?>
+                            </ul>
+                        <?php endif; ?>
+                        <?php dazzling_header_menu(); ?>
 		    </div>
 		</nav><!-- .site-navigation -->

@@ -1,0 +1,2642 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Dazzling v1.3.6\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2014-11-19 04:13:27+0000\n"
+"Last-Translator: admin <ngochicongbk@gmail.com>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: CSL v1.x\n"
+"X-Poedit-Language: Danish\n"
+"X-Poedit-Country: DENMARK\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;\n"
+"X-Poedit-Basepath: ../\n"
+"X-Poedit-Bookmarks: \n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Textdomain-Support: yes"
+
+#: 404.php:15
+#@ dazzling
+msgid "Oops! That page can&rsquo;t be found."
+msgstr "Ups! Denne side kan ikke findes."
+
+#: 404.php:19
+#@ dazzling
+msgid "It looks like nothing was found at this location. Maybe try one of the links below or a search?"
+msgstr "Det ligner intet blev fundet på denne placering. Måske prøve en af nedenstående links eller en søgning?"
+
+#: 404.php:27
+#@ dazzling
+msgid "Most Used Categories"
+msgstr ""
+"\n"
+"Mest anvendte kategorier"
+
+#. translators: %1$s: smiley
+#: 404.php:44
+#, php-format
+#@ dazzling
+msgid "Try looking in the monthly archives. %1$s"
+msgstr "Prøv at kigge i de månedlige arkiver. %1$s"
+
+#: archive.php:27
+#, php-format
+#@ dazzling
+msgid "Author: %s"
+msgstr "Forfatter: %s"
+
+#: archive.php:30
+#, php-format
+#@ dazzling
+msgid "Day: %s"
+msgstr "Dag: %s"
+
+#: archive.php:33
+#, php-format
+#@ dazzling
+msgid "Month: %s"
+msgstr "Måned: %s"
+
+#: archive.php:33
+#@ dazzling
+msgctxt "monthly archives date format"
+msgid "F Y"
+msgstr "F Y"
+
+#: archive.php:36
+#, php-format
+#@ dazzling
+msgid "Year: %s"
+msgstr "År:: %s"
+
+#: archive.php:36
+#@ dazzling
+msgctxt "yearly archives date format"
+msgid "Y"
+msgstr "Y"
+
+#: archive.php:39
+#@ dazzling
+msgid "Asides"
+msgstr "sidebemærkninger"
+
+#: archive.php:42
+#@ dazzling
+msgid "Galleries"
+msgstr "Gallerier"
+
+#: archive.php:45
+#@ dazzling
+msgid "Images"
+msgstr "Billede"
+
+#: archive.php:48
+#@ dazzling
+msgid "Videos"
+msgstr "Videoer"
+
+#: archive.php:51
+#@ dazzling
+msgid "Quotes"
+msgstr "Citater"
+
+#: archive.php:54
+#@ dazzling
+msgid "Links"
+msgstr "Lænke"
+
+#: archive.php:57
+#@ dazzling
+msgid "Statuses"
+msgstr "Statusser"
+
+#: archive.php:60
+#@ dazzling
+msgid "Audios"
+msgstr "Lydbånd"
+
+#: archive.php:63
+#@ dazzling
+msgid "Chats"
+msgstr "Snakke"
+
+#: archive.php:66
+#: sidebar.php:17
+#@ dazzling
+msgid "Archives"
+msgstr "Arkiv"
+
+#: cart/cart-empty.php:16
+#@ woocommerce
+msgid "Your cart is currently empty."
+msgstr ""
+
+#: cart/cart-empty.php:20
+#@ woocommerce
+msgid "Return To Shop"
+msgstr ""
+
+#: cart/cart-shipping.php:16
+#, php-format
+#@ woocommerce
+msgid "Shipping #%d"
+msgstr ""
+
+#: cart/cart-shipping.php:18
+#@ woocommerce
+msgid "Shipping and Handling"
+msgstr ""
+
+#: cart/cart-shipping.php:55
+#@ woocommerce
+msgid "Please use the shipping calculator to see available shipping methods."
+msgstr ""
+
+#: cart/cart-shipping.php:59
+#@ woocommerce
+msgid "Please continue to the checkout and enter your full address to see if there are any available shipping methods."
+msgstr ""
+
+#: cart/cart-shipping.php:63
+#@ woocommerce
+msgid "Please fill in your details to see available shipping methods."
+msgstr ""
+
+#: cart/cart-shipping.php:72
+#: cart/cart-shipping.php:78
+#@ woocommerce
+msgid "There doesn&lsquo;t seem to be any available shipping methods. Please double check your address, or contact us if you need any help."
+msgstr ""
+
+#: cart/cart-shipping.php:93
+#@ woocommerce
+msgid "Shipping"
+msgstr ""
+
+#: cart/cart-totals.php:16
+#@ woocommerce
+msgid "Cart Totals"
+msgstr ""
+
+#: cart/cart-totals.php:21
+#: checkout/review-order.php:51
+#@ woocommerce
+msgid "Cart Subtotal"
+msgstr ""
+
+#: cart/cart-totals.php:75
+#: checkout/review-order.php:105
+#@ woocommerce
+msgid "Order Total"
+msgstr ""
+
+#: cart/cart-totals.php:87
+#, php-format
+#@ woocommerce
+msgid " (taxes estimated for %s)"
+msgstr ""
+
+#: cart/cart-totals.php:90
+#, php-format
+#@ woocommerce
+msgid "Note: Shipping and taxes are estimated%s and will be updated during checkout based on your billing and shipping information."
+msgstr ""
+
+#: cart/cart.php:25
+#: checkout/form-pay.php:17
+#: checkout/review-order.php:18
+#: emails/admin-new-order.php:22
+#: emails/customer-completed-order.php:23
+#: emails/customer-invoice.php:27
+#: emails/customer-note.php:27
+#: emails/customer-processing-order.php:23
+#: order/order-details.php:18
+#@ woocommerce
+msgid "Product"
+msgstr ""
+
+#: cart/cart.php:26
+#: emails/admin-new-order.php:24
+#: emails/customer-completed-order.php:25
+#: emails/customer-invoice.php:29
+#: emails/customer-note.php:29
+#: emails/customer-processing-order.php:25
+#@ woocommerce
+msgid "Price"
+msgstr ""
+
+#: cart/cart.php:27
+#: emails/admin-new-order.php:23
+#: emails/customer-completed-order.php:24
+#: emails/customer-invoice.php:28
+#: emails/customer-note.php:28
+#: emails/customer-processing-order.php:24
+#@ woocommerce
+msgid "Quantity"
+msgstr ""
+
+#: cart/cart.php:28
+#: checkout/review-order.php:19
+#: myaccount/my-orders.php:35
+#: order/order-details.php:19
+#@ woocommerce
+msgid "Total"
+msgstr ""
+
+#: cart/cart.php:45
+#@ woocommerce
+msgid "Remove this item"
+msgstr ""
+
+#: cart/cart.php:72
+#@ woocommerce
+msgid "Available on backorder"
+msgstr ""
+
+#: cart/cart.php:116
+#@ woocommerce
+msgid "Coupon"
+msgstr ""
+
+#: cart/cart.php:116
+#: checkout/form-coupon.php:23
+#@ woocommerce
+msgid "Coupon code"
+msgstr ""
+
+#: cart/cart.php:116
+#: checkout/form-coupon.php:27
+#@ woocommerce
+msgid "Apply Coupon"
+msgstr ""
+
+#: cart/cart.php:123
+#@ woocommerce
+msgid "Update Cart"
+msgstr ""
+
+#: cart/cart.php:123
+#@ woocommerce
+msgid "Proceed to Checkout"
+msgstr ""
+
+#: cart/cross-sells.php:38
+#@ woocommerce
+msgid "You may be interested in&hellip;"
+msgstr ""
+
+#: cart/mini-cart.php:52
+#@ woocommerce
+msgid "No products in the cart."
+msgstr ""
+
+#: cart/mini-cart.php:60
+#@ woocommerce
+msgid "Subtotal"
+msgstr ""
+
+#: cart/mini-cart.php:65
+#@ woocommerce
+msgid "View Cart"
+msgstr ""
+
+#: cart/mini-cart.php:66
+#@ woocommerce
+msgid "Checkout"
+msgstr ""
+
+#: cart/shipping-calculator.php:20
+#@ woocommerce
+msgid "Calculate Shipping"
+msgstr ""
+
+#: cart/shipping-calculator.php:26
+#@ woocommerce
+msgid "Select a country&hellip;"
+msgstr ""
+
+#: cart/shipping-calculator.php:43
+#: cart/shipping-calculator.php:49
+#: cart/shipping-calculator.php:61
+#@ woocommerce
+msgid "State / county"
+msgstr ""
+
+#: cart/shipping-calculator.php:50
+#@ woocommerce
+msgid "Select a state&hellip;"
+msgstr ""
+
+#: cart/shipping-calculator.php:70
+#@ woocommerce
+msgid "City"
+msgstr ""
+
+#: cart/shipping-calculator.php:78
+#@ woocommerce
+msgid "Postcode / Zip"
+msgstr ""
+
+#: cart/shipping-calculator.php:83
+#@ woocommerce
+msgid "Update Totals"
+msgstr ""
+
+#: checkout/cart-errors.php:16
+#@ woocommerce
+msgid "There are some issues with the items in your cart (shown above). Please go back to the cart page and resolve these issues before checking out."
+msgstr ""
+
+#: checkout/cart-errors.php:20
+#@ woocommerce
+msgid "Return To Cart"
+msgstr ""
+
+#: checkout/form-billing.php:15
+#@ woocommerce
+msgid "Billing &amp; Shipping"
+msgstr ""
+
+#: checkout/form-billing.php:19
+#@ woocommerce
+msgid "Billing Details"
+msgstr ""
+
+#: checkout/form-billing.php:38
+#@ woocommerce
+msgid "Create an account?"
+msgstr ""
+
+#: checkout/form-billing.php:49
+#@ woocommerce
+msgid "Create an account by entering the information below. If you are a returning customer please login at the top of the page."
+msgstr ""
+
+#: checkout/form-checkout.php:18
+#@ woocommerce
+msgid "You must be logged in to checkout."
+msgstr ""
+
+#: checkout/form-checkout.php:49
+#@ woocommerce
+msgid "Your order"
+msgstr ""
+
+#: checkout/form-coupon.php:16
+#@ woocommerce
+msgid "Have a coupon?"
+msgstr ""
+
+#: checkout/form-coupon.php:16
+#@ woocommerce
+msgid "Click here to enter your code"
+msgstr ""
+
+#: checkout/form-login.php:14
+#@ woocommerce
+msgid "Returning customer?"
+msgstr ""
+
+#: checkout/form-login.php:15
+#@ woocommerce
+msgid "Click here to login"
+msgstr ""
+
+#: checkout/form-login.php:22
+#@ woocommerce
+msgid "If you have shopped with us before, please enter your details in the boxes below. If you are a new customer please proceed to the Billing &amp; Shipping section."
+msgstr ""
+
+#: checkout/form-pay.php:18
+#@ woocommerce
+msgid "Qty"
+msgstr ""
+
+#: checkout/form-pay.php:19
+#@ woocommerce
+msgid "Totals"
+msgstr ""
+
+#: checkout/form-pay.php:52
+#@ woocommerce
+msgid "Payment"
+msgstr ""
+
+#: checkout/form-pay.php:77
+#@ woocommerce
+msgid "Sorry, it seems that there are no available payment methods for your location. Please contact us if you require assistance or wish to make alternate arrangements."
+msgstr ""
+
+#: checkout/form-pay.php:87
+#@ woocommerce
+msgid "Pay for order"
+msgstr ""
+
+#: checkout/form-shipping.php:29
+#@ woocommerce
+msgid "Ship to a different address?"
+msgstr ""
+
+#: checkout/form-shipping.php:55
+#: single-product/tabs/additional-information.php:17
+#@ woocommerce
+msgid "Additional Information"
+msgstr ""
+
+#: checkout/review-order.php:150
+#@ woocommerce
+msgid "Please fill in your details above to see available payment methods."
+msgstr ""
+
+#: checkout/review-order.php:152
+#@ woocommerce
+msgid "Sorry, it seems that there are no available payment methods for your state. Please contact us if you require assistance or wish to make alternate arrangements."
+msgstr ""
+
+#: checkout/review-order.php:163
+#@ woocommerce
+msgid "Since your browser does not support JavaScript, or it is disabled, please ensure you click the <em>Update Totals</em> button before placing your order. You may be charged more than the amount stated above if you fail to do so."
+msgstr ""
+
+#: checkout/review-order.php:163
+#@ woocommerce
+msgid "Update totals"
+msgstr ""
+
+#: checkout/review-order.php:170
+#@ woocommerce
+msgid "Place order"
+msgstr ""
+
+#: checkout/review-order.php:179
+#, php-format
+#@ woocommerce
+msgid "I&rsquo;ve read and accept the <a href=\"%s\" target=\"_blank\">terms &amp; conditions</a>"
+msgstr ""
+
+#: checkout/thankyou.php:16
+#@ woocommerce
+msgid "Unfortunately your order cannot be processed as the originating bank/merchant has declined your transaction."
+msgstr ""
+
+#: checkout/thankyou.php:20
+#@ woocommerce
+msgid "Please attempt your purchase again or go to your account page."
+msgstr ""
+
+#: checkout/thankyou.php:22
+#@ woocommerce
+msgid "Please attempt your purchase again."
+msgstr ""
+
+#: checkout/thankyou.php:26
+#: myaccount/my-orders.php:68
+#@ woocommerce
+msgid "Pay"
+msgstr ""
+
+#: checkout/thankyou.php:28
+#@ woocommerce
+msgid "My Account"
+msgstr ""
+
+#: checkout/thankyou.php:34
+#: checkout/thankyou.php:65
+#@ woocommerce
+msgid "Thank you. Your order has been received."
+msgstr ""
+
+#: checkout/thankyou.php:38
+#: emails/customer-completed-order.php:18
+#: emails/customer-invoice.php:22
+#: emails/customer-note.php:22
+#: emails/customer-processing-order.php:18
+#@ woocommerce
+msgid "Order:"
+msgstr ""
+
+#: checkout/thankyou.php:42
+#@ woocommerce
+msgid "Date:"
+msgstr ""
+
+#: checkout/thankyou.php:46
+#@ woocommerce
+msgid "Total:"
+msgstr ""
+
+#: checkout/thankyou.php:51
+#@ woocommerce
+msgid "Payment method:"
+msgstr ""
+
+#: comments.php:30
+#, php-format
+#@ dazzling
+msgctxt "comments title"
+msgid "One thought on &ldquo;%2$s&rdquo;"
+msgid_plural "%1$s thoughts on &ldquo;%2$s&rdquo;"
+msgstr[0] "Man troede, på &ldquo;%2$s&rdquo;"
+msgstr[1] "%1$s tanker om &ldquo;%2$s&rdquo;"
+
+#: comments.php:37
+#: comments.php:61
+#@ dazzling
+msgid "Comment navigation"
+msgstr "kommentar navigation"
+
+#: comments.php:38
+#: comments.php:62
+#@ dazzling
+msgid "&larr; Older Comments"
+msgstr "ældre Kommentarer"
+
+#: comments.php:39
+#: comments.php:63
+#@ dazzling
+msgid "Newer Comments &rarr;"
+msgstr "Nyere Kommentarer &rarr;"
+
+#: comments.php:73
+#@ dazzling
+msgid "Comments are closed."
+msgstr "Kommentarer er lukket."
+
+#: content-none.php:13
+#@ dazzling
+msgid "Nothing Found"
+msgstr "Intet fundet"
+
+#: content-none.php:19
+#, php-format
+#@ dazzling
+msgid "Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
+msgstr "Klar til at udgive dit første indlæg? <a href=\"%1$s\">Kom i gang her</a>."
+
+#: content-none.php:23
+#@ dazzling
+msgid "Sorry, but nothing matched your search terms. Please try again with some different keywords."
+msgstr "Beklager, men intet matchede dine søgetermer. Prøv venligst igen med nogle forskellige søgeord."
+
+#: content-none.php:28
+#@ dazzling
+msgid "It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help."
+msgstr "Det synes vi kan & rsquo; t finde det, du & rsquo; re leder efter. Måske søger kan hjælpe."
+
+#: content-page.php:18
+#: content-single.php:23
+#: content.php:61
+#: front-page.php:23
+#: image.php:83
+#@ dazzling
+msgid "Pages:"
+msgstr "Sider:"
+
+#: content-page.php:23
+#: content-single.php:67
+#: content.php:30
+#: front-page.php:28
+#: inc/template-tags.php:81
+#: inc/template-tags.php:100
+#: myaccount/my-address.php:45
+#@ dazzling
+#@ woocommerce
+msgid "Edit"
+msgstr "Edit"
+
+#. translators: used between list items, there is a space after the comma
+#: content-single.php:36
+#: content-single.php:39
+#: content.php:21
+#@ dazzling
+msgid ", "
+msgstr ", "
+
+#: content.php:15
+#@ dazzling
+msgid "Leave a comment"
+msgstr "Efterlad en kommentar"
+
+#: content.php:15
+#@ dazzling
+msgid "1 Comment"
+msgstr "1 Kommentar"
+
+#: content.php:15
+#@ dazzling
+msgid "% Comments"
+msgstr "% Kommentarer"
+
+#: content.php:25
+#, php-format
+#@ dazzling
+msgid " %1$s"
+msgstr " %1$s"
+
+#: content.php:39
+#: content.php:54
+#@ dazzling
+msgid "Continue reading"
+msgstr "Fortsæt læsning"
+
+#: emails/admin-new-order.php:13
+#: emails/plain/admin-new-order.php:13
+#, php-format
+#@ woocommerce
+msgid "You have received an order from %s. Their order is as follows:"
+msgstr ""
+
+#: emails/admin-new-order.php:17
+#, php-format
+#@ woocommerce
+msgid "Order: %s"
+msgstr ""
+
+#: emails/admin-new-order.php:50
+#: emails/customer-completed-order.php:51
+#: emails/customer-note.php:55
+#: emails/customer-processing-order.php:51
+#: emails/plain/admin-new-order.php:39
+#: order/order-details.php:95
+#@ woocommerce
+msgid "Customer details"
+msgstr ""
+
+#: emails/admin-new-order.php:53
+#: emails/customer-completed-order.php:54
+#: emails/customer-note.php:58
+#: emails/customer-processing-order.php:54
+#: emails/plain/admin-new-order.php:42
+#: emails/plain/customer-completed-order.php:41
+#: emails/plain/customer-note.php:49
+#: emails/plain/customer-processing-order.php:41
+#: order/order-details.php:99
+#@ woocommerce
+msgid "Email:"
+msgstr ""
+
+#: emails/admin-new-order.php:56
+#: emails/customer-completed-order.php:57
+#: emails/customer-note.php:61
+#: emails/customer-processing-order.php:57
+#: emails/plain/admin-new-order.php:45
+#: emails/plain/customer-completed-order.php:44
+#: emails/plain/customer-note.php:52
+#: emails/plain/customer-processing-order.php:44
+#@ woocommerce
+msgid "Tel:"
+msgstr ""
+
+#: emails/customer-completed-order.php:14
+#: emails/plain/customer-completed-order.php:13
+#, php-format
+#@ woocommerce
+msgid "Hi there. Your recent order on %s has been completed. Your order details are shown below for your reference:"
+msgstr ""
+
+#: emails/customer-invoice.php:16
+#: emails/plain/customer-invoice.php:14
+#, php-format
+#@ woocommerce
+msgid "An order has been created for you on %s. To pay for this order please use the following link: %s"
+msgstr ""
+
+#: emails/customer-invoice.php:16
+#@ woocommerce
+msgid "pay"
+msgstr ""
+
+#: emails/customer-new-account.php:14
+#: emails/plain/customer-new-account.php:13
+#, php-format
+#@ woocommerce
+msgid "Thanks for creating an account on %s. Your username is <strong>%s</strong>."
+msgstr ""
+
+#: emails/customer-new-account.php:18
+#, php-format
+#@ woocommerce
+msgid "Your password has been automatically generated: <strong>%s</strong>"
+msgstr ""
+
+#: emails/customer-new-account.php:22
+#: emails/plain/customer-new-account.php:18
+#, php-format
+#@ woocommerce
+msgid "You can access your account area to view your orders and change your password here: %s."
+msgstr ""
+
+#: emails/customer-note.php:14
+#: emails/plain/customer-note.php:13
+#@ woocommerce
+msgid "Hello, a note has just been added to your order:"
+msgstr ""
+
+#: emails/customer-note.php:18
+#: emails/plain/customer-note.php:21
+#@ woocommerce
+msgid "For your reference, your order details are shown below."
+msgstr ""
+
+#: emails/customer-processing-order.php:14
+#: emails/plain/customer-processing-order.php:13
+#@ woocommerce
+msgid "Your order has been received and is now being processed. Your order details are shown below for your reference:"
+msgstr ""
+
+#: emails/customer-reset-password.php:14
+#: emails/plain/customer-reset-password.php:13
+#@ woocommerce
+msgid "Someone requested that the password be reset for the following account:"
+msgstr ""
+
+#: emails/customer-reset-password.php:15
+#: emails/plain/customer-reset-password.php:15
+#, php-format
+#@ woocommerce
+msgid "Username: %s"
+msgstr ""
+
+#: emails/customer-reset-password.php:16
+#: emails/plain/customer-reset-password.php:16
+#@ woocommerce
+msgid "If this was a mistake, just ignore this email and nothing will happen."
+msgstr ""
+
+#: emails/customer-reset-password.php:17
+#: emails/plain/customer-reset-password.php:17
+#@ woocommerce
+msgid "To reset your password, visit the following address:"
+msgstr ""
+
+#: emails/customer-reset-password.php:20
+#@ woocommerce
+msgid "Click here to reset your password"
+msgstr ""
+
+#: emails/email-addresses.php:20
+#: emails/plain/email-addresses.php:14
+#@ woocommerce
+msgid "Billing address"
+msgstr ""
+
+#: emails/email-addresses.php:30
+#: emails/plain/email-addresses.php:19
+#@ woocommerce
+msgid "Shipping address"
+msgstr ""
+
+#: emails/email-order-items.php:23
+#@ woocommerce
+msgid "Product Image"
+msgstr ""
+
+#: emails/email-order-items.php:44
+#: emails/plain/email-order-items.php:47
+#, php-format
+#@ woocommerce
+msgid "Download %d"
+msgstr ""
+
+#: emails/email-order-items.php:46
+#: emails/plain/email-order-items.php:49
+#@ woocommerce
+msgid "Download"
+msgstr ""
+
+#: emails/plain/admin-new-order.php:19
+#: emails/plain/customer-completed-order.php:19
+#: emails/plain/customer-invoice.php:20
+#: emails/plain/customer-note.php:27
+#: emails/plain/customer-processing-order.php:19
+#, php-format
+#@ woocommerce
+msgid "Order number: %s"
+msgstr ""
+
+#: emails/plain/admin-new-order.php:20
+#, php-format
+#@ woocommerce
+msgid "Order link: %s"
+msgstr ""
+
+#: emails/plain/admin-new-order.php:21
+#: emails/plain/customer-completed-order.php:20
+#: emails/plain/customer-invoice.php:21
+#: emails/plain/customer-note.php:28
+#: emails/plain/customer-processing-order.php:20
+#, php-format
+#@ woocommerce
+msgid "Order date: %s"
+msgstr ""
+
+#: emails/plain/admin-new-order.php:21
+#@ woocommerce
+msgid "jS F Y"
+msgstr ""
+
+#: emails/plain/customer-completed-order.php:38
+#: emails/plain/customer-note.php:46
+#: emails/plain/customer-processing-order.php:38
+#@ woocommerce
+msgid "Your details"
+msgstr ""
+
+#: emails/plain/customer-new-account.php:16
+#, php-format
+#@ woocommerce
+msgid "Your password is <strong>%s</strong>."
+msgstr ""
+
+#: emails/plain/email-order-items.php:33
+#, php-format
+#@ woocommerce
+msgid "Quantity: %s"
+msgstr ""
+
+#: emails/plain/email-order-items.php:36
+#, php-format
+#@ woocommerce
+msgid "Cost: %s"
+msgstr ""
+
+#: functions.php:48
+#@ dazzling
+msgid "Primary Menu"
+msgstr "Primær Menu"
+
+#: functions.php:49
+#: inc/extras.php:196
+#@ dazzling
+msgid "Footer Links"
+msgstr "Footer Links"
+
+#: functions.php:69
+#@ dazzling
+msgid "Sidebar"
+msgstr "Sidebar"
+
+#: functions.php:78
+#@ dazzling
+msgid "Homepage Widget 1"
+msgstr "Homepage Widget 1"
+
+#: functions.php:79
+#: functions.php:89
+#: functions.php:99
+#@ dazzling
+msgid "Displays on the Home Page"
+msgstr "Displays on the Home Page"
+
+#: functions.php:88
+#@ dazzling
+msgid "Homepage Widget 2"
+msgstr "Homepage Widget 2"
+
+#: functions.php:98
+#@ dazzling
+msgid "Homepage Widget 3"
+msgstr "Homepage Widget 3"
+
+#: functions.php:108
+#@ dazzling
+msgid "Footer Widget 1"
+msgstr "Footer Widget 1"
+
+#: functions.php:109
+#: functions.php:119
+#: functions.php:129
+#@ dazzling
+msgid "Used for footer widget area"
+msgstr "Used for footer widget area"
+
+#: functions.php:118
+#@ dazzling
+msgid "Footer Widget 2"
+msgstr "Footer Widget 2"
+
+#: functions.php:128
+#@ dazzling
+msgid "Footer Widget 3"
+msgstr "Footer Widget 3"
+
+#: global/breadcrumb.php:72
+#@ woocommerce
+msgid "Products tagged &ldquo;"
+msgstr ""
+
+#: global/breadcrumb.php:100
+#: global/breadcrumb.php:202
+#@ woocommerce
+msgid "Search results for &ldquo;"
+msgstr ""
+
+#: global/breadcrumb.php:156
+#@ woocommerce
+msgid "Error 404"
+msgstr ""
+
+#: global/breadcrumb.php:206
+#@ woocommerce
+msgid "Posts tagged &ldquo;"
+msgstr ""
+
+#: global/breadcrumb.php:211
+#@ woocommerce
+msgid "Author:"
+msgstr ""
+
+#: global/breadcrumb.php:216
+#@ woocommerce
+msgid "Page"
+msgstr ""
+
+#: global/form-login.php:22
+#: myaccount/form-lost-password.php:23
+#@ woocommerce
+msgid "Username or email"
+msgstr ""
+
+#: global/form-login.php:26
+#: myaccount/form-login.php:38
+#: myaccount/form-login.php:88
+#@ woocommerce
+msgid "Password"
+msgstr ""
+
+#: global/form-login.php:35
+#: myaccount/form-login.php:27
+#: myaccount/form-login.php:46
+#@ woocommerce
+msgid "Login"
+msgstr ""
+
+#: global/form-login.php:38
+#: myaccount/form-login.php:48
+#@ woocommerce
+msgid "Remember me"
+msgstr ""
+
+#: global/form-login.php:42
+#: myaccount/form-login.php:52
+#@ woocommerce
+msgid "Lost your password?"
+msgstr ""
+
+#: global/quantity-input.php:16
+#: global/quantity-input.php:20
+#@ woocommerce
+msgctxt "Product quantity input tooltip"
+msgid "Qty"
+msgstr ""
+
+#: image.php:26
+#@ dazzling
+msgid "<i class=\"fa fa-chevron-left\"></i> Previous"
+msgstr "<i class=\"fa fa-chevron-left\"></i> Forrige"
+
+#: image.php:27
+#@ dazzling
+msgid "Next <i class=\"fa fa-chevron-right\"></i>"
+msgstr "Næste <i class=\"fa fa-chevron-right\"></i>"
+
+#: inc/admin/includes/class-options-framework-admin.php:90
+#: inc/admin/includes/class-options-framework-admin.php:91
+#@ dazzling
+msgid "Theme Options"
+msgstr "Tema Indstillinger"
+
+#: inc/admin/includes/class-options-framework-admin.php:185
+#@ dazzling
+msgid "Save Options"
+msgstr "Gem indstillinger"
+
+#: inc/admin/includes/class-options-framework-admin.php:186
+#@ dazzling
+msgid "Restore Defaults"
+msgstr "Gendan standarder"
+
+#: inc/admin/includes/class-options-framework-admin.php:186
+#@ dazzling
+msgid "Click OK to reset. Any theme settings will be lost!"
+msgstr "Klik på OK for at nulstille. Alle indstillinger tema, vil blive tabt!"
+
+#: inc/admin/includes/class-options-framework-admin.php:217
+#@ dazzling
+msgid "Default options restored."
+msgstr "Standardindstillingerne gendannes."
+
+#: inc/admin/includes/class-options-framework-admin.php:271
+#@ dazzling
+msgid "Options saved."
+msgstr "Indstillinger gemt."
+
+#: inc/admin/includes/class-options-media-uploader.php:63
+#@ textdomain
+msgid "No file chosen"
+msgstr ""
+
+#: inc/admin/includes/class-options-media-uploader.php:66
+#: inc/admin/includes/class-options-media-uploader.php:119
+#@ textdomain
+msgid "Upload"
+msgstr ""
+
+#: inc/admin/includes/class-options-media-uploader.php:68
+#: inc/admin/includes/class-options-media-uploader.php:120
+#@ textdomain
+msgid "Remove"
+msgstr ""
+
+#: inc/admin/includes/class-options-media-uploader.php:71
+#@ textdomain
+msgid "Upgrade your version of WordPress for full media support."
+msgstr ""
+
+#: inc/admin/includes/class-options-media-uploader.php:95
+#@ textdomain
+msgid "View File"
+msgstr ""
+
+#: inc/admin/includes/class-options-sanitization.php:316
+#@ options-framework
+msgid "No Repeat"
+msgstr ""
+
+#: inc/admin/includes/class-options-sanitization.php:317
+#@ options-framework
+msgid "Repeat Horizontally"
+msgstr ""
+
+#: inc/admin/includes/class-options-sanitization.php:318
+#@ options-framework
+msgid "Repeat Vertically"
+msgstr ""
+
+#: inc/admin/includes/class-options-sanitization.php:319
+#@ options-framework
+msgid "Repeat All"
+msgstr ""
+
+#: inc/admin/includes/class-options-sanitization.php:331
+#@ options-framework
+msgid "Top Left"
+msgstr ""
+
+#: inc/admin/includes/class-options-sanitization.php:332
+#@ options-framework
+msgid "Top Center"
+msgstr ""
+
+#: inc/admin/includes/class-options-sanitization.php:333
+#@ options-framework
+msgid "Top Right"
+msgstr ""
+
+#: inc/admin/includes/class-options-sanitization.php:334
+#@ options-framework
+msgid "Middle Left"
+msgstr ""
+
+#: inc/admin/includes/class-options-sanitization.php:335
+#@ options-framework
+msgid "Middle Center"
+msgstr ""
+
+#: inc/admin/includes/class-options-sanitization.php:336
+#@ options-framework
+msgid "Middle Right"
+msgstr ""
+
+#: inc/admin/includes/class-options-sanitization.php:337
+#@ options-framework
+msgid "Bottom Left"
+msgstr ""
+
+#: inc/admin/includes/class-options-sanitization.php:338
+#@ options-framework
+msgid "Bottom Center"
+msgstr ""
+
+#: inc/admin/includes/class-options-sanitization.php:339
+#@ options-framework
+msgid "Bottom Right"
+msgstr ""
+
+#: inc/admin/includes/class-options-sanitization.php:351
+#@ options-framework
+msgid "Scroll Normally"
+msgstr ""
+
+#: inc/admin/includes/class-options-sanitization.php:352
+#@ options-framework
+msgid "Fixed in Place"
+msgstr ""
+
+#: inc/admin/includes/class-options-sanitization.php:424
+#@ options-framework
+msgid "Normal"
+msgstr ""
+
+#: inc/admin/includes/class-options-sanitization.php:425
+#@ options-framework
+msgid "Italic"
+msgstr ""
+
+#: inc/admin/includes/class-options-sanitization.php:426
+#@ options-framework
+msgid "Bold"
+msgstr ""
+
+#: inc/admin/includes/class-options-sanitization.php:427
+#@ options-framework
+msgid "Bold Italic"
+msgstr ""
+
+#: inc/extras.php:65
+#, php-format
+#@ dazzling
+msgid "Page %s"
+msgstr "Side %s"
+
+#: inc/extras.php:126
+#@ dazzling
+msgid "<p>This post is password protected. To view it please enter your password below:</p>"
+msgstr "<p>Dette indlæg er beskyttet med adgangskode. For at se det skal du indtaste dit kodeord nedenunder:</p>"
+
+#: inc/extras.php:127
+#@ dazzling
+msgid "Password:"
+msgstr "Adgangskode:"
+
+#: inc/extras.php:130
+#: single-product-reviews.php:67
+#@ dazzling
+#@ woocommerce
+msgid "Submit"
+msgstr "Indsend"
+
+#: inc/extras.php:161
+#@ dazzling
+msgid "Follow us on "
+msgstr "Følg os på"
+
+#: inc/extras.php:309
+#, php-format
+#@ dazzling
+msgid "Theme by %1$s Powered by %2$s"
+msgstr "Theme by %1$s Powered by %2$s"
+
+#: inc/extras.php:416
+#@ dazzling
+msgid "Support and Documentation"
+msgstr "Support og dokumentation"
+
+#: inc/extras.php:422
+#@ dazzling
+msgid "Dazzling Documentation"
+msgstr "Dazzling Documentation"
+
+#: inc/extras.php:423
+#@ dazzling
+msgid "The best way to contact us with support questions and bug reports is via"
+msgstr "Den bedste måde at kontakte os med support spørgsmål og fejlrapporter er via"
+
+#: inc/extras.php:423
+#@ dazzling
+msgid "Colorlib support forum"
+msgstr "Colorlib support forum"
+
+#: inc/extras.php:424
+#@ dazzling
+msgid "If you like this theme, I'd appreciate any of the following:"
+msgstr "If you like this theme, I'd appreciate any of the following:"
+
+#: inc/extras.php:426
+#@ dazzling
+msgid "Rate this Theme"
+msgstr "Rate this Theme"
+
+#: inc/extras.php:427
+#@ dazzling
+msgid "Like on Facebook"
+msgstr "Like on Facebook"
+
+#: inc/extras.php:428
+#@ dazzling
+msgid "Follow on Twitter"
+msgstr "Follow on Twitter"
+
+#: inc/popular-posts-widget.php:13
+#@ dazzling
+msgid "Displays tabbed list of popular posts, recent posts & comments"
+msgstr "Viser tabbed liste over populære indlæg, seneste indlæg og kommentarer"
+
+#: inc/popular-posts-widget.php:19
+#@ dazzling
+msgid "Dazzling Popular Posts Widget"
+msgstr "Blændende Populære Stillinger Widget"
+
+#: inc/popular-posts-widget.php:36
+#@ dazzling
+msgid "Popular"
+msgstr "Populære"
+
+#: inc/popular-posts-widget.php:37
+#@ dazzling
+msgid "Recent"
+msgstr "Seneste"
+
+#: inc/popular-posts-widget.php:104
+#@ dazzling
+msgid "Anonymous"
+msgstr "Anonym"
+
+#: inc/popular-posts-widget.php:104
+#@ dazzling
+msgid "on"
+msgstr "på"
+
+#: inc/popular-posts-widget.php:145
+#@ dazzling
+msgid "Number of posts to show"
+msgstr "Antal stillinger til at vise"
+
+#: inc/template-tags.php:23
+#@ dazzling
+msgid "Posts navigation"
+msgstr "indlæg navigation"
+
+#: inc/template-tags.php:27
+#@ dazzling
+msgid "<i class=\"fa fa-chevron-left\"></i> Older posts"
+msgstr "<i class=\"fa fa-chevron-left\"></i> ældre indlæg"
+
+#: inc/template-tags.php:31
+#@ dazzling
+msgid "Newer posts <i class=\"fa fa-chevron-right\"></i>"
+msgstr "Nyere indlæg <i class=\"fa fa-chevron-right\"></i>"
+
+#: inc/template-tags.php:56
+#@ dazzling
+msgid "Post navigation"
+msgstr "Indlæg navigation"
+
+#: inc/template-tags.php:59
+#, php-format
+#@ dazzling
+msgctxt "Previous post link"
+msgid "<i class=\"fa fa-chevron-left\"></i> %title"
+msgstr "<i class=\"fa fa-chevron-left\"></i> %title"
+
+#: inc/template-tags.php:60
+#, php-format
+#@ dazzling
+msgctxt "Next post link"
+msgid "%title <i class=\"fa fa-chevron-right\"></i>"
+msgstr "%title <i class=\"fa fa-chevron-right\"></i>"
+
+#: inc/template-tags.php:81
+#@ dazzling
+msgid "Pingback:"
+msgstr "Pingback:"
+
+#: inc/template-tags.php:91
+#, php-format
+#@ dazzling
+msgid "%s <span class=\"says\">says:</span>"
+msgstr "%s <span class=\"says\">siger:</span>"
+
+#: inc/template-tags.php:97
+#, php-format
+#@ dazzling
+msgctxt "1: date, 2: time"
+msgid "%1$s at %2$s"
+msgstr "%1$s på %2$s"
+
+#: inc/template-tags.php:104
+#@ dazzling
+msgid "Your comment is awaiting moderation."
+msgstr "Din kommentar afventer moderation."
+
+#: inc/woo-setup.php:96
+#@ dazzling
+msgid "View your shopping cart"
+msgstr "Se din indkøbskurv"
+
+#: inc/woo-setup.php:97
+#@ dazzling
+msgid "Start shopping"
+msgstr "Begynde shopping"
+
+#: inc/woo-setup.php:101
+#, php-format
+#@ dazzling
+msgid "%d item"
+msgid_plural "%d items"
+msgstr[0] "%d item"
+msgstr[1] "%d items"
+
+#: includes/ajax.php:218
+#: single-product/add-to-cart/variable.php:102
+#@ woocommerce
+msgid "This product is currently out of stock and unavailable."
+msgstr ""
+
+#: includes/post-types/paper_size.php:5
+#@ default
+msgctxt "post type general name"
+msgid "Paper size"
+msgstr ""
+
+#: includes/post-types/paper_size.php:6
+#@ default
+msgctxt "post type singular name"
+msgid "Paper size"
+msgstr ""
+
+#: includes/post-types/paper_size.php:7
+#: includes/post-types/paper_type.php:7
+#: includes/post-types/print_type.php:7
+#@ default
+msgctxt "book"
+msgid "Add New"
+msgstr ""
+
+#: includes/post-types/paper_size.php:8
+#@ default
+msgid "Add New Paper size"
+msgstr ""
+
+#: includes/post-types/paper_size.php:9
+#@ default
+msgid "Edit Paper size"
+msgstr ""
+
+#: includes/post-types/paper_size.php:10
+#@ default
+msgid "New Paper size"
+msgstr ""
+
+#: includes/post-types/paper_size.php:11
+#@ default
+msgid "Paper Sizes"
+msgstr ""
+
+#: includes/post-types/paper_size.php:12
+#@ default
+msgid "View Paper size"
+msgstr ""
+
+#: includes/post-types/paper_size.php:13
+#@ default
+msgid "Search Paper sizes"
+msgstr ""
+
+#: includes/post-types/paper_size.php:14
+#@ default
+msgid "No paper sizes found"
+msgstr ""
+
+#: includes/post-types/paper_size.php:15
+#@ default
+msgid "No paper sizes found in the Trash"
+msgstr ""
+
+#: includes/post-types/paper_size.php:38
+#, php-format
+#@ default
+msgid "Paper size updated. <a href=\"%s\">View paper size</a>"
+msgstr ""
+
+#: includes/post-types/paper_size.php:39
+#: includes/post-types/paper_type.php:39
+#: includes/post-types/print_type.php:39
+#@ default
+msgid "Custom field updated."
+msgstr ""
+
+#: includes/post-types/paper_size.php:40
+#: includes/post-types/paper_type.php:40
+#: includes/post-types/print_type.php:40
+#@ default
+msgid "Custom field deleted."
+msgstr ""
+
+#: includes/post-types/paper_size.php:41
+#@ default
+msgid "Paper size updated."
+msgstr ""
+
+#: includes/post-types/paper_size.php:42
+#, php-format
+#@ default
+msgid "Paper size restored to revision from %s"
+msgstr ""
+
+#: includes/post-types/paper_size.php:43
+#, php-format
+#@ default
+msgid "Paper size published. <a href=\"%s\">View paper size</a>"
+msgstr ""
+
+#: includes/post-types/paper_size.php:44
+#@ default
+msgid "Paper size saved."
+msgstr ""
+
+#: includes/post-types/paper_size.php:45
+#, php-format
+#@ default
+msgid "Paper size submitted. <a target=\"_blank\" href=\"%s\">Preview paper size</a>"
+msgstr ""
+
+#: includes/post-types/paper_size.php:46
+#, php-format
+#@ default
+msgid "Paper size scheduled for: <strong>%1$s</strong>. <a target=\"_blank\" href=\"%2$s\">Preview paper size</a>"
+msgstr ""
+
+#: includes/post-types/paper_size.php:46
+#: includes/post-types/paper_type.php:46
+#: includes/post-types/print_type.php:46
+#@ default
+msgid "M j, Y @ G:i"
+msgstr ""
+
+#: includes/post-types/paper_size.php:47
+#, php-format
+#@ default
+msgid "Paper size draft updated. <a target=\"_blank\" href=\"%s\">Preview paper size</a>"
+msgstr ""
+
+#: includes/post-types/paper_type.php:5
+#@ default
+msgctxt "post type general name"
+msgid "Paper type"
+msgstr ""
+
+#: includes/post-types/paper_type.php:6
+#@ default
+msgctxt "post type singular name"
+msgid "Paper type"
+msgstr ""
+
+#: includes/post-types/paper_type.php:8
+#@ default
+msgid "Add New Paper type"
+msgstr ""
+
+#: includes/post-types/paper_type.php:9
+#@ default
+msgid "Edit Paper type"
+msgstr ""
+
+#: includes/post-types/paper_type.php:10
+#@ default
+msgid "New Paper type"
+msgstr ""
+
+#: includes/post-types/paper_type.php:11
+#@ default
+msgid "Paper Types"
+msgstr ""
+
+#: includes/post-types/paper_type.php:12
+#@ default
+msgid "View Paper type"
+msgstr ""
+
+#: includes/post-types/paper_type.php:13
+#@ default
+msgid "Search Paper types"
+msgstr ""
+
+#: includes/post-types/paper_type.php:14
+#@ default
+msgid "No paper types found"
+msgstr ""
+
+#: includes/post-types/paper_type.php:15
+#@ default
+msgid "No paper types found in the Trash"
+msgstr ""
+
+#: includes/post-types/paper_type.php:38
+#, php-format
+#@ default
+msgid "Paper type updated. <a href=\"%s\">View paper type</a>"
+msgstr ""
+
+#: includes/post-types/paper_type.php:41
+#@ default
+msgid "Paper type updated."
+msgstr ""
+
+#: includes/post-types/paper_type.php:42
+#, php-format
+#@ default
+msgid "Paper type restored to revision from %s"
+msgstr ""
+
+#: includes/post-types/paper_type.php:43
+#, php-format
+#@ default
+msgid "Paper type published. <a href=\"%s\">View paper type</a>"
+msgstr ""
+
+#: includes/post-types/paper_type.php:44
+#@ default
+msgid "Paper type saved."
+msgstr ""
+
+#: includes/post-types/paper_type.php:45
+#, php-format
+#@ default
+msgid "Paper type submitted. <a target=\"_blank\" href=\"%s\">Preview paper type</a>"
+msgstr ""
+
+#: includes/post-types/paper_type.php:46
+#, php-format
+#@ default
+msgid "Paper type scheduled for: <strong>%1$s</strong>. <a target=\"_blank\" href=\"%2$s\">Preview paper type</a>"
+msgstr ""
+
+#: includes/post-types/paper_type.php:47
+#, php-format
+#@ default
+msgid "Paper type draft updated. <a target=\"_blank\" href=\"%s\">Preview paper type</a>"
+msgstr ""
+
+#: includes/post-types/print_type.php:5
+#@ default
+msgctxt "post type general name"
+msgid "Print type"
+msgstr ""
+
+#: includes/post-types/print_type.php:6
+#@ default
+msgctxt "post type singular name"
+msgid "Print type"
+msgstr ""
+
+#: includes/post-types/print_type.php:8
+#@ default
+msgid "Add New Print type"
+msgstr ""
+
+#: includes/post-types/print_type.php:9
+#@ default
+msgid "Edit Print type"
+msgstr ""
+
+#: includes/post-types/print_type.php:10
+#@ default
+msgid "New Print type"
+msgstr ""
+
+#: includes/post-types/print_type.php:11
+#@ default
+msgid "Print Types"
+msgstr ""
+
+#: includes/post-types/print_type.php:12
+#@ default
+msgid "View Print type"
+msgstr ""
+
+#: includes/post-types/print_type.php:13
+#@ default
+msgid "Search Print types"
+msgstr ""
+
+#: includes/post-types/print_type.php:14
+#@ default
+msgid "No print types found"
+msgstr ""
+
+#: includes/post-types/print_type.php:15
+#@ default
+msgid "No print types found in the Trash"
+msgstr ""
+
+#: includes/post-types/print_type.php:38
+#, php-format
+#@ default
+msgid "Print type updated. <a href=\"%s\">View print type</a>"
+msgstr ""
+
+#: includes/post-types/print_type.php:41
+#@ default
+msgid "Print type updated."
+msgstr ""
+
+#: includes/post-types/print_type.php:42
+#, php-format
+#@ default
+msgid "Print type restored to revision from %s"
+msgstr ""
+
+#: includes/post-types/print_type.php:43
+#, php-format
+#@ default
+msgid "Print type published. <a href=\"%s\">View print type</a>"
+msgstr ""
+
+#: includes/post-types/print_type.php:44
+#@ default
+msgid "Print type saved."
+msgstr ""
+
+#: includes/post-types/print_type.php:45
+#, php-format
+#@ default
+msgid "Print type submitted. <a target=\"_blank\" href=\"%s\">Preview print type</a>"
+msgstr ""
+
+#: includes/post-types/print_type.php:46
+#, php-format
+#@ default
+msgid "Print type scheduled for: <strong>%1$s</strong>. <a target=\"_blank\" href=\"%2$s\">Preview print type</a>"
+msgstr ""
+
+#: includes/post-types/print_type.php:47
+#, php-format
+#@ default
+msgid "Print type draft updated. <a target=\"_blank\" href=\"%s\">Preview print type</a>"
+msgstr ""
+
+#: includes/wc-vinaprint/custom-product-variable.php:22
+#: includes/wc-vinaprint/custom-product-variable.php:47
+#@ woocommerce
+msgid "Tier price"
+msgstr ""
+
+#: includes/wc-vinaprint/custom-product-variable.php:24
+#: includes/wc-vinaprint/custom-product-variable.php:49
+#@ woocommerce
+msgid "Enter the custom tier price here. Ex: qty1-price1,qty2-price2"
+msgstr ""
+
+#: loop/no-products-found.php:14
+#@ woocommerce
+msgid "No products were found matching your selection."
+msgstr ""
+
+#: loop/result-count.php:28
+#@ woocommerce
+msgid "Showing the single result"
+msgstr ""
+
+#: loop/result-count.php:30
+#, php-format
+#@ woocommerce
+msgid "Showing all %d results"
+msgstr ""
+
+#: loop/result-count.php:32
+#, php-format
+#@ woocommerce
+msgctxt "%1$d = first, %2$d = last, %3$d = total"
+msgid "Showing %1$d&ndash;%2$d of %3$d results"
+msgstr ""
+
+#: loop/sale-flash.php:16
+#: single-product/sale-flash.php:16
+#@ woocommerce
+msgid "Sale!"
+msgstr ""
+
+#: myaccount/form-add-payment-method.php:40
+#@ woocommerce
+msgid "Sorry, it seems that there are no payment methods which support adding a new payment method. Please contact us if you require assistance or wish to make alternate arrangements."
+msgstr ""
+
+#: myaccount/form-add-payment-method.php:48
+#@ woocommerce
+msgid "Add Payment Method"
+msgstr ""
+
+#: myaccount/form-edit-account.php:23
+#@ woocommerce
+msgid "First name"
+msgstr ""
+
+#: myaccount/form-edit-account.php:27
+#@ woocommerce
+msgid "Last name"
+msgstr ""
+
+#: myaccount/form-edit-account.php:33
+#: myaccount/form-login.php:81
+#@ woocommerce
+msgid "Email address"
+msgstr ""
+
+#: myaccount/form-edit-account.php:38
+#@ woocommerce
+msgid "Password Change"
+msgstr ""
+
+#: myaccount/form-edit-account.php:41
+#@ woocommerce
+msgid "Current Password (leave blank to leave unchanged)"
+msgstr ""
+
+#: myaccount/form-edit-account.php:45
+#@ woocommerce
+msgid "New Password (leave blank to leave unchanged)"
+msgstr ""
+
+#: myaccount/form-edit-account.php:49
+#@ woocommerce
+msgid "Confirm New Password"
+msgstr ""
+
+#: myaccount/form-edit-account.php:59
+#@ woocommerce
+msgid "Save changes"
+msgstr ""
+
+#: myaccount/form-edit-address.php:16
+#: myaccount/my-address.php:19
+#: myaccount/my-address.php:25
+#: order/order-details.php:116
+#@ woocommerce
+msgid "Billing Address"
+msgstr ""
+
+#: myaccount/form-edit-address.php:16
+#: myaccount/my-address.php:20
+#: order/order-details.php:131
+#@ woocommerce
+msgid "Shipping Address"
+msgstr ""
+
+#: myaccount/form-edit-address.php:44
+#@ woocommerce
+msgid "Save Address"
+msgstr ""
+
+#: myaccount/form-login.php:34
+#@ woocommerce
+msgid "Username or email address"
+msgstr ""
+
+#: myaccount/form-login.php:65
+#: myaccount/form-login.php:102
+#@ woocommerce
+msgid "Register"
+msgstr ""
+
+#: myaccount/form-login.php:74
+#@ woocommerce
+msgid "Username"
+msgstr ""
+
+#: myaccount/form-login.php:95
+#@ woocommerce
+msgid "Anti-spam"
+msgstr ""
+
+#: myaccount/form-lost-password.php:21
+#@ woocommerce
+msgid "Lost your password? Please enter your username or email address. You will receive a link to create a new password via email."
+msgstr ""
+
+#: myaccount/form-lost-password.php:27
+#@ woocommerce
+msgid "Enter a new password below."
+msgstr ""
+
+#: myaccount/form-lost-password.php:30
+#@ woocommerce
+msgid "New password"
+msgstr ""
+
+#: myaccount/form-lost-password.php:34
+#@ woocommerce
+msgid "Re-enter new password"
+msgstr ""
+
+#: myaccount/form-lost-password.php:45
+#@ woocommerce
+msgid "Reset Password"
+msgstr ""
+
+#: myaccount/form-lost-password.php:45
+#@ woocommerce
+msgid "Save"
+msgstr ""
+
+#: myaccount/my-account.php:19
+#, php-format
+#@ woocommerce
+msgid "Hello <strong>%1$s</strong> (not %1$s? <a href=\"%2$s\">Sign out</a>)."
+msgstr ""
+
+#: myaccount/my-account.php:24
+#, php-format
+#@ woocommerce
+msgid "From your account dashboard you can view your recent orders, manage your shipping and billing addresses and <a href=\"%s\">edit your password and account details</a>."
+msgstr ""
+
+#: myaccount/my-address.php:17
+#@ woocommerce
+msgid "My Addresses"
+msgstr ""
+
+#: myaccount/my-address.php:23
+#@ woocommerce
+msgid "My Address"
+msgstr ""
+
+#: myaccount/my-address.php:35
+#@ woocommerce
+msgid "The following addresses will be used on the checkout page by default."
+msgstr ""
+
+#: myaccount/my-address.php:64
+#@ woocommerce
+msgid "You have not set up this type of address yet."
+msgstr ""
+
+#: myaccount/my-downloads.php:20
+#@ woocommerce
+msgid "Available downloads"
+msgstr ""
+
+#: myaccount/my-downloads.php:29
+#, php-format
+#@ woocommerce
+msgid "%s download remaining"
+msgid_plural "%s downloads remaining"
+msgstr[0] ""
+msgstr[1] ""
+
+#: myaccount/my-orders.php:26
+#@ woocommerce
+msgid "Recent Orders"
+msgstr ""
+
+#: myaccount/my-orders.php:32
+#@ woocommerce
+msgid "Order"
+msgstr ""
+
+#: myaccount/my-orders.php:33
+#@ woocommerce
+msgid "Date"
+msgstr ""
+
+#: myaccount/my-orders.php:34
+#@ woocommerce
+msgid "Status"
+msgstr ""
+
+#: myaccount/my-orders.php:59
+#, php-format
+#@ woocommerce
+msgid "%s for %s item"
+msgid_plural "%s for %s items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: myaccount/my-orders.php:75
+#@ woocommerce
+msgid "Cancel"
+msgstr ""
+
+#: myaccount/my-orders.php:81
+#@ woocommerce
+msgid "View"
+msgstr ""
+
+#: myaccount/view-order.php:19
+#, php-format
+#@ woocommerce
+msgid "Order <mark class=\"order-number\">%s</mark> was placed on <mark class=\"order-date\">%s</mark> and is currently <mark class=\"order-status\">%s</mark>."
+msgstr ""
+
+#: myaccount/view-order.php:23
+#: order/tracking.php:23
+#@ woocommerce
+msgid "Order Updates"
+msgstr ""
+
+#: myaccount/view-order.php:29
+#: order/tracking.php:29
+#@ woocommerce
+msgid "l jS \\o\\f F Y, h:ia"
+msgstr ""
+
+#: options.php:29
+#@ dazzling
+msgid "Right Sidebar"
+msgstr "Right Sidebar"
+
+#: options.php:29
+#@ dazzling
+msgid "Left Sidebar"
+msgstr "Left Sidebar"
+
+#: options.php:33
+#@ options_framework_theme
+msgid "One"
+msgstr ""
+
+#: options.php:34
+#@ options_framework_theme
+msgid "Two"
+msgstr ""
+
+#: options.php:35
+#@ options_framework_theme
+msgid "Three"
+msgstr ""
+
+#: options.php:36
+#@ options_framework_theme
+msgid "Four"
+msgstr ""
+
+#: options.php:37
+#@ options_framework_theme
+msgid "Five"
+msgstr ""
+
+#: options.php:42
+#@ options_framework_theme
+msgid "French Toast"
+msgstr ""
+
+#: options.php:43
+#@ options_framework_theme
+msgid "Pancake"
+msgstr ""
+
+#: options.php:44
+#@ options_framework_theme
+msgid "Omelette"
+msgstr ""
+
+#: options.php:45
+#@ options_framework_theme
+msgid "Crepe"
+msgstr ""
+
+#: options.php:46
+#@ options_framework_theme
+msgid "Waffle"
+msgstr ""
+
+#: options.php:122
+#@ dazzling
+msgid "Main"
+msgstr "Main"
+
+#: options.php:125
+#@ dazzling
+msgid "Do You want to display image slider on the Home Page?"
+msgstr "Ønsker du at vise billedet skyderen på hjemmesiden?"
+
+#: options.php:126
+#@ dazzling
+msgid "Check if you want to enable slider"
+msgstr "Kontroller, om du vil aktivere skyderen"
+
+#: options.php:131
+#@ dazzling
+msgid "Slider Category"
+msgstr "Slider Kategori"
+
+#: options.php:132
+#@ dazzling
+msgid "Select a category for the featured post slider"
+msgstr "Vælg en kategori for featured indlæg skyderen"
+
+#: options.php:138
+#@ dazzling
+msgid "Number of slide items"
+msgstr "Antal slide varer"
+
+#: options.php:139
+#@ dazzling
+msgid "Enter the number of slide items"
+msgstr "Indtast antallet af dias poster"
+
+#: options.php:145
+#@ dazzling
+msgid "Website Layout Options"
+msgstr "Website Layoutindstillinger"
+
+#: options.php:146
+#@ dazzling
+msgid "Choose between Left and Right sidebar options to be used as default"
+msgstr "Vælg mellem Venstre og højre sidebjælke indstillinger, der skal bruges som standard"
+
+#: options.php:153
+#@ dazzling
+msgid "Element color"
+msgstr "element farve"
+
+#: options.php:154
+#: options.php:160
+#: options.php:193
+#: options.php:199
+#: options.php:205
+#: options.php:211
+#: options.php:233
+#: options.php:239
+#: options.php:245
+#: options.php:310
+#: options.php:316
+#@ dazzling
+msgid "Default used if no color is selected"
+msgstr "Default used if no color is selected"
+
+#: options.php:159
+#@ dazzling
+msgid "Element color on hover"
+msgstr "Element color on hover"
+
+#: options.php:165
+#@ dazzling
+msgid "Custom Favicon"
+msgstr "Custom Favicon"
+
+#: options.php:166
+#@ dazzling
+msgid "Upload a 32px x 32px PNG/GIF image that will represent your websites favicon"
+msgstr "Upload a 32px x 32px PNG/GIF image that will represent your websites favicon"
+
+#: options.php:171
+#@ dazzling
+msgid "Action Button"
+msgstr "Action Button"
+
+#: options.php:174
+#@ dazzling
+msgid "Call For Action Text"
+msgstr "Call For Action Text"
+
+#: options.php:175
+#@ dazzling
+msgid "Enter the text for call for action section"
+msgstr "Enter the text for call for action section"
+
+#: options.php:180
+#@ dazzling
+msgid "Call For Action Button Title"
+msgstr "Call For Action Button Title"
+
+#: options.php:181
+#@ dazzling
+msgid "Enter the title for Call For Action button"
+msgstr "Enter the title for Call For Action button"
+
+#: options.php:186
+#@ dazzling
+msgid "CFA button link"
+msgstr ""
+
+#: options.php:187
+#@ dazzling
+msgid "Enter the link for Call For Action button"
+msgstr ""
+
+#: options.php:192
+#@ dazzling
+msgid "Call For Action Text Color"
+msgstr ""
+
+#: options.php:198
+#@ dazzling
+msgid "Call For Action Background Color"
+msgstr ""
+
+#: options.php:204
+#@ dazzling
+msgid "Call For Action Button Border Color"
+msgstr ""
+
+#: options.php:210
+#@ dazzling
+msgid "Call For Action Button Text Color"
+msgstr ""
+
+#: options.php:216
+#@ dazzling
+msgid "Typography"
+msgstr ""
+
+#: options.php:219
+#@ dazzling
+msgid "Main Body Text"
+msgstr ""
+
+#: options.php:220
+#@ dazzling
+msgid "Used in P tags"
+msgstr ""
+
+#: options.php:226
+#@ dazzling
+msgid "Heading Color"
+msgstr ""
+
+#: options.php:227
+#@ dazzling
+msgid "Color for all headings (h1-h6)"
+msgstr ""
+
+#: options.php:232
+#@ dazzling
+msgid "Link Color"
+msgstr ""
+
+#: options.php:238
+#@ dazzling
+msgid "Link:hover Color"
+msgstr ""
+
+#: options.php:244
+#@ dazzling
+msgid "Link:active Color"
+msgstr ""
+
+#: options.php:250
+#@ dazzling
+msgid "Header"
+msgstr ""
+
+#: options.php:253
+#@ dazzling
+msgid "Top nav background color"
+msgstr ""
+
+#: options.php:254
+#@ dazzling
+msgid "Default used if no color is selected."
+msgstr ""
+
+#: options.php:259
+#@ dazzling
+msgid "Top nav item color"
+msgstr ""
+
+#: options.php:260
+#@ dazzling
+msgid "Link color"
+msgstr ""
+
+#: options.php:265
+#@ dazzling
+msgid "Top nav dropdown background color"
+msgstr ""
+
+#: options.php:266
+#@ dazzling
+msgid "Background of dropdown item hover color"
+msgstr ""
+
+#: options.php:271
+#@ dazzling
+msgid "Top nav dropdown item color"
+msgstr ""
+
+#: options.php:272
+#@ dazzling
+msgid "Dropdown item color"
+msgstr ""
+
+#: options.php:277
+#@ dazzling
+msgid "Footer"
+msgstr ""
+
+#: options.php:280
+#@ dazzling
+msgid "Footer Widget Area Background Color"
+msgstr ""
+
+#: options.php:285
+#@ dazzling
+msgid "Footer Background Color"
+msgstr ""
+
+#: options.php:290
+#@ dazzling
+msgid "Footer Text Color"
+msgstr ""
+
+#: options.php:295
+#@ dazzling
+msgid "Footer Link Color"
+msgstr ""
+
+#: options.php:300
+#@ dazzling
+msgid "Footer information"
+msgstr ""
+
+#: options.php:301
+#@ dazzling
+msgid "Copyright text in footer"
+msgstr ""
+
+#: options.php:303
+#@ dazzling
+msgid "All rights reserved."
+msgstr ""
+
+#: options.php:306
+#@ dazzling
+msgid "Social"
+msgstr ""
+
+#: options.php:309
+#@ dazzling
+msgid "Social Icon Color"
+msgstr ""
+
+#: options.php:315
+#@ dazzling
+msgid "Social Icon:hover Color"
+msgstr ""
+
+#: options.php:321
+#@ dazzling
+msgid "Add full URL for your social network profiles"
+msgstr ""
+
+#: options.php:322
+#@ dazzling
+msgid "Facebook"
+msgstr ""
+
+#: options.php:329
+#@ dazzling
+msgid "Twitter"
+msgstr ""
+
+#: options.php:335
+#@ dazzling
+msgid "Google+"
+msgstr ""
+
+#: options.php:341
+#@ dazzling
+msgid "Youtube"
+msgstr ""
+
+#: options.php:347
+#@ dazzling
+msgid "LinkedIn"
+msgstr ""
+
+#: options.php:353
+#@ dazzling
+msgid "Pinterest"
+msgstr ""
+
+#: options.php:359
+#@ dazzling
+msgid "RSS Feed"
+msgstr ""
+
+#: options.php:365
+#@ dazzling
+msgid "Tumblr"
+msgstr ""
+
+#: options.php:371
+#@ dazzling
+msgid "Flickr"
+msgstr ""
+
+#: options.php:377
+#@ dazzling
+msgid "Instagram"
+msgstr ""
+
+#: options.php:383
+#@ dazzling
+msgid "Dribbble"
+msgstr ""
+
+#: options.php:389
+#@ dazzling
+msgid "Skype"
+msgstr ""
+
+#: options.php:395
+#@ dazzling
+msgid "Github"
+msgstr ""
+
+#: options.php:401
+#@ dazzling
+msgid "Slideshare"
+msgstr ""
+
+#: options.php:407
+#@ dazzling
+msgid "VK.com"
+msgstr ""
+
+#: options.php:412
+#@ dazzling
+msgid "Other"
+msgstr ""
+
+#: options.php:415
+#@ dazzling
+msgid "Custom CSS"
+msgstr ""
+
+#: options.php:416
+#@ dazzling
+msgid "Additional CSS"
+msgstr ""
+
+#: order/form-tracking.php:17
+#@ woocommerce
+msgid "To track your order please enter your Order ID in the box below and press return. This was given to you on your receipt and in the confirmation email you should have received."
+msgstr ""
+
+#: order/form-tracking.php:19
+#@ woocommerce
+msgid "Order ID"
+msgstr ""
+
+#: order/form-tracking.php:19
+#@ woocommerce
+msgid "Found in your order confirmation email."
+msgstr ""
+
+#: order/form-tracking.php:20
+#@ woocommerce
+msgid "Billing Email"
+msgstr ""
+
+#: order/form-tracking.php:20
+#@ woocommerce
+msgid "Email you used during checkout."
+msgstr ""
+
+#: order/form-tracking.php:23
+#@ woocommerce
+msgid "Track"
+msgstr ""
+
+#: order/order-details.php:14
+#@ woocommerce
+msgid "Order Details"
+msgstr ""
+
+#: order/order-details.php:52
+#, php-format
+#@ woocommerce
+msgid "Download file%s"
+msgstr ""
+
+#: order/order-details.php:100
+#@ woocommerce
+msgid "Telephone:"
+msgstr ""
+
+#: order/order-details.php:120
+#: order/order-details.php:135
+#: single-product/meta.php:23
+#@ woocommerce
+msgid "N/A"
+msgstr ""
+
+#: order/tracking.php:12
+#, php-format
+#@ woocommerce
+msgid "Order %s which was made %s has the status &ldquo;%s&rdquo;"
+msgstr ""
+
+#: order/tracking.php:12
+#@ woocommerce
+msgid "ago"
+msgstr ""
+
+#: order/tracking.php:14
+#@ woocommerce
+msgid "and was completed"
+msgstr ""
+
+#: order/tracking.php:14
+#@ woocommerce
+msgid " ago"
+msgstr ""
+
+#: search.php:17
+#, php-format
+#@ dazzling
+msgid "Search Results for: %s"
+msgstr ""
+
+#: searchform.php:11
+#@ dazzling
+msgctxt "label"
+msgid "Search for:"
+msgstr "Søg efter:"
+
+#: searchform.php:12
+#@ dazzling
+msgid "Search..."
+msgstr ""
+
+#: sidebar.php:24
+#@ dazzling
+msgid "Meta"
+msgstr ""
+
+#: single-product/add-to-cart/variable.php:43
+#@ woocommerce
+msgid "Choose an option"
+msgstr ""
+
+#: single-product/meta.php:23
+#@ woocommerce
+msgid "SKU:"
+msgstr ""
+
+#: single-product/meta.php:27
+#@ woocommerce
+msgid "Category:"
+msgid_plural "Categories:"
+msgstr[0] ""
+msgstr[1] ""
+
+#: single-product/meta.php:29
+#@ woocommerce
+msgid "Tag:"
+msgid_plural "Tags:"
+msgstr[0] ""
+msgstr[1] ""
+
+#: single-product/product-attributes.php:28
+#@ woocommerce
+msgid "Weight"
+msgstr ""
+
+#: single-product/product-attributes.php:35
+#@ woocommerce
+msgid "Dimensions"
+msgstr ""
+
+#: single-product/product-image.php:37
+#@ woocommerce
+msgid "Placeholder"
+msgstr ""
+
+#: single-product/rating.php:23
+#, php-format
+#@ woocommerce
+msgid "Rated %s out of 5"
+msgstr ""
+
+#: single-product/rating.php:25
+#: single-product/review.php:27
+#@ woocommerce
+msgid "out of 5"
+msgstr ""
+
+#: single-product/rating.php:28
+#, php-format
+#@ woocommerce
+msgid "%s customer review"
+msgid_plural "%s customer reviews"
+msgstr[0] ""
+msgstr[1] ""
+
+#: single-product/related.php:40
+#@ woocommerce
+msgid "Related Products"
+msgstr ""
+
+#: single-product/review.php:26
+#, php-format
+#@ woocommerce
+msgid "Rated %d out of 5"
+msgstr ""
+
+#: single-product/review.php:34
+#@ woocommerce
+msgid "Your comment is awaiting approval"
+msgstr ""
+
+#: single-product/review.php:43
+#@ woocommerce
+msgid "verified owner"
+msgstr ""
+
+#: single-product/tabs/description.php:14
+#@ woocommerce
+msgid "Product Description"
+msgstr ""
+
+#: single-product/up-sells.php:39
+#@ woocommerce
+msgid "You may also like&hellip;"
+msgstr ""
+
+#: single-product-reviews.php:21
+#, php-format
+#@ woocommerce
+msgid "%s review for %s"
+msgid_plural "%s reviews for %s"
+msgstr[0] ""
+msgstr[1] ""
+
+#: single-product-reviews.php:23
+#@ woocommerce
+msgid "Reviews"
+msgstr ""
+
+#: single-product-reviews.php:44
+#@ woocommerce
+msgid "There are no reviews yet."
+msgstr ""
+
+#: single-product-reviews.php:57
+#@ woocommerce
+msgid "Add a review"
+msgstr ""
+
+#: single-product-reviews.php:57
+#@ woocommerce
+msgid "Be the first to review"
+msgstr ""
+
+#: single-product-reviews.php:58
+#, php-format
+#@ woocommerce
+msgid "Leave a Reply to %s"
+msgstr ""
+
+#: single-product-reviews.php:62
+#@ woocommerce
+msgid "Name"
+msgstr ""
+
+#: single-product-reviews.php:64
+#@ woocommerce
+msgid "Email"
+msgstr ""
+
+#: single-product-reviews.php:73
+#@ woocommerce
+msgid "Your Rating"
+msgstr ""
+
+#: single-product-reviews.php:74
+#@ woocommerce
+msgid "Rate&hellip;"
+msgstr ""
+
+#: single-product-reviews.php:75
+#@ woocommerce
+msgid "Perfect"
+msgstr ""
+
+#: single-product-reviews.php:76
+#@ woocommerce
+msgid "Good"
+msgstr ""
+
+#: single-product-reviews.php:77
+#@ woocommerce
+msgid "Average"
+msgstr ""
+
+#: single-product-reviews.php:78
+#@ woocommerce
+msgid "Not that bad"
+msgstr ""
+
+#: single-product-reviews.php:79
+#@ woocommerce
+msgid "Very Poor"
+msgstr ""
+
+#: single-product-reviews.php:83
+#@ woocommerce
+msgid "Your Review"
+msgstr ""
+
+#: single-product-reviews.php:92
+#@ woocommerce
+msgid "Only logged in customers who have purchased this product may leave a review."
+msgstr ""
+
