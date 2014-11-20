@@ -78,17 +78,19 @@ if (is_woocommerce_active()) {
                             $html_filter .= '<td width="'.(95/count($attributes)).'%">';      
                                 $html_filter .= '<select style="width:100% !important;" name="slt_filter_variation[attribute_' . sanitize_title( $attribute['name'] ).']">';
                                 $html_filter.= '<option value="">' . __( 'Any', 'woocommerce' ) . ' ' . esc_html( wc_attribute_label( $attribute['name'] ) ) . '&hellip;</option>';
-                                if($attribute['is_taxonomy']){                                    
-                                    foreach ( $post_terms as $term ) {
-                                        $post_terms  = wp_get_post_terms( $post->ID, $attribute['name'] );
-                                        $first_value = reset($post_terms);
-                                        $filter_attributes["attribute_".sanitize_title($attribute['name'])] = $first_value->slug;
+                                if($attribute['is_taxonomy']){        
+                                    $post_terms  = wp_get_post_terms( $post->ID, $attribute['name'] );
+                                    if(count($post_terms)){
+                                        foreach ( $post_terms as $term ) {                                        
+                                            $first_value = reset($post_terms);
+                                            $filter_attributes["attribute_".sanitize_title($attribute['name'])] = $first_value->slug;
 
-                                        $selected = '';
-                                        if($term == reset($post_terms)){
-                                            if($attribute != end($attributes)) $selected='selected="selected"';
+                                            $selected = '';
+                                            if($term == reset($post_terms)){
+                                                if($attribute != end($attributes)) $selected='selected="selected"';
+                                            }
+                                            $html_filter.= '<option '.$selected.' value="' . $term->slug . '">' . apply_filters( 'woocommerce_variation_option_name', esc_html( $term->name ) ) . '</option>';
                                         }
-                                        $html_filter.= '<option '.$selected.' value="' . $term->slug . '">' . apply_filters( 'woocommerce_variation_option_name', esc_html( $term->name ) ) . '</option>';
                                     }
                                 }else{                                    
                                     $options = array_map( 'trim', explode( WC_DELIMITER, $attribute['value'] ) );                                    

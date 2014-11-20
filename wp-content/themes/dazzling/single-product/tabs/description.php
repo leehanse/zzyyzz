@@ -17,5 +17,7 @@ $heading = esc_html( apply_filters( 'woocommerce_product_description_heading', _
 <?php if ( $heading ): ?>
   <h2><?php echo $heading; ?></h2>
 <?php endif; ?>
-
+<div class="images-wrapper col-md-4 pull-right">
+    <?php woocommerce_show_product_images(); ?>
+</div>
 <?php the_content(); ?>

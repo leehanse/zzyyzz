@@ -821,7 +821,7 @@ p.logged-in-as {
   color: #ccc;
 }
 #footer-area .footer-widget-area {
-  padding: 40px 0 20px 0;
+  padding: 0px 0 10px 0;
   overflow: hidden;
 }
 #footer-area ul li {
@@ -1112,8 +1112,9 @@ p.logged-in-as {
 }.vinaprint_table_price tr:hover td{
 	
 }
-.vinaprint_table_price tr:nth-child(odd){ background-color:#61FECC; }
-.vinaprint_table_price tr:nth-child(even)    { background-color:#ffffff; }.vinaprint_table_price td{
+.vinaprint_table_price tr:nth-child(odd){ background-color:#eee; }
+.vinaprint_table_price tr:nth-child(even)    { background-color:#ffffff; }
+.vinaprint_table_price td{
     vertical-align:middle;
     border:1px solid #CACACA;
     border-width:0px 1px 1px 0px;
@@ -1434,15 +1435,15 @@ table.cart .cart_item .product-quantity .field-title-qty{
 #primary .page-header{
     margin-top:0px;
     padding-bottom: 0px;
-    background: #1B926C;
+    border-bottom: 2px solid #313233;
 }
 #primary .page-header .entry-title{
     margin:0px;
-    color: #ffffff;
     padding: 5px;
-    border: 4px double #ffffff;
     font-size: 20px;
     text-transform: uppercase;
+    padding-left: 0px;
+    color:#1B926C;
 }
 #primary .no-results .page-header{
     background: #ffffff;
@@ -1451,15 +1452,14 @@ table.cart .cart_item .product-quantity .field-title-qty{
     color: red;
 }
 #primary .woocommerce-breadcrumb{
-    background: none repeat scroll 0 0 #1b926c;
-    border: 4px double #ffffff;
-    color: #ffffff;
-    font-size: 15px;
-    font-weight: bold;
-    padding: 5px;
+    margin-top:0px;
+    padding-bottom: 0px;
+    border-bottom: 2px solid #313233;   
+    font-size: 20px;
+    text-transform: uppercase;
 }
 #primary .woocommerce-breadcrumb a{
-    color: #ffffff;
+    color:#1B926C;
 }
 .woocommerce .cart-collaterals{
     border: 1px solid #e5e5e5;
@@ -1533,4 +1533,28 @@ table.cart .cart_item .product-quantity .field-title-qty{
 }
 #primary{
   box-shadow: 10px 10px 5px #888888; 
+}
+#footer-area .footer-widget-area .footer-title{
+}
+#footer-area .footer-widget-area .footer-content a{
+    text-decoration: underline;
+    color: #1B926C;
+}
+#secondary{
+    border-left: 1px solid #eee;
+    border-top: 1px solid #eee;
+    border-top-left-radius: 20px;
+    padding-top:15px;
+}
+#primary{
+    padding-left: 30px;
+    border-top-right-radius: 10px;
+    padding-top:15px;
+    border-top: 1px solid #eee;
+}
+#tab-description .images-wrapper .images{
+    width: 100% !important;
+}
+#tab-description h2:first-child{
+    margin-top: 0px;
 }

@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Dazzling v1.3.6\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2014-11-19 04:13:27+0000\n"
+"PO-Revision-Date: 2014-11-20 04:58:23+0000\n"
 "Last-Translator: admin <ngochicongbk@gmail.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -588,19 +588,19 @@ msgstr "Beklager, men intet matchede dine søgetermer. Prøv venligst igen med n
 msgid "It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help."
 msgstr "Det synes vi kan & rsquo; t finde det, du & rsquo; re leder efter. Måske søger kan hjælpe."
 
+#: bak-front-page.php:23
 #: content-page.php:18
 #: content-single.php:23
 #: content.php:61
-#: front-page.php:23
 #: image.php:83
 #@ dazzling
 msgid "Pages:"
 msgstr "Sider:"
 
+#: bak-front-page.php:28
 #: content-page.php:23
 #: content-single.php:67
 #: content.php:30
-#: front-page.php:28
 #: inc/template-tags.php:81
 #: inc/template-tags.php:100
 #: myaccount/my-address.php:45
@@ -1342,7 +1342,7 @@ msgid_plural "%d items"
 msgstr[0] "%d item"
 msgstr[1] "%d items"
 
-#: includes/ajax.php:218
+#: includes/ajax.php:220
 #: single-product/add-to-cart/variable.php:102
 #@ woocommerce
 msgid "This product is currently out of stock and unavailable."
@@ -2638,5 +2638,20 @@ msgstr ""
 #: single-product-reviews.php:92
 #@ woocommerce
 msgid "Only logged in customers who have purchased this product may leave a review."
+msgstr ""
+
+#: includes/ajax.php:42
+#@ dazzling
+msgid "Please choose price to continue."
+msgstr "Vælg pris for at fortsætte."
+
+#: includes/ajax.php:43
+#@ dazzling
+msgid "Upload file is required."
+msgstr "Upload fil er påkrævet."
+
+#: page-templates/shop.php:28
+#@ default
+msgid "No products found"
 msgstr ""
 

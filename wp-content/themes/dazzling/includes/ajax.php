@@ -38,7 +38,9 @@ if ( ! class_exists( 'VinaprintAjax' ) ) {
                 wp_localize_script(
                     'ajax-vinaprint', 'vinaprintAjax', array(
                         'ajaxurl' => admin_url('admin-ajax.php'),
-                        'action' => $this->action
+                        'action' => $this->action,
+                        'msg_choose_price' => __('Please choose price to continue.','dazzling'),
+                        'msg_upload_required' => __('Upload file is required.','dazzling')
                     ));
             }
         }
@@ -150,7 +152,7 @@ if ( ! class_exists( 'VinaprintAjax' ) ) {
                             $price = calculatePriceCell($product_id, $amount, $tmp_select_attributes, $tmp_select_addons, $available_variations, $product_addons);
                             if($price != 'no_price'){
                                 $html .='<td class="table-cell-price">';                                
-                                    $html .= '<input type="checkbox" class="chk-table-price" data-map-field-name="'.$pname.'" data-map-field-value="'.$pvalue.'" data-qty="'.$amount.'"/>';
+                                    $html .= '<input style="display:none;" type="checkbox" class="chk-table-price" data-map-field-name="'.$pname.'" data-map-field-value="'.$pvalue.'" data-qty="'.$amount.'"/>';
                                     $html .= woocommerce_price($price);
                                 $html .= '</td>';
                             }else{

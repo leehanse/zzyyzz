@@ -56,19 +56,21 @@
 
 				<?php endif; // header image was removed (again) ?>
 
-		        </div>                        
+		        </div>
                         <?php 
-                            $_languages = icl_get_languages();
-                            if(count($_languages)):
-                        ?>
-                            <ul class="language-switcher">
-                                <?php foreach($_languages as $lang):?>
-                                <li>
-                                    <a href="<?php echo $lang['url'];?>"><img src="<?php echo $lang['country_flag_url'];?>"/></a>
-                                </li>
-                                <?php endforeach;?>
-                            </ul>
-                        <?php endif; ?>
+                            if(function_exists('icl_get_languages')):
+                                $_languages = icl_get_languages();
+                                if(count($_languages)):
+                            ?>
+                                <ul class="language-switcher">
+                                    <?php foreach($_languages as $lang):?>
+                                    <li>
+                                        <a href="<?php echo $lang['url'];?>"><img src="<?php echo $lang['country_flag_url'];?>"/></a>
+                                    </li>
+                                    <?php endforeach;?>
+                                </ul>
+                            <?php endif; ?>
+                        <?php endif; ?>                        
                         <?php dazzling_header_menu(); ?>
 		    </div>
 		</nav><!-- .site-navigation -->

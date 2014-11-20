@@ -579,3 +579,11 @@ function vinaprint_add_my_bodyclass( $classes ) {
   }
   return $classes;
 } 
+
+function getCurrentLanguage(){
+    if(defined('ICL_LANGUAGE_CODE')){
+        return ICL_LANGUAGE_CODE;
+    }else{
+        return 'da';
+    }
+}

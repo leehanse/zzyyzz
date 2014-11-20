@@ -72,9 +72,13 @@ jQuery(document).ready(function(){
         
     }).on('click','.custom-add-to-cart-button', function(){
         if(jQuery('.chk-table-price:checked').size() > 0){
-            jQuery('form.cart').submit();
+            if(jQuery('input[name="wp_multi_file_uploader_1"]').size() == 0){
+                alert(vinaprintAjax.msg_upload_required);
+            }else{
+                jQuery('form.cart').submit();
+            }
         }else{
-            alert('Please choose price to continue...');
+            alert(vinaprintAjax.msg_choose_price);
         }
     });
     calculateTablePrice();

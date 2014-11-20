@@ -573,8 +573,12 @@ if (is_woocommerce_active()) {
                                                 <?php if ($addon['name']) : ?>
                                                     <label class="field-title" <?php if(strlen(wptexturize($addon['name'])) > 25) echo 'style="font-size:11px;"';?>>
                                                         <?php echo wptexturize($addon['name']); ?>
+                                                        <?php if ($addon['description']) : ?>
+                                                            <span><?php echo wptexturize($addon['description']); ?></span>
+                                                        <?php endif;?>
                                                     </label>
                                                 <?php endif; ?>
+                                                
                                                 <?php
                                                 switch ($addon['type']) :
                                                     case "checkbox" :
@@ -584,7 +588,8 @@ if (is_woocommerce_active()) {
                                                                     in_array(sanitize_title( $option['label'] ), $_POST['addon-'. sanitize_title( $addon['name'] )])
                                                                     ) ? 1 : 0;
 
-                                                            $price = ($option['price']>0) ? ' (+' . woocommerce_price($option['price']) . ')' : '';
+                                                            //$price = ($option['price']>0) ? ' (+' . woocommerce_price($option['price']) . ')' : '';
+                                                            $price = '';
                                                             echo '<label><input class="product-addons-field" data-price="'.$option['price'].'" type="checkbox" name="addon-'. sanitize_title( $addon['name'] ) .'[]" value="'. sanitize_title( $option['label'] ) .'" '.checked($current_value, 1, false).' /> '. wptexturize($option['label']) . $price .'</label>';
                                                         endforeach;
                                                     break;
@@ -596,7 +601,8 @@ if (is_woocommerce_active()) {
                                                         }
                                                         $loop = 0;
                                                         foreach ($addon['options'] as $option) : $loop++;
-                                                                $price = ($option['price']>0) ? ' (+' . woocommerce_price($option['price']) . ')' : '';
+                                                                //$price = ($option['price']>0) ? ' (+' . woocommerce_price($option['price']) . ')' : '';
+                                                                $price = '';
                                                                 echo '<option data-price="'.$option['price'].'" value="'. sanitize_title( $option['label'] ) .'-'. $loop .'" '.selected($current_value, sanitize_title( $option['label'] ), false).'>'. wptexturize($option['label']) . $price .'</option>';
                                                         endforeach;
                                                         echo '</select>';
@@ -627,10 +633,7 @@ if (is_woocommerce_active()) {
                                                         echo '<input type="text" class="number-field input-text product-addons-field-height" name="addon-' . sanitize_title( $addon['name'] ).'-height" value="'.$height.'"/>';
                                                         break;
                                                 endswitch;
-                                                ?>
-                                                <?php if ($addon['description']) : ?>
-                                                    <p class="product-addon-description"><?php echo wptexturize($addon['description']); ?></p>
-                                                <?php endif; ?>
+                                                ?>                                                
                                                 <div class="product-addons-field-addition-info addon-<?php echo sanitize_title( $addon['name'] ); ?>-addition-info"></div>
                                             </li>
 					<?php endforeach; ?>                                            

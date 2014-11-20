@@ -67,7 +67,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
         <div class="shipping-line" style="">
         	<img class="img-shipping" src="<?php echo get_template_directory_uri();?>/images/shipping.png">
         	<h3>Fast lav pris på fragt, 49,-</h3>
-        </div>
+        </div>        
 	<?php
 		/**
 		 * woocommerce_after_single_product_summary hook

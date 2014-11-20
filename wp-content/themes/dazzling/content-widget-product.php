@@ -4,6 +4,8 @@
 		<?php echo $product->get_image(); ?>
 		<?php echo $product->get_title(); ?>
 	</a>
-	<?php if ( ! empty( $show_rating ) ) echo $product->get_rating_html(); ?>
-	<?php echo $product->get_price_html(); ?>
+	<!--
+            <?php if ( ! empty( $show_rating ) ) echo $product->get_rating_html(); ?>
+            <?php echo $product->get_price_html(); ?>
+        -->
 </li>

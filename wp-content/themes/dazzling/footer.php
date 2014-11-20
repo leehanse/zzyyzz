@@ -8,10 +8,22 @@
  */
 ?>
 	<div id="footer-area">
-		<div class="container footer-inner">
-			<?php get_sidebar( 'footer' ); ?>
-		</div>
-
+                <?php $lang = getCurrentLanguage(); ?>
+                <?php $footers = get_field('footer_'.$lang, 'option');?>
+                <?php if(count($footers)):?>
+                        <div class="container footer-inner">                       
+                            <div class="footer-widget-area">
+                                <?php foreach($footers as $item):?>
+                                    <div class="col-sm-6 col-md-2 footer-widget" role="complementary">
+                                        <h3 class="footer-title"><?php echo $item['box_title'];?></h3>
+                                        <div class="footer-content">
+                                            <?php echo $item['box_content'];?>
+                                        </div>
+                                    </div>
+                                <?php endforeach; ?>                                
+                            </div>                            
+                        </div>
+                <?php endif;?>    
 		<footer id="colophon" class="site-footer" role="contentinfo">
 			<div class="site-info container">
 				<?php dazzling_social(); ?>
